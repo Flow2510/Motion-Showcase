@@ -43,7 +43,7 @@ export default function Header({ toggleMenu, menuIsOpen, isDesktop } : MenuProps
                     </h1>
                 </div>
                 <div className="group">
-                    <button type="button" className=" relative flex items-center justify-center gap-1.5 bg-gray-200 rounded-full w-12 h-12 cursor-pointer" onClick={toggleMenu}>
+                    <button type="button" className="relative flex items-center justify-center gap-1.5 bg-gray-200 rounded-full w-12 h-12 cursor-pointer" onClick={toggleMenu}>
                         <AnimatePresence>
                             {menuIsOpen ?
                                 <div className="relative size-5">

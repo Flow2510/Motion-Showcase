@@ -1,5 +1,9 @@
 import AccordionPanel from "./accordionpanel/accordionpanel";
 import accordionPanel from "./accordionpanel/meta";
+import ImageScrollFlow from "./Imagescrollflow/imagescrollflow";
+import imageScrollFlow from "./Imagescrollflow/meta";
+import screenReveal from "./screenreveal/meta";
+import ScreenReveal from "./screenreveal/screenreveal";
 import scrollStaggeredReveal from "./scrollstaggeredreveal/meta";
 import ScrollStaggeredRevealComponent from "./scrollstaggeredreveal/scrollstaggeredrevealcomponent";
 import sectionSlideAnimation from "./sectionslideanimation/meta";
@@ -35,5 +39,13 @@ export const animations = [
     {
         ...textAssembly,
         component: TextAssembly,
+    }, 
+    {
+        ...screenReveal,
+        component: ScreenReveal,
+    },
+    {
+        ...imageScrollFlow,
+        component: ImageScrollFlow,
     }
 ]

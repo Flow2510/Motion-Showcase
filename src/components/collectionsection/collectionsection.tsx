@@ -18,8 +18,8 @@ export default function CollectionSection({isDesktop} : CollectionProps ) {
         <section className="pb-20">
             <div className="xl:pt-20">
                 <div className="w-full flex items-center justify-between border-b border-neutral-50/25 py-4">
-                    <h2 className="text-4xl lg:text-9xl">Collection</h2>
-                    <p className="text-4xl lg:text-9xl">{animations.length}</p>
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-9xl">Collection</h2>
+                    <p className="text-4xl md:text-6xl lg:text-7xl xl:text-9xl">{animations.length}</p>
                 </div>
                 {isDesktop ?
                     <div className="flex justify-between items-center">

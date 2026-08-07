@@ -14,7 +14,7 @@ type GalleryProps = {
 
 export default function CollectionGallery({selectedAnimations} : GalleryProps){
     return(
-        <div className="w-full grid gap-y-12 gap-x-6 grid-cols-[repeat(auto-fit,minmax(400px,1fr))]">
+        <div className="w-full grid gap-y-12 gap-x-6 max-w-100 m-auto md:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] md:max-w-none">
             {selectedAnimations.map((animation, i) => (
                 <CollectionCard 
                     key={animation.name}

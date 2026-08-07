@@ -21,7 +21,7 @@ export default function Hero({ isDesktop } : Props) {
                 <div className="w-full h-full flex items-center p-5">
                     <AnimatePresence mode="wait">
                         {isDrag ?
-                            <motion.div 
+                            <motion.div
                                 key={'drag-id'}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -52,7 +52,7 @@ export default function Hero({ isDesktop } : Props) {
                     className="w-full h-dvh" 
                 >
                     <Swiper 
-                        loop={false}                        
+                        loop={true}                        
                         onSlideChange={(swiper) => setSliderIndex(swiper.realIndex)}
                         onTouchStart={() => setIsDrag(true)}
                         onTouchEnd={() => setIsDrag(false)}

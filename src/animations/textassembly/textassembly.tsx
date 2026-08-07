@@ -14,7 +14,7 @@ export default function TextAssembly() {
         <section className="p-5 flex flex-col gap-8">
             <div className="flex flex-col gap-8">
                 <div className="min-h-dvh w-fit relative">
-                    <h2 className={`uppercase grid text-6xl lg:text-9xl h-full w-full relative`} style={{ gridTemplateColumns: `auto`}}>
+                    <h2 className={`uppercase grid text-5xl lg:text-9xl h-full w-full relative`} style={{ gridTemplateColumns: `auto`}}>
                         {letters.map((letter, index) => (
                             <span className="sticky h-fit top-20" key={letter + index} style={{  gridRow: rows[index], gridColumn: index + 1 }}>
                                 {letter === " " ? <>&nbsp;</> : letter}
@@ -40,7 +40,7 @@ export default function TextAssembly() {
             </div>
             <div className="flex flex-col gap-8">
                 <div className="min-h-dvh w-fit relative">
-                    <h2 className={`uppercase grid text-6xl lg:text-9xl h-full w-full relative`} style={{ gridTemplateColumns: `repeat(${letters.length}, auto)`}}>
+                    <h2 className={`uppercase grid text-5xl lg:text-9xl h-full w-full relative`} style={{ gridTemplateColumns: `repeat(${letters.length}, auto)`}}>
                         {letters.map((letter, index) => (
                             <span className="sticky h-fit top-20" key={letter + index} style={{  gridRow: rows[index], gridColumn: index + 1 }}>
                                 {letter === " " ? <>&nbsp;</> : letter}
