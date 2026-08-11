@@ -30,7 +30,7 @@ export default function Tighteningcontainer({ title, text } : ContainerProps){
 
     return(
         <div className="overflow-x-hidden">
-            <div className="absolute invisible flex flex-col gap-2 p-5 max-w-">
+            <div className="absolute invisible flex flex-col gap-2 p-5 max-w-250 m-auto">
                 <h2 className="text-2xl" ref={titleRef}>
                     {title}
                 </h2>
@@ -38,13 +38,13 @@ export default function Tighteningcontainer({ title, text } : ContainerProps){
                     {text}
                 </p>
             </div>
-            <div className="flex flex-col gap-2 p-5">
-                <h2 className="text-2xl">
+            <div className="flex flex-col gap-2 p-5 lg:gap-4 max-w-250 m-auto">
+                <h2 className="text-2xl lg:text-3xl">
                     <Line 
                         line={title}
                     />
                 </h2>
-                <p>
+                <p className="lg:text-lg">
                     {linesText.map((line, index) => (
                         <Line
                             key={index + line}

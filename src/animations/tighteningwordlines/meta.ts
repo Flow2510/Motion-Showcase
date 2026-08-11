@@ -3,7 +3,7 @@ const tighteningWordLines = {
     id: 3,
     title: "Tightening Word Lines",
     category: "Scroll",
-    video: "/",
+    video: "/tighteningwordlines.mp4",
     color: "#a2d2ff",
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo, aut voluptates officiis corrupti dolores ut dignissimos ad saepe porro pariatur obcaecati quis enim eius asperiores repellendus. Corrupti nostrum animi nobis."
 }

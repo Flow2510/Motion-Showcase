@@ -1,6 +1,6 @@
 import { motion } from "motion/react"
 import { useEffect, useState } from "react"
-import { animations } from ".."
+import article from '../../data/article.json'
 
 export default function AccordionPanel() {
     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768)
@@ -16,7 +16,7 @@ export default function AccordionPanel() {
     })
       
     const [accordionIndex, setAccordionIndex] = useState(0)
-    const accordionItems = animations.slice(0, 4)
+    const accordionItems = article.slice(0, 4)
 
     return(
         isDesktop ? 
@@ -30,6 +30,7 @@ export default function AccordionPanel() {
                                 className="duration-300 relative flex items-center justify-center p-5 overflow-hidden" 
                                 style={{ 
                                     background: item.color, 
+                                    color: item.textcolor,
                                     borderRadius: 20,
                                     width: "100%",
                                     height: "100%",
@@ -41,11 +42,11 @@ export default function AccordionPanel() {
                                             {item.title}
                                         </h2>
                                     </div>
-                                    <div className="w-full flex gap-4">
-                                        <div className="w-[50%] aspect-[1/0.7]">
-                                            <img alt="" src={item.video} className="h-full w-full bg-white object-cover rounded-lg" />
+                                    <div className="w-full h-full max-h-[50%] grid grid-cols-2 gap-8">
+                                        <div className="w-full h-full">
+                                            <img alt="" src={item.img} className="h-full w-full bg-white object-cover rounded-lg" loading="lazy"/>
                                         </div>
-                                        <p className="w-[50%]">{item.description}</p>
+                                        <p className="">{item.description}</p>
                                     </div>
                                 </div>
                             </button>
@@ -53,9 +54,10 @@ export default function AccordionPanel() {
                             <button 
                                 key={item.id} 
                                 type="button" onClick={() => setAccordionIndex(index)} 
-                                className="duration-300 relative"
+                                className="duration-300 relative cursor-pointer"
                                 style={{ 
                                     background: item.color,
+                                    color: item.textcolor,
                                     borderRadius: 80,
                                     width: 100,
                                     height: "90%",
@@ -71,7 +73,7 @@ export default function AccordionPanel() {
             </section>
         :
         <section className="h-dvh bg-neutral-950 w-full p-5 flex">
-            <div className="w-full h-full flex flex-col items-center gap-1 py-12 max-w-150 m-auto">
+            <div className="w-full h-full flex flex-col items-center gap-1 pt-12 max-w-150 m-auto">
                 {accordionItems.map((item, index) => (
                     index === accordionIndex ?
                     <button 
@@ -81,6 +83,7 @@ export default function AccordionPanel() {
                         onClick={() => setAccordionIndex(index)} 
                         style={{ 
                             background: item.color, 
+                            color: item.textcolor,
                             borderRadius: 20,
                             width: "100%",
                             height: "100%",
@@ -89,7 +92,7 @@ export default function AccordionPanel() {
                         <div className="w-full h-full flex flex-col gap-2">
                             <h2 className="font-semibold text-4xl">{item.title}</h2>
                             <div className="-w-full h-full">
-                                <img src={item.video} alt="" className="w-full h-full object-cover bg-white rounded-lg"/>
+                                <img src={item.img} alt="" className="w-full h-full object-cover bg-white rounded-lg"/>
                             </div>
                             <div>
                                 <p>{item.description}</p>
@@ -104,6 +107,7 @@ export default function AccordionPanel() {
                         onClick={() => setAccordionIndex(index)} 
                         style={{ 
                             background: item.color, 
+                            color: item.textcolor,
                             borderRadius: 80,
                             width: "90%",
                             height: 80,

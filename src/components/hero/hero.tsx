@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { animations } from "../../animations";
+import { Autoplay } from "swiper/modules";
 
 type Props = {
     readonly isDesktop: boolean;
@@ -29,7 +29,7 @@ export default function Hero({ isDesktop } : Props) {
                                 transition={{ duration: 0.3 }}
                                 className="w-full h-full flex items-center p-5"
                             >
-                                <h2 className="text-xl">
+                                <h2 className="text-2xl">
                                     #{String(animations[sliderIndex].id).padStart(3, "0")}
                                 </h2>
                             </motion.div>
@@ -59,24 +59,29 @@ export default function Hero({ isDesktop } : Props) {
                         onSliderMove={() => setIsDrag(true)}
                         centeredSlides={true}
                         spaceBetween={isDrag ? 10 : 0}
-                        slidesPerView={isDrag ? 4.5 : 2}
+                        slidesPerView={isDrag ? 3 : 1.7}
                         direction={'vertical'}
+                        modules={[Autoplay]}
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false
+                        }}
                         className="w-full h-full cursor-grab active:cursor-grabbing"
                     >
                         {animations.map((item, i) =>
                             <SwiperSlide key={item.name}>
                                 <motion.div 
-                                    animate={{
-                                        scale: isDrag ? 0.55 : 1,
-                                    }}
+                                    style={{ scale: isDrag ? 0.9 : 1 }}
                                     transition={{
                                         duration: 0.3,
-                                    }} 
-                                    className="flex h-full w-full items-center justify-center">
+                                    }}                                    
+                                    className="flex h-full w-full items-center justify-center duration-500"
+                                >
                                     <div
                                         className="aspect-video w-full max-w-5xl rounded-lg relative"
-                                        style={{ background: item.color }}
+                                        style={{ scale : !isDrag && i === sliderIndex ? 1 : 0.9, background: item.color }}
                                     >
+                                        <video src={item.video} className="w-full h-full object-cover rounded-lg" autoPlay muted loop></video>
                                         <AnimatePresence>
                                             {i === sliderIndex && !isDrag &&
                                                 <motion.div     
@@ -105,7 +110,7 @@ export default function Hero({ isDesktop } : Props) {
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.3 }}
                             className="w-full h-full flex items-center p-5">
-                            <h2 className="text-xl">
+                            <h2 className="text-2xl">
                                 {animations[sliderIndex].title}
                             </h2>                        
                         </motion.div>
@@ -146,7 +151,7 @@ export default function Hero({ isDesktop } : Props) {
                                     key={item.name}
                                 >
                                     <div className="rounded-sm flex items-center justify-center h-full w-full relative" style={{ background: item.color }}>
-                                        
+                                        <video src={item.video} className="w-full h-full object-cover" muted autoPlay loop></video>
                                     </div>
                                 </SwiperSlide>
                             ))}

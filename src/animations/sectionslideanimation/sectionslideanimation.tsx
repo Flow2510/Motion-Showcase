@@ -1,8 +1,9 @@
 import { motion, useScroll, useTransform } from "motion/react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import Cards from "./card"
 
 export default function SectionSlideAnimation(){
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768)
     const stickyRef = useRef(null)
     const cards = [
         {
@@ -47,19 +48,31 @@ export default function SectionSlideAnimation(){
     const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(cards.length - 1) * 100}%`])
     
     return(
-        <div ref={stickyRef} className={`relative w-full`} style={{ height: `${cards.length * 100}dvh` }}>
-            <div className="sticky top-0 h-dvh w-full overflow-hidden">
-                <motion.div className="h-dvh w-full flex" style={{ x }}>
-                    {cards.map((card, index) => (
-                        <Cards 
-                            key={card.id}
-                            card={card}
-                            scrollYProgress={scrollYProgress}
-                            index={index}
-                        />
-                    ))}
-                </motion.div>
+        isDesktop ?
+            <div ref={stickyRef} className={`relative w-full`} style={{ height: `${cards.length * 100}dvh` }}>
+                <div className="sticky top-0 h-dvh w-full overflow-hidden">
+                    <motion.div className="h-dvh w-full flex" style={{ x }}>
+                        {cards.map((card, index) => (
+                            <Cards 
+                                key={card.id}
+                                card={card}
+                                scrollYProgress={scrollYProgress}
+                                index={index}
+                            />
+                        ))}
+                    </motion.div>
+                </div>
             </div>
+        : 
+        <div className="overflow-hidden">
+            {cards.map((card, index) => (
+                <Cards 
+                    key={card.id}
+                    card={card}
+                    scrollYProgress={scrollYProgress}
+                    index={index}
+                />
+            ))}
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useState } from "react";
-import { animations } from "..";
+import article from '../../data/article.json'
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ImageScrollFlow(){
     const [isDesktop, ] = useState(window.innerWidth > 768)
     const containerRef = useRef(null)
-    const items = [...animations, ...animations, ...animations, ...animations]
+    const items = [...article, ...article, ...article, ...article]
 
     useGSAP(() => {
         const tl = gsap.timeline({
@@ -49,12 +49,12 @@ export default function ImageScrollFlow(){
 
     return(
         <section className="w-full h-[600dvh]" ref={containerRef}>
-                <div className="sticky top-0 w-full h-dvh flex items-center justify-center overflow-hidden">
-                    {items.map((item, index) => (
-                        <div className="image absolute w-25 h-20 md:w-50 md:h-50 right-0" key={item.name + index}>
-                            <img src="" alt="" className="w-full h-full" style={{ background: item.color}}/>
-                        </div>
-                    ))}
+            <div className="sticky top-0 w-full h-dvh flex items-center justify-center overflow-hidden">
+                {items.map((item, index) => (
+                    <div className="image absolute w-25 h-20 md:w-50 md:h-50 right-0" key={item.title + index}>
+                        <img src={item.img} alt="" className="w-full" style={{ background: item.color}}/>
+                    </div>
+                ))}
             </div>
         </section>
     )

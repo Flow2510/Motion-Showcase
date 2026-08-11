@@ -1,20 +1,21 @@
 import { motion, useTransform } from "framer-motion"
 import { useScroll } from "motion/react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 type LineProps = {
     readonly line: string;
 }
 
 export default function Line({ line } : LineProps) {
+    const [isDesktop, ] = useState(window.innerWidth > 768)
     const lineRef = useRef(null)
     const { scrollYProgress } = useScroll({
         target: lineRef,
-        offset: ["start end", "end 80%"]
+        offset: ["start end", "end 75%"]
     })
 
     const gap = useTransform(scrollYProgress, [0, 1], ["5rem", "0.25rem"])
-    const x = useTransform(scrollYProgress, [0, 1], [-100, 0])
+    const x = useTransform(scrollYProgress, [0, 1], [-200, 0])
 
     return(
         <motion.span ref={lineRef} className="flex" style={{ gap, x }}>

@@ -2,41 +2,11 @@ import { useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
+import article from "../../data/article.json"
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default function StickyCardStack() {
-    const stickyCards = [
-        {
-            title: "Design minimal",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt luctus, nunc turpis suscipit mauris, sed facilisis lorem justo vitae erat.",
-            img: "",
-            color: "#E07A5F",
-            zIndex: "5"
-        },
-        {
-            title: "Expérience fluide",
-            text: "Praesent vel tortor vitae mauris volutpat cursus. Integer finibus, erat a convallis faucibus, libero justo tristique sapien, vitae malesuada lectus elit non risus.",
-            img: "",
-            color: "#3D405B",
-            zIndex: "4"
-        },
-        {
-            title: "Animations modernes",
-            text: "Curabitur at dui nec lorem ultrices dictum. Vivamus at massa non ipsum ultrices posuere quis sed purus. Pellentesque habitant morbi tristique senectus.",
-            img: "",
-            color: "#81B29A",
-            zIndex: "3"
-        },
-        {
-            title: "Développement créatif",
-            text: "Donec dignissim, augue id faucibus tincidunt, sapien turpis feugiat nibh, vel pharetra turpis ligula quis metus. Suspendisse potenti et malesuada fames ac turpis egestas.",
-            img: "",
-            color: "#F2CC8F",
-            zIndex: "2"
-        }
-    ]
-    
+export default function StickyCardStack() {    
     const stickyRef = useRef(null)
 
     useGSAP(() => {
@@ -86,17 +56,27 @@ export default function StickyCardStack() {
 
     return(
         <section className="w-full">
-            <div>
-                <h2 className="text-4xl text-center flex flex-col">
-                    <span className="text-neutral-500">Title Text</span>
-                    <span>On 2 Lines</span>
-                </h2>
-            </div>
             <div className="relative w-full" ref={stickyRef}>
                 <div className="h-dvh w-full flex items-center justify-center">
-                    {stickyCards.map((card, i) => (
-                        <article key={card.title} style={{ zIndex: card.zIndex, background: card.color }} className={`w-full h-full max-w-[70%] max-h-[70%] absolute p-5 rounded-2xl card`}>
-                            
+                    {article.map((card, i, array) => (
+                        <article key={card.title} style={{ zIndex: array.length - i, background: card.color, color: card.textcolor }} className={`w-full h-full max-w-[70%] max-h-[70%] absolute p-5 rounded-2xl card lg:p-10`}>
+                            <div className="flex flex-col w-full h-full gap-5 md:justify-between">
+                                <div>
+                                    <h2 className="text-3xl md:text-6xl lg:text-8xl">
+                                        {card.title} 
+                                    </h2>
+                                </div>
+                                <div className="flex flex-col flex-1 w-full h-full gap-5 md:grid md grid-cols-2 md:items-end max-h-[60%] md:gap-10">
+                                    <div className="flex-1 w-full h-full">
+                                        <img src={card.img} className="w-full h-full object-cover" alt="" loading="lazy"/>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            {card.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </article>
                     ))}
                 </div>

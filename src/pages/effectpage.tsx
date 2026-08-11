@@ -16,7 +16,7 @@ export default function EffectPage() {
         <div className="bg-neutral-950 w-full">
             <main className=" text-neutral-50 min-h-dvh py-30 w-full">
                 <div className="">
-                    <section className="p-5 min-h-dvh max-w-150 m-auto">
+                    <section className="p-5 min-h-dvh max-w-150 m-auto opacity-0">
                         <EffectCard 
                             animation={animation}
                         />
@@ -28,11 +28,8 @@ export default function EffectPage() {
                             </p>
                         </div>
                     </section>
-                    <section className="flex flex-col">
-                        
-                        <div className="flex flex-col gap-8">
-                            <Component />
-                        </div>
+                    <section className="flex flex-col pb-50">
+                        <Component />
                     </section>
                 </div>
             </main>

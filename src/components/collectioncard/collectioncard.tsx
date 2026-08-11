@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 type CardProps = {
@@ -17,6 +18,8 @@ type CardProps = {
 export default function CollectionCard({ animation, index } : CardProps) {
     const videoRef = useRef<HTMLVideoElement>(null)
     const [playVideo, setPlayVideo] = useState(false)
+    const [isHover, setIsHover] = useState(false)
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768)
 
     const toggleVideo = () => {
         if (!videoRef.current) return
@@ -30,31 +33,60 @@ export default function CollectionCard({ animation, index } : CardProps) {
         setPlayVideo(!playVideo)
     }
 
+    useEffect(() => {
+        if (!videoRef.current || !isDesktop) return;
+        if (isHover) {
+           setPlayVideo(true)
+           videoRef.current.play()
+        } else {
+            setPlayVideo(false)
+            videoRef.current.pause();
+            videoRef.current.currentTime = 0;
+            
+        }
+    }, [isHover, isDesktop])
+
     return(
-        <article className="flex flex-col gap-4">
+        <motion.article 
+            onHoverStart={() => isDesktop ? setIsHover(true) : setIsHover(false)}       
+            onHoverEnd={() => setIsHover(false)}      
+            className="flex flex-col gap-4 cursor-pointer"
+        >
             <div className="aspect-square w-full bg-gray-200 rounded-2xl flex items-center justify-center relative">
-                <div className="bg-neutral-950 rounded-sm aspect-video w-[80%]">
+                <div className="duration-300 bg-neutral-950 rounded-sm aspect-video w-[80%]" style={{ scale: isHover? 1.05 : 1 }}>
                     <video 
                         onPlay={() => setPlayVideo(true)}
                         onPause={() => setPlayVideo(false)}
-                        src={animation.video} className="w-full h-full object-cover" 
+                        src={animation.video} className="w-full h-full rounded-sm object-cover" 
                         ref={videoRef}
                         muted
                     >
 
                     </video>
                 </div>
-                <button 
-                    type="button"
-                    onClick={toggleVideo}
-                    className="absolute left-4 bottom-4 flex items-center rounded-full bg-neutral-50 px-4 py-2 text-neutral-950 text-[11px] font-semibold uppercase cursor-pointer"
-                >
-                    {playVideo?
-                        "Pause"
-                    :
-                        "Play"
-                    }
-                </button>
+                {!isDesktop && 
+                    <button 
+                        type="button"
+                        onClick={toggleVideo}
+                        className="absolute lg:hidden left-4 bottom-4 flex items-center rounded-full bg-neutral-50 px-4 py-2 text-neutral-950 text-[11px] font-semibold uppercase cursor-pointer"
+                    >
+                        {playVideo?
+                            "Pause"
+                        :
+                            "Play"
+                        }
+                    </button>
+                }
+                {isDesktop && isHover &&
+                    <button type="button" className="absolute right-4 top-4 text-neutral-950">
+                        Fav
+                    </button>
+                }
+                {!isDesktop && 
+                    <button type="button" className="absolute right-4 top-4 text-neutral-950">
+                        Fav
+                    </button>
+                }
             </div>
             <div className="flex justify-between w-full items-center">
                 <div className="">
@@ -74,6 +106,6 @@ export default function CollectionCard({ animation, index } : CardProps) {
                     </NavLink>
                 </div>
             </div>
-        </article>
+        </motion.article>
     )
 }

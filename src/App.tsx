@@ -1,13 +1,13 @@
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Header from './components/header/header'
 import HomePage from './pages/homepage'
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence } from 'motion/react'
 import CollectionPage from './pages/collectionpage'
 import EffectPage from './pages/effectpage'
 import Footer from './components/footer/footer'
-import { animations } from './animations'
+import Menu from './components/menu/menu'
 
 function App() {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -27,30 +27,9 @@ function App() {
     <>
       <AnimatePresence mode='wait'>
         {menuIsOpen &&
-          <motion.div 
-            key={"menu"}
-            className='fixed bottom-0 left-0 w-full p-5 h-full overflow-hidden z-50 flex items-end backdrop-blur-xs'
-          >
-            <motion.div 
-              initial={{ height: "0%" }}
-              animate={{ height: "auto" }}
-              exit={{ height: 0 }}
-              transition={{ duration: 0.1 }}
-              className='bg-neutral-800 w-full rounded-2xl flex flex-col text-neutral-50 p-8 justify-center overflow-hidden gap-8'
-            >
-              <div className='flex flex-col text-[22px]'>
-                <NavLink to={'/'} onClick={() => setMenuIsOpen(prev => !prev)} className={'py-2 border-b border-neutral-50/15'}>Home</NavLink>
-                <NavLink to={'/collection'} onClick={() => setMenuIsOpen(prev => !prev)} className={"flex gap-1 py-2 border-b border-neutral-50/15"}><span>Collection</span> <span className='text-sm text-lime-300'>{animations.length}</span></NavLink>
-              </div>
-              <div>
-                <NavLink to={'/'} className={'flex items-center justify-center gap-1.5 bg-gray-200 rounded-full h-12 cursor-pointer uppercase text-neutral-950'}>
-                  <span>
-                    Contact
-                  </span>
-                </NavLink>
-              </div>
-            </motion.div>
-          </motion.div>
+          <Menu 
+            toggleMenu={() => setMenuIsOpen(prev => !prev)}
+          />
         }
       </AnimatePresence>
       <Header 

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Exploration",
+    "img": "/exploration.jpg",
+    "color": "#0B1026",
+    "textcolor": "#A9B4E8",
+    "description": "L'exploration spatiale repousse constamment les limites de notre compréhension. De nouvelles missions permettent d'étudier des planètes lointaines et de mieux comprendre les origines de notre univers."
+  },
+  {
+    "id": 2,
+    "title": "Profondeurs",
+    "img": "/abysse.jpg",
+    "color": "#006D77",
+    "textcolor": "#9DE1E5",
+    "description": "Les profondeurs océaniques abritent des créatures et des écosystèmes encore largement inconnus. Dans ces environnements extrêmes, la vie s'est adaptée à une pression et une obscurité impressionnantes."
+  },
+  {
+    "id": 3,
+    "title": "Torréfaction",
+    "img": "/cafe.jpg",
+    "color": "#D6A15D",
+    "textcolor": "#6B4528",
+    "description": "La torréfaction transforme progressivement les grains de café et révèle leurs différents arômes. La température, la durée et le profil de cuisson jouent tous un rôle essentiel dans le résultat final."
+  },
+  {
+    "id": 4,
+    "title": "Architecture",
+    "img": "/architecture.jpg",
+    "color": "#E63946",
+    "textcolor": "#FFD0D4",
+    "description": "L'architecture contemporaine mélange technologie, esthétique et nouveaux matériaux. Les bâtiments modernes cherchent autant à impressionner qu'à répondre aux enjeux environnementaux des villes."
+  },
+  {
+    "id": 5,
+    "title": "Végétation",
+    "img": "/vegetation.jpg",
+    "color": "#2D6A4F",
+    "textcolor": "#A8D5BD",
+    "description": "La végétation joue un rôle essentiel dans l'équilibre des écosystèmes. Les forêts produisent de l'oxygène, abritent une immense biodiversité et participent activement à la régulation du climat."
+  }
+]

@@ -1,11 +1,11 @@
-const sectionSlideAnimation = {
-    name: "section-slide-animation",
-    id: 5,
-    title: "Section Slide Animation",
+const scrollingSections = {
+    name: "scrolling-sections",
+    id: 9,
+    title: "Scrolling Sections",
     category: "Scroll",
-    video: "/sectionslideanimation.mp4",
-    color: "#ffbe0b",
+    video: "/scrollstaggeredreveal.mp4",
+    color: "#a7c957",
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo, aut voluptates officiis corrupti dolores ut dignissimos ad saepe porro pariatur obcaecati quis enim eius asperiores repellendus. Corrupti nostrum animi nobis."
 }
 
-export default sectionSlideAnimation;
+export default scrollingSections;
