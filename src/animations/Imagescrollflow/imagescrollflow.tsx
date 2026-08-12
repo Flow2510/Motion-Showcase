@@ -25,6 +25,8 @@ export default function ImageScrollFlow(){
             ".image",
             {
                 y: 0,
+                height: () => isDesktop ? gsap.utils.random(200, 250): gsap.utils.random(100, 150),
+                width: () => isDesktop ? gsap.utils.random(250, 350): gsap.utils.random(100, 150),
                 zIndex: () => gsap.utils.random(1, 9),
                 scale: 0
             },
@@ -33,14 +35,14 @@ export default function ImageScrollFlow(){
                 keyframes: [
                     {   
                         scale: 1,
-                        y: () => isDesktop? gsap.utils.random(-250, 150) : gsap.utils.random(-100, 100),
+                        y: () => isDesktop? gsap.utils.random(-200, 150) : gsap.utils.random(-100, 100),
                     },
                     {
                         scale: 0,
                         y: 0,
                     },
                 ],
-                stagger: isDesktop ? 0.25 : 0.3,
+                stagger: isDesktop ? 0.3 : 0.4,
                 duration: 3,
                 ease: "none",
             }

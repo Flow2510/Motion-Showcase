@@ -1,13 +1,12 @@
 import { motion, useTransform } from "framer-motion"
 import { useScroll } from "motion/react"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 
 type LineProps = {
     readonly line: string;
 }
 
 export default function Line({ line } : LineProps) {
-    const [isDesktop, ] = useState(window.innerWidth > 768)
     const lineRef = useRef(null)
     const { scrollYProgress } = useScroll({
         target: lineRef,

@@ -3,7 +3,7 @@ import { useRef, useState } from "react"
 import Cards from "./card"
 
 export default function SectionSlideAnimation(){
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768)
+    const [isDesktop, ] = useState(window.innerWidth > 768)
     const stickyRef = useRef(null)
     const cards = [
         {

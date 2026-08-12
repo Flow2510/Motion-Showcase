@@ -28,6 +28,7 @@ export default function ScrollingSection({item, index, length} : Props) {
     const scale = useTransform(scrollYProgress, [0, 1], [1, 0.6])
     const y = useTransform(scrollYProgress, [0, 1], ["0%", "110%"])
     const opacity = useTransform(scrollYProgress, [0.99, 1], [1, 0])
+    const filter = useTransform(scrollYProgress, [0, 1], ["brightness(1)", "brightness(0.5)"])
 
     return(
         <section 
@@ -43,6 +44,7 @@ export default function ScrollingSection({item, index, length} : Props) {
                         rotateX : rotateX,
                         rotateZ: rotateZ,
                         scale,  
+                        filter,
                         y,                     
                         opacity,
                     }), 

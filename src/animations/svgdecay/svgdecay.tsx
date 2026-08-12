@@ -17,9 +17,9 @@ export default function SvgDecay() {
     const position = useTransform(scrollYProgress, [0.66, 1], ["0%", "-60%"])
 
     return(
-            <section className="h-[500dvh] relative p-5" ref={sectionRef}>
+            <section className="h-[500dvh] relative" ref={sectionRef}>
                 <div className="h-dvh w-full sticky top-0 flex items-center">
-                    <div className="overflow-hidden w-full flex flex-col justify-center p-5">
+                    <div className="w-full flex flex-col justify-center">
                         <div className="overflow-hidden">
                             <motion.svg 
                                 style={{ x: right, y: down }}
@@ -39,11 +39,12 @@ export default function SvgDecay() {
                     <motion.div className="absolute top-full h-dvh w-full py-15 px-5 flex justify-center" style={{ y: position }}>
                         <nav className="flex flex-col items-center justify-center w-full gap-2 h-full md:gap-3 lg:gap-4">
                             {article.map((item) => (
-                                <button key={item.title} type="button" className="text-4xl md:text-5xl lg:text-7xl font-semibold cursor-pointer">
+                                <motion.button 
+                                    key={item.title} type="button" className="text-4xl md:text-5xl lg:text-7xl font-semibold cursor-pointer">
                                     <h2>
                                         {item.title}
                                     </h2>
-                                </button>
+                                </motion.button>
                             ))}
                         </nav>
                     </motion.div>

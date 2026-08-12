@@ -3,7 +3,7 @@ const screenReveal = {
     id: 7,
     title: "Screen Reveal",
     category: "Loader",
-    video: "/",
+    video: "/screen-reveal.mp4",
     color: "#e7c6ff",
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo, aut voluptates officiis corrupti dolores ut dignissimos ad saepe porro pariatur obcaecati quis enim eius asperiores repellendus. Corrupti nostrum animi nobis."
 }

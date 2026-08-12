@@ -12,14 +12,13 @@ type CardProps = {
         video: string;
         description: string;
     }
-    readonly index: number;
 }
 
-export default function CollectionCard({ animation, index } : CardProps) {
+export default function CollectionCard({ animation } : CardProps) {
     const videoRef = useRef<HTMLVideoElement>(null)
     const [playVideo, setPlayVideo] = useState(false)
     const [isHover, setIsHover] = useState(false)
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768)
+    const [isDesktop, ] = useState(window.innerWidth > 768)
 
     const toggleVideo = () => {
         if (!videoRef.current) return
@@ -60,6 +59,7 @@ export default function CollectionCard({ animation, index } : CardProps) {
                         src={animation.video} className="w-full h-full rounded-sm object-cover" 
                         ref={videoRef}
                         muted
+                        loop
                     >
 
                     </video>

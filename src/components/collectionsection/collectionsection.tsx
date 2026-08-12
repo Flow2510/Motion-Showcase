@@ -8,7 +8,7 @@ type CollectionProps = {
 
 export default function CollectionSection({isDesktop} : CollectionProps ) {
     const [filtersIsOpen, setFiltersIsOpen] = useState(false)
-    const [filter, setFilter] = useState("all")
+    const [filter, ] = useState("all")
     const selectedAnimations = filter === "all" ? animations : animations.filter(animation => animation.category === filter);
     const sortedAnimations = [...selectedAnimations].sort(
         (a, b) => b.id - a.id

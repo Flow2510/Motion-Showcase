@@ -93,7 +93,7 @@ export default function ScreenReveal(){
                                 <div className="">
                                     <h2 className="text-6xl origin-bottom-left font-extrabold md:text-8xl lg:text-9xl w-fit" key={'number-intro'} ref={numberRef}>
                                         {splitNumber.map((n, index) => (
-                                            <span key={index} className="overflow-hidden inline-block">
+                                            <span key={n + index} className="overflow-hidden inline-block">
                                                 <span className="inline-block number">
                                                     {n}
                                                 </span>

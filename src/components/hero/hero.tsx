@@ -146,7 +146,7 @@ export default function Hero({ isDesktop } : Props) {
                             centeredSlides={true}
                             initialSlide={Math.floor(animations.length / 2)} 
                         >
-                            {animations.map((item, i) => (
+                            {animations.map((item) => (
                                 <SwiperSlide                                    
                                     key={item.name}
                                 >

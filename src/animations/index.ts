@@ -2,6 +2,8 @@ import AccordionPanel from "./accordionpanel/accordionpanel";
 import accordionPanel from "./accordionpanel/meta";
 import ImageScrollFlow from "./Imagescrollflow/imagescrollflow";
 import imageScrollFlow from "./Imagescrollflow/meta";
+import ListScale from "./listscale/listscale";
+import listScale from "./listscale/meta";
 import screenReveal from "./screenreveal/meta";
 import ScreenReveal from "./screenreveal/screenreveal";
 import scrollingSections from "./scrollingsections/meta";
@@ -59,5 +61,9 @@ export const animations = [
     {
         ...svgDecay,
         component: SvgDecay,
+    },
+    {
+        ...listScale,
+        component: ListScale,
     }
 ]

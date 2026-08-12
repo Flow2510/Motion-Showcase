@@ -1,7 +1,20 @@
-import { motion, useTransform } from "motion/react"
+import { motion, MotionValue, useTransform } from "motion/react"
 import { useEffect, useRef, useState } from "react"
 
-export default function Cards({ card, scrollYProgress, index }) {
+type Props = {
+    readonly scrollYProgress: MotionValue<number>;
+    readonly index: number;
+    readonly card: {
+        id: number;
+        title: string;
+        text: string;
+        date: string;
+        color: string;
+        textColor: string;
+    }
+}
+
+export default function Cards({ card, scrollYProgress, index } : Props) {
     const [width, setWidth] = useState(0)
 
     useEffect(() => {
