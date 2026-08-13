@@ -18,6 +18,8 @@ import svgDecay from "./svgdecay/meta";
 import SvgDecay from "./svgdecay/svgdecay";
 import textAssembly from "./textassembly/meta";
 import TextAssembly from "./textassembly/textassembly";
+import tickerScale from "./tickerscale/meta";
+import TickerScale from "./tickerscale/tickerscale";
 import tighteningWordLines from "./tighteningwordlines/meta";
 import TighteningWordLines from "./tighteningwordlines/tighteningwordlines";
 
@@ -65,5 +67,9 @@ export const animations = [
     {
         ...listScale,
         component: ListScale,
+    },
+    {
+        ...tickerScale,
+        component: TickerScale,
     }
 ]
