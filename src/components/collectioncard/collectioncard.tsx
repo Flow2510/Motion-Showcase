@@ -11,6 +11,7 @@ type CardProps = {
         category: string;
         video: string;
         description: string;
+        image: string;
     }
 }
 
@@ -25,23 +26,25 @@ export default function CollectionCard({ animation } : CardProps) {
 
         if (playVideo) {
             videoRef.current.pause()
+            setPlayVideo(false)
         } else {
+            setPlayVideo(true)
+            videoRef.current.currentTime = 0
             videoRef.current.play()
         }
-
-        setPlayVideo(!playVideo)
     }
 
     useEffect(() => {
-        if (!videoRef.current || !isDesktop) return;
+        if (!videoRef.current || !isDesktop) return
+
         if (isHover) {
-           setPlayVideo(true)
-           videoRef.current.play()
+            setPlayVideo(true)
+            videoRef.current.currentTime = 0
+            videoRef.current.play()
         } else {
             setPlayVideo(false)
-            videoRef.current.pause();
-            videoRef.current.currentTime = 0;
-            
+            videoRef.current.pause()
+            videoRef.current.currentTime = 3.5
         }
     }, [isHover, isDesktop])
 
@@ -53,16 +56,21 @@ export default function CollectionCard({ animation } : CardProps) {
         >
             <div className="aspect-square w-full bg-gray-200 rounded-2xl flex items-center justify-center relative">
                 <div className="duration-300 bg-neutral-950 rounded-sm aspect-video w-[80%]" style={{ scale: isHover? 1.05 : 1 }}>
-                    <video 
-                        onPlay={() => setPlayVideo(true)}
-                        onPause={() => setPlayVideo(false)}
-                        src={animation.video} className="w-full h-full rounded-sm object-cover" 
-                        ref={videoRef}
-                        muted
-                        loop
-                    >
+                    {isHover || playVideo ?
+                        <video 
+                            onPlay={() => setPlayVideo(true)}
+                            onPause={() => setPlayVideo(false)}
+                            src={animation.video} 
+                            className="w-full h-full rounded-sm object-cover" 
+                            ref={videoRef}
+                            muted
+                            loop
+                        >
 
-                    </video>
+                        </video>
+                    :
+                        <img src={animation.image} alt="" className="w-full h-full rounded-sm object-cover"/>
+                    }
                 </div>
                 {!isDesktop && 
                     <button 

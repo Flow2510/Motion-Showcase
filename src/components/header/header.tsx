@@ -13,7 +13,7 @@ export default function Header({ toggleMenu, menuIsOpen, isDesktop } : MenuProps
     return(
         isDesktop ?
             <header
-                className="fixed z-50 top-0 left-0 w-full opacity-0"
+                className="fixed z-50 top-0 left-0 w-full"
             >
                 <div className="flex justify-between p-4 items-center">
                     <div>

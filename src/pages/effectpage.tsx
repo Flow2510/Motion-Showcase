@@ -16,7 +16,7 @@ export default function EffectPage() {
         <div className="bg-neutral-950 w-full">
             <main className=" text-neutral-50 min-h-dvh py-30 w-full">
                 <div className="">
-                    <section className="p-5 min-h-dvh max-w-150 m-auto opacity-0">
+                    <section className="p-5 min-h-dvh max-w-150 m-auto">
                         <EffectCard 
                             animation={animation}
                         />
