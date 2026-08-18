@@ -1,5 +1,6 @@
 html{
     font-family: "inter", sans-serif;
+    background: oklch(14.5% 0 none);
 }
 
 h1, h2, h3, h4{

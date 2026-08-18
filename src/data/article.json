@@ -1,42 +1,42 @@
 [
   {
     "id": 1,
-    "title": "Exploration",
-    "img": "/exploration.jpg",
+    "title": "Le Signal",
+    "img": "/spoutnik.jpg",
     "color": "#0B1026",
     "textcolor": "#A9B4E8",
-    "description": "L'exploration spatiale repousse constamment les limites de notre compréhension. De nouvelles missions permettent d'étudier des planètes lointaines et de mieux comprendre les origines de notre univers."
+    "description": "Le 4 octobre 1957, l'Union soviétique met en orbite Spoutnik 1, le premier satellite artificiel de l'histoire. Ce petit objet de métal marque le début de l'ère spatiale et bouleverse la rivalité scientifique entre les grandes puissances."
   },
   {
     "id": 2,
-    "title": "Profondeurs",
-    "img": "/abysse.jpg",
+    "title": "Le Premier Pas",
+    "img": "/gagarine.jpg",
     "color": "#006D77",
     "textcolor": "#9DE1E5",
-    "description": "Les profondeurs océaniques abritent des créatures et des écosystèmes encore largement inconnus. Dans ces environnements extrêmes, la vie s'est adaptée à une pression et une obscurité impressionnantes."
+    "description": "Le 12 avril 1961, Youri Gagarine devient le premier être humain à voyager dans l'espace. Sa mission Vostok 1 ne dure que 108 minutes, mais elle transforme définitivement notre vision de ce qui est possible."
   },
   {
     "id": 3,
-    "title": "Torréfaction",
-    "img": "/cafe.jpg",
+    "title": "La Lune",
+    "img": "/apollo.jpg",
     "color": "#D6A15D",
     "textcolor": "#6B4528",
-    "description": "La torréfaction transforme progressivement les grains de café et révèle leurs différents arômes. La température, la durée et le profil de cuisson jouent tous un rôle essentiel dans le résultat final."
+    "description": "Le programme Apollo pousse les États-Unis à réaliser l'un des exploits les plus célèbres du XXe siècle. En juillet 1969, Apollo 11 atteint la Lune et permet à Neil Armstrong et Buzz Aldrin d'y poser les premiers pas humains."
   },
   {
     "id": 4,
-    "title": "Architecture",
-    "img": "/architecture.jpg",
+    "title": "Au-delà",
+    "img": "/voyager.jpg",
     "color": "#E63946",
     "textcolor": "#FFD0D4",
-    "description": "L'architecture contemporaine mélange technologie, esthétique et nouveaux matériaux. Les bâtiments modernes cherchent autant à impressionner qu'à répondre aux enjeux environnementaux des villes."
+    "description": "Lancées en 1977, les sondes Voyager partent explorer les planètes géantes du système solaire. Des décennies plus tard, elles poursuivent leur voyage bien au-delà des planètes connues et transmettent encore des informations précieuses vers la Terre."
   },
   {
     "id": 5,
-    "title": "Végétation",
-    "img": "/vegetation.jpg",
+    "title": "L'Univers",
+    "img": "/james-webb.jpg",
     "color": "#2D6A4F",
     "textcolor": "#A8D5BD",
-    "description": "La végétation joue un rôle essentiel dans l'équilibre des écosystèmes. Les forêts produisent de l'oxygène, abritent une immense biodiversité et participent activement à la régulation du climat."
+    "description": "Le télescope spatial James Webb ouvre une nouvelle fenêtre sur l'univers. Ses observations permettent de remonter très loin dans le temps et d'étudier la naissance des premières galaxies, des étoiles et des systèmes planétaires."
   }
 ]

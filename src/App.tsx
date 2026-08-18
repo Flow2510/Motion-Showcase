@@ -37,11 +37,13 @@ function App() {
         menuIsOpen={menuIsOpen}
         isDesktop={isDesktop}
       />
-      <Routes>
-        <Route path='/' element={<HomePage isDesktop={isDesktop}/>}/>
-        <Route path='/collection' element={<CollectionPage isDesktop={isDesktop}/>}/>
-        <Route path='/collection/:slug' element={<EffectPage />}/>
-      </Routes>
+      <AnimatePresence mode='wait'>
+        <Routes>
+          <Route path='/' element={<HomePage isDesktop={isDesktop}/>}/>
+          <Route path='/collection' element={<CollectionPage isDesktop={isDesktop}/>}/>
+          <Route path='/collection/:slug' element={<EffectPage />}/>
+        </Routes>
+      </AnimatePresence>
       <Footer />
     </>
   )

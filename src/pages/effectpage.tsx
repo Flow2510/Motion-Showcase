@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { animations } from "../animations";
 import EffectCard from "../components/effectcard/effectcard";
+import { motion } from "motion/react";
 
 export default function EffectPage() {
     const { slug } = useParams();
@@ -13,7 +14,13 @@ export default function EffectPage() {
     const Component = animation.component
 
     return(
-        <div className="bg-neutral-950 w-full">
+        <motion.main 
+            key={'effectpage'}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0}}
+            transition={{ duration: 0.3 }}
+            className="bg-neutral-950 w-full">
             <main className=" text-neutral-50 min-h-dvh py-30 w-full">
                 <div className="">
                     <section className="p-5 min-h-dvh max-w-150 m-auto">
@@ -33,6 +40,6 @@ export default function EffectPage() {
                     </section>
                 </div>
             </main>
-        </div>
+        </motion.main>
     )
 }

@@ -15,8 +15,6 @@ type Props = {
 }
 
 export default function ScrollingSection({item, index, length} : Props) {
-    const titleSplit = item.title.split(' ')
-
     const cardRef = useRef(null)
     const { scrollYProgress } = useScroll({
         target: cardRef,
@@ -52,7 +50,7 @@ export default function ScrollingSection({item, index, length} : Props) {
             >
                 <div>
                     <h2 className="text-5xl md:text-7xl lg:text-9xl font-bold">
-                        {titleSplit[0]}
+                        {item.title}
                     </h2>
                 </div>
                 <div className="w-full flex-1 h-full flex flex-col gap-5 md:grid md:grid-cols-2 md:max-h-[60%] items-end md:gap-10">
@@ -76,7 +74,7 @@ export default function ScrollingSection({item, index, length} : Props) {
                         </div>
                     </div>
                     <div>
-                        <p className="md:max-w-[70%] leading-[110%] font-medium">
+                        <p className="md:max-w-[70%] leading-[110%] font-medium lg:text-xl">
                             {item.description}
                         </p>
                     </div>

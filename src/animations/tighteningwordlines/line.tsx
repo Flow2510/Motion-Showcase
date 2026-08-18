@@ -17,9 +17,9 @@ export default function Line({ line } : LineProps) {
     const x = useTransform(scrollYProgress, [0, 1], [-200, 0])
 
     return(
-        <motion.span ref={lineRef} className="flex" style={{ gap, x }}>
+        <motion.span ref={lineRef} className="flex whitespace-nowrap" style={{ gap, x }}>
             {line.split(" ").map((word, i) => (
-                <span key={word + i}>
+                <span key={word + i} className="">
                     {word}
                 </span>
             ))}

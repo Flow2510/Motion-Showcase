@@ -5,7 +5,7 @@ import { motion, useMotionValueEvent } from 'framer-motion'
 
 export default function TickerScale() {
     const animationRef = useRef<HTMLDivElement | null>(null)
-    const containerRef = useRef(null)
+    const containerRef = useRef<HTMLDivElement | null>(null)
     const cardRef = useRef<HTMLDivElement | null>(null)
 
     const [animeCard, setAnimeCard] = useState(false)
@@ -72,7 +72,7 @@ export default function TickerScale() {
     const y = useTransform(progressB, [0, 1], [position?.y, 0])
     const width = useTransform(progressB, [0, 1], [position?.width, window.innerWidth])
     const height = useTransform(progressB, [0, 1], [position?.height, window.innerHeight])
-    const rotateZ = useTransform(progressB, [0, 1], [-1, 0])
+    const rotateZ = useTransform(progressB, [0, 1], [-2, 0])
 
     return(
         <section className="relative">
@@ -106,9 +106,9 @@ export default function TickerScale() {
                 </div>
             </div>
             <div className='h-[300dvh] w-full overflow-hidden relative' ref={animationRef}>
-                <motion.div className="flex justify-center gap-5 h-50 w-full bg-amber-100" style={{ x: right,  rotateZ: -1 }}>
+                <motion.div className="flex justify-center gap-5 h-50 w-full" style={{ x: right,  rotateZ: -1 }}>
                     {tickerItems.map((item, index) => (
-                        <motion.div key={item.color + index} className={`h-full shrink-0 w-80 ${index}`} ref={index === 8 ? cardRef : null} style={index === 8 && !showCard && {opacity: 0} }>
+                        <motion.div key={item.color + index} className={`h-full shrink-0 w-80 ${index}`} ref={index === 8 ? cardRef : null} style={index === 8 && !showCard ? { opacity: 0 } : undefined}>
                             <motion.img src={item.img} className={`h-full w-full object-cover img-${index}`} 
                                 alt="" 
                             />

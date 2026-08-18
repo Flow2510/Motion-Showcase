@@ -1,5 +1,7 @@
 import AccordionPanel from "./accordionpanel/accordionpanel";
 import accordionPanel from "./accordionpanel/meta";
+import DiaporamaScrollingScale from "./diaporamascrollingscale/diaporamascrollingscale";
+import diaporamaScrollingScale from "./diaporamascrollingscale/meta";
 import ImageScrollFlow from "./Imagescrollflow/imagescrollflow";
 import imageScrollFlow from "./Imagescrollflow/meta";
 import ListScale from "./listscale/listscale";
@@ -22,6 +24,8 @@ import tickerScale from "./tickerscale/meta";
 import TickerScale from "./tickerscale/tickerscale";
 import tighteningWordLines from "./tighteningwordlines/meta";
 import TighteningWordLines from "./tighteningwordlines/tighteningwordlines";
+import titleRandomReveal from "./titlerandomreveal/meta";
+import TitleRandomReveal from "./titlerandomreveal/titilerandomreveal";
 
 export const animations = [
     {
@@ -71,5 +75,13 @@ export const animations = [
     {
         ...tickerScale,
         component: TickerScale,
+    },
+    {
+        ...titleRandomReveal,
+        component: TitleRandomReveal,
+    },
+    {
+        ...diaporamaScrollingScale,
+        component: DiaporamaScrollingScale,
     }
 ]

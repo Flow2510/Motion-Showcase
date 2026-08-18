@@ -21,7 +21,7 @@ export default function Footer() {
                     </nav>
                     <nav>
                         <p className='font-semibold font-[Bricolage Grotesque]'>Contact</p>
-                        <a href='mailto:sendra.florian@gmail.com' target='_blank'>Contact me</a>
+                        <a href='mailto:sendra.florian@gmail.com' target='_blank'>Feel free to email me</a>
                     </nav>
                 </div>
                 <div className='flex flex-col items-center'>

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { animations } from "../../animations";
 import { Autoplay } from "swiper/modules";
@@ -14,42 +14,19 @@ type Props = {
 export default function Hero({ isDesktop } : Props) {
     const [isDrag, setIsDrag] = useState(false)
     const [sliderIndex, setSliderIndex] = useState(0)
+    const leftRef = useRef(null)
+    const rightRef = useRef(null)
 
     return(
         isDesktop ?
-            <section className={`duration-300 h-dvh w-full ${isDrag ? "bg-neutral-400" : "bg-neutral-50"} grid grid-cols-3`}>
-                <div className="w-full h-full flex items-center p-5">
-                    <AnimatePresence mode="wait">
-                        {isDrag ?
-                            <motion.div
-                                key={'drag-id'}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="w-full h-full flex items-center p-5"
-                            >
-                                <h2 className="text-2xl">
-                                    #{String(animations[sliderIndex].id).padStart(3, "0")}
-                                </h2>
-                            </motion.div>
-                        :
-                            <motion.h1 
-                                key={'initial-title-left'}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="text-3xl lg:5xl"
-                                style={{ fontFamily: "inter" }}
-                            >
-                                Modern JS Effects
-                            </motion.h1>
-                        }
-                    </AnimatePresence>
-                </div>
-                <div 
-                    className="w-full h-dvh" 
+            <motion.section 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1}}
+                transition={{ duration: 0.5 }}
+                className={`duration-300 h-dvh w-full relative ${isDrag ? "bg-neutral-400" : "bg-neutral-50"}`}
+            >
+                <div                     
+                    className="w-full h-dvh max-w-[33%] m-auto" 
                 >
                     <Swiper 
                         loop={true}                        
@@ -101,34 +78,74 @@ export default function Hero({ isDesktop } : Props) {
                         )}
                     </Swiper>
                 </div>
-                <AnimatePresence>
-                    {isDrag ?
-                        <motion.div 
-                            key={'drag-title'}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="w-full h-full flex items-center p-5">
-                            <h2 className="text-2xl">
-                                {animations[sliderIndex].title}
-                            </h2>                        
-                        </motion.div>
-                    :
-                        <motion.div
-                            key={'initial-title-right'}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="w-full h-full flex items-center justify-end p-5">
-                            <h1 className="text-4xl font-[inter]">Made With Care</h1>
-                        </motion.div>
-                    }
-                </AnimatePresence>
-            </section>
+                <motion.div 
+                    className="absolute w-full flex gap-2 top-[50%] translate-y-[-50%] left-0 items-center"
+                >
+                    <motion.div 
+                        ref={leftRef}
+                        className="p-5 w-[50%]"
+                    >
+                        <AnimatePresence mode="wait">
+                            {isDrag ?
+                                <motion.div
+                                    key={'drag-id'}
+                                    className="p-5"
+                                >
+                                    <h2 className="text-2xl w-fit lg:text-4xl">
+                                        #{String(animations[sliderIndex].id).padStart(3, "0")}
+                                    </h2>
+                                </motion.div>
+                            :
+                                <motion.h1 
+                                    key={'initial-title-left'}
+                                    className="text-3xl w-fit lg:text-5xl font-medium"
+                                    style={{ fontFamily: "inter" }}
+                                >
+                                    Modern JS Effects
+                                </motion.h1>
+                            }
+                        </AnimatePresence>
+                    </motion.div>
+                    <div 
+                        ref={rightRef}
+                        className="p-5 flex w-[50%] justify-end"
+                    >
+                        <AnimatePresence>
+                            {isDrag ?
+                                <motion.div 
+                                    key={'drag-title'}
+                                    className="p-5">
+                                    <h2 className="text-2xl w-fit lg:text-4xl">
+                                        {animations[sliderIndex].title}
+                                    </h2>                        
+                                </motion.div>
+                            :
+                                <motion.div
+                                    key={'initial-title-right'}
+                                    className="p-5"
+                                >
+                                    <h1 className="text-3xl font-[inter] w-fit lg:text-5xl font-medium">
+                                        Made With Care
+                                    </h1>
+                                </motion.div>
+                            }
+                        </AnimatePresence>
+                    </div>    
+                </motion.div>            
+                <div className="absolute bottom-0 left-0 p-5 w-full flex justify-between items-end">
+                    <div className="text-lg max-w-100">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, inventore?
+                        </p>
+                    </div>
+                    <div className="uppercase opacity-50 flex flex-col text-end text-sm">                        
+                        <span>Drag/Scroll</span>
+                        <span>to explore the collection</span>
+                    </div>
+                </div>
+            </motion.section>
         :
-            <section className="h-dvh w-full flex items-center">
+            <section className="h-dvh w-full flex items-center bg-neutral-50">
                 <div className="w-full flex flex-col gap-8">
                     <div className="flex flex-col items-center text-center gap-4">
                         <h2 className="text-4xl font-medium max-w-70">JS effects made with care</h2>
