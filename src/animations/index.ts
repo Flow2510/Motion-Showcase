@@ -1,5 +1,7 @@
 import AccordionPanel from "./accordionpanel/accordionpanel";
 import accordionPanel from "./accordionpanel/meta";
+import CardsFlowing from "./cardsflowing/cardsflowing";
+import cardsFlowing from "./cardsflowing/meta";
 import DiaporamaScrollingScale from "./diaporamascrollingscale/diaporamascrollingscale";
 import diaporamaScrollingScale from "./diaporamascrollingscale/meta";
 import ImageScrollFlow from "./Imagescrollflow/imagescrollflow";
@@ -16,10 +18,10 @@ import sectionSlideAnimation from "./sectionslideanimation/meta";
 import SectionSlideAnimation from "./sectionslideanimation/sectionslideanimation";
 import stickyCardStack from "./stickycardstack/meta";
 import StickyCardStack from "./stickycardstack/stickycardstack";
+import stripeWipe from "./stripewipe/meta";
+import StripeWipe from "./stripewipe/stripewipe";
 import svgDecay from "./svgdecay/meta";
 import SvgDecay from "./svgdecay/svgdecay";
-import textAssembly from "./textassembly/meta";
-import TextAssembly from "./textassembly/textassembly";
 import tickerScale from "./tickerscale/meta";
 import TickerScale from "./tickerscale/tickerscale";
 import tighteningWordLines from "./tighteningwordlines/meta";
@@ -49,8 +51,8 @@ export const animations = [
         component: SectionSlideAnimation,
     },
     {
-        ...textAssembly,
-        component: TextAssembly,
+        ...cardsFlowing,
+        component: CardsFlowing
     }, 
     {
         ...screenReveal,
@@ -83,5 +85,9 @@ export const animations = [
     {
         ...diaporamaScrollingScale,
         component: DiaporamaScrollingScale,
+    },
+    {
+        ...stripeWipe,
+        component: StripeWipe,
     }
 ]

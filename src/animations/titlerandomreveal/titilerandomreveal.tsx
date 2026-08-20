@@ -18,7 +18,7 @@ export default function TitleRandomReveal(){
             display: "none"
         })
         gsap.set(card, {
-            y: "100vw"
+            y: "100vh"
         })
 
         const tl = gsap.timeline({
@@ -27,7 +27,6 @@ export default function TitleRandomReveal(){
                 start: "top top",
                 end: "90% bottom",
                 scrub: true,
-                markers: true
             }
         })
 
@@ -57,8 +56,8 @@ export default function TitleRandomReveal(){
 
         allLetters.forEach((letter, index) => {
             const angle = (index / total) * Math.PI * 2 // répartit les lettres sur 360°
-            const y = (Math.cos(angle) * radius) * 1.8
-            const x = (Math.sin(angle) * radius) * 1.2
+            const y = (Math.cos(angle) * radius) * 1.8 
+            const x = (Math.sin(angle) * radius) * 1.5
 
             outTl.to(letter, {
                 x,
@@ -90,7 +89,7 @@ export default function TitleRandomReveal(){
 
     return(
         <section className="h-[500dvh] relative" ref={sectionRef}>
-            <div className="h-dvh w-full sticky top-0 flex items-center justify-center">
+            <div className="h-dvh w-full sticky top-0 flex items-center justify-center overflow-hidden">
                 <div>
                     <h2 
                         className="text-5xl md:text-7xl lg:text-9xl md:gap-x-3 lg:gap-x-4 flex flex-col gap-x-2 max-w-200 items-center" 
@@ -104,9 +103,9 @@ export default function TitleRandomReveal(){
                     </h2>
                 </div>
                 <div className="absolute">
-                    <div className="w-[20vw] h-[30vw] card rounded-2xl p-5 text-center" style={{ background: article[2].color }}>
+                    <div className="w-[20vw] h-[30vw] min-w-50 min-h-80 card rounded-2xl p-2 text-center" style={{ background: article[1].color }}>
                         <div className="w-full h-full rounded-2xl overflow-hidden">
-                            <img src={article[2].img} className="w-full h-full object-cover" alt="" />
+                            <img src={article[1].img} className="w-full h-full object-cover" alt="" />
                         </div>
                     </div>
                 </div>

@@ -22,17 +22,18 @@ export default function CollectionCard({ animation } : CardProps) {
     const [isDesktop, ] = useState(window.innerWidth > 768)
 
     const toggleVideo = () => {
-        if (!videoRef.current) return
+        setPlayVideo(prev => !prev)
+    }
 
+    useEffect(() => {
+        if (!videoRef.current) return
         if (playVideo) {
-            videoRef.current.pause()
-            setPlayVideo(false)
-        } else {
-            setPlayVideo(true)
             videoRef.current.currentTime = 0
             videoRef.current.play()
+        } else {
+            videoRef.current.pause()
         }
-    }
+    }, [playVideo])
 
     useEffect(() => {
         if (!videoRef.current || !isDesktop) return
@@ -54,7 +55,7 @@ export default function CollectionCard({ animation } : CardProps) {
             onHoverEnd={() => setIsHover(false)}      
             className="flex flex-col gap-4 cursor-pointer"
         >
-            <div className="aspect-square w-full bg-gray-200 rounded-2xl flex items-center justify-center relative">
+            <div className="aspect-[1/0.8] w-full bg-gray-200 rounded-2xl flex items-center justify-center relative">
                 <div className="duration-300 bg-neutral-950 rounded-sm aspect-video w-[80%]" style={{ scale: isHover? 1.05 : 1 }}>
                     {isHover || playVideo ?
                         <video 
@@ -79,7 +80,7 @@ export default function CollectionCard({ animation } : CardProps) {
                         className="absolute lg:hidden left-4 bottom-4 flex items-center rounded-full bg-neutral-50 px-4 py-2 text-neutral-950 text-[11px] font-semibold uppercase cursor-pointer"
                     >
                         {playVideo?
-                            "Pause"
+                            "Stop"
                         :
                             "Play"
                         }

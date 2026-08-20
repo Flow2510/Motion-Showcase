@@ -45,7 +45,7 @@ export default function Hero({ isDesktop } : Props) {
                         }}
                         className="w-full h-full cursor-grab active:cursor-grabbing"
                     >
-                        {animations.map((item, i) =>
+                        {animations.slice(0, 10).map((item, i) =>
                             <SwiperSlide key={item.name}>
                                 <motion.div 
                                     style={{ scale: isDrag ? 0.9 : 1 }}
