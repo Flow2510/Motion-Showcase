@@ -6,13 +6,13 @@ export default function ScrollStaggeredRevealComponent(){
             <ScrollStaggeredReveal 
                 right={true}
                 color={'#0a0a0a'}
-                text='Scroll'
+                text='Staggered'
                 textColor={"#fafafa"}
             />
             <ScrollStaggeredReveal 
                 right={false}
                 color={'#fafafa'}
-                text='Staggered'
+                text='Scroll'
                 textColor={"#0a0a0a"}
             />
             <ScrollStaggeredReveal 

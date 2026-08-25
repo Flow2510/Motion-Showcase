@@ -6,6 +6,7 @@ const sectionSlideAnimation = {
     video: "/sectionslideanimation.mp4",
     color: "#ffbe0b",
     image: '/section-slide-animation.png',
+    sourcePath: 'sectionslideanimation',
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo, aut voluptates officiis corrupti dolores ut dignissimos ad saepe porro pariatur obcaecati quis enim eius asperiores repellendus. Corrupti nostrum animi nobis."
 }
 

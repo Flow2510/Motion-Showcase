@@ -1,5 +1,7 @@
 import AccordionPanel from "./accordionpanel/accordionpanel";
 import accordionPanel from "./accordionpanel/meta";
+import AnimatedHero from "./animatedhero/animatedhero";
+import animatedHero from "./animatedhero/meta";
 import CardsFlowing from "./cardsflowing/cardsflowing";
 import cardsFlowing from "./cardsflowing/meta";
 import DiaporamaScrollingScale from "./diaporamascrollingscale/diaporamascrollingscale";
@@ -8,6 +10,8 @@ import ImageScrollFlow from "./Imagescrollflow/imagescrollflow";
 import imageScrollFlow from "./Imagescrollflow/meta";
 import ListScale from "./listscale/listscale";
 import listScale from "./listscale/meta";
+import ListSlider from "./listslider/listslider";
+import listSlider from "./listslider/meta";
 import screenReveal from "./screenreveal/meta";
 import ScreenReveal from "./screenreveal/screenreveal";
 import scrollingSections from "./scrollingsections/meta";
@@ -89,5 +93,13 @@ export const animations = [
     {
         ...stripeWipe,
         component: StripeWipe,
+    },
+    {
+        ...animatedHero,
+        component: AnimatedHero,
+    }, 
+    {
+        ...listSlider,
+        component: ListSlider
     }
 ]

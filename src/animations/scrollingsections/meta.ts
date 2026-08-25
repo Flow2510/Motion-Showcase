@@ -6,6 +6,7 @@ const scrollingSections = {
     video: "/scrolling-section.mp4",
     color: "#a7c957",
     image:'/scrolling-sections.png',
+    sourcePath: 'scrollingsections',
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo, aut voluptates officiis corrupti dolores ut dignissimos ad saepe porro pariatur obcaecati quis enim eius asperiores repellendus. Corrupti nostrum animi nobis."
 }
 

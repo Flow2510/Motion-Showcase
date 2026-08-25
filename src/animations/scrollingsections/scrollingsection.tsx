@@ -60,16 +60,7 @@ export default function ScrollingSection({item, index, length} : Props) {
                         </div>
                         <div className="flex flex-1 w-full h-full md:col-1 md:row-1">
                             <img alt="" src={item.img} className="bg-neutral-600 w-full h-full object-cover aspect-video" 
-                                onLoad={(e) => {
-                                    console.log(
-                                        item.title,
-                                        e.currentTarget.naturalWidth,
-                                        e.currentTarget.naturalHeight
-                                    )
-                                }}
-                                onError={() => {
-                                    console.error("IMAGE FAILED:", item.img)
-                                }}
+                                
                             />
                         </div>
                     </div>

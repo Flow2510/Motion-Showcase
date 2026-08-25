@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import TextRevealHover from "../textrevealhover/textrevealhover";
 
 export default function Footer() {
     return(
@@ -9,8 +10,10 @@ export default function Footer() {
                 </div>
                 <div className="text-center flex flex-col items-center gap-4">
                     <p className="text-5xl font-[Bricolage Grotesque] tracking-tight font-medium">Get ready to animate</p>
-                    <NavLink to={'/collection'} className="bg-[#d3d3d3] text-neutral-950 font-medium rounded-full uppercase p-4 px-6 text-sm inline-block font-[Bricolage Grotesque] w-fit">
-                        Explore collection
+                    <NavLink to={'/collection'} className="relative flex items-center justify-end gap-1.5 bg-gray-300 rounded-full px-5 h-12 cursor-pointer group'">
+                        <TextRevealHover 
+                            text="Explore collection"
+                        />
                     </NavLink>
                 </div>
                 <div className='grid grid-cols-2'>
@@ -19,9 +22,10 @@ export default function Footer() {
                         <NavLink to={'/'}>Home</NavLink>
                         <NavLink to={'/collectino'}>Collection</NavLink>
                     </nav>
-                    <nav>
+                    <nav className='flex flex-col'>
                         <p className='font-semibold font-[Bricolage Grotesque]'>Contact</p>
-                        <a href='mailto:sendra.florian@gmail.com' target='_blank'>Feel free to email me</a>
+                        <a href='mailto:sendra.florian@gmail.com' target='_blank'>Email me</a>
+                        <a href='mailto:sendra.florian@gmail.com' target='_blank'>My portfolio</a>
                     </nav>
                 </div>
                 <div className='flex flex-col items-center'>

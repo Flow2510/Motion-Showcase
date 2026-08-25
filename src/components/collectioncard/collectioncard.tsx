@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
+import TextRevealHover from "../textrevealhover/textrevealhover";
 
 type CardProps = {
     readonly animation: {
@@ -109,9 +110,16 @@ export default function CollectionCard({ animation } : CardProps) {
                     </p>
                     <p className="text-sm uppercase leading-[110%] opacity-50">{animation.category}</p>
                 </div>
-                <div>
-                    <NavLink to={`/collection/${animation.name}`} className={'flex items-center rounded-full bg-neutral-50 px-4 py-2 text-neutral-950 text-[11px] font-semibold uppercase'}>
-                        Demo
+                <div className="flex gap-1">
+                    <NavLink to={`/collection/${animation.name}`} className={'flex items-center rounded-full bg-neutral-50 px-4 py-2 text-neutral-950 text-[11px] font-semibold uppercase group'}>
+                        <TextRevealHover 
+                            text="Info"
+                        />
+                    </NavLink>
+                    <NavLink to={`/collection/${animation.name}/demo`} className={'flex items-center rounded-full bg-neutral-50 px-4 py-2 text-neutral-950 text-[11px] font-semibold uppercase group'}>
+                        <TextRevealHover 
+                            text="Demo"
+                        />
                     </NavLink>
                 </div>
             </div>

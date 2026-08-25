@@ -1,5 +1,6 @@
 const accordionPanel = {
     name: "accordion-panel",
+    sourcePath: "accordionpanel",
     id: 1,
     title: "Accordion Panel",
     category: "Click",

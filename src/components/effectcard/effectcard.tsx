@@ -7,6 +7,7 @@ type EffectCardProps = {
         category: string;
         video: string;
         description: string;
+        color: string;
     }
 }
 
@@ -14,7 +15,7 @@ export default function EffectCard({ animation } : EffectCardProps) {
     return(
         <article className="w-full p-6 bg-[#232323] rounded-2xl flex flex-col gap-4">
             <div className="w-full aspect-video overflow-hidden rounded-lg">
-                <video className="w-full h-full object-cover bg-gray-500" autoPlay muted src={animation.video}>
+                <video className="w-full h-full object-cover" style={{ background: animation.color}} autoPlay muted src={animation.video}>
 
                 </video>
             </div>

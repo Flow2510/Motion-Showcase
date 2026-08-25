@@ -1,13 +1,13 @@
-const svgDecay = {
-    name: "svg-decay",
-    id: 10,
-    title: "Svg Decay",
+const animatedHero = {
+    name: "animated-hero",
+    id: 16,
+    title: "Animated Hero",
     category: "Scroll",
-    video: "/svg-decay.mp4",
-    color: "#90e0ef",
-    image: '/svg-decay.png',
-    sourcePath: 'svgdecay',
+    video: "/animated-hero.mp4",
+    color: "#e7c6ff",
+    image: '/animated-hero.png',
+    sourcePath: 'animatedhero',
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo, aut voluptates officiis corrupti dolores ut dignissimos ad saepe porro pariatur obcaecati quis enim eius asperiores repellendus. Corrupti nostrum animi nobis."
 }
 
-export default svgDecay;
+export default animatedHero;

@@ -1,5 +1,6 @@
 import { AnimatePresence } from "motion/react";
 import { NavLink } from "react-router-dom";
+import TextRevealHover from "../textrevealhover/textrevealhover";
 
 type MenuProps = {
     readonly toggleMenu: () => void;
@@ -8,21 +9,21 @@ type MenuProps = {
 }
 
 export default function Header({ toggleMenu, menuIsOpen, isDesktop } : MenuProps ) {
-
     return(
         <>
             <h1 className="fixed z-51 top-4 left-4 duration-700 text-2xl font-medium tracking-tight text-white mix-blend-difference">
                 <NavLink to={'/'} className={'hover:cursor-pointer'}>
-                    Build With Motion/Gsap
+                    The Motion Library
                 </NavLink>
             </h1>
-
             {isDesktop ?
                 <header className="fixed z-50 top-0 left-0 w-full">
                     <div className="flex justify-end p-4 items-center">
-                        <div className="relative flex items-center justify-end gap-1.5 bg-gray-200 rounded-full px-5 h-12 cursor-pointer">
-                            <NavLink to={'/collection'}>
-                                Collection
+                        <div className="">
+                            <NavLink to={'/collection'} className={'relative flex items-center justify-end gap-1.5 bg-gray-200 rounded-full px-5 h-12 cursor-pointer group'}>
+                                <TextRevealHover 
+                                    text="Collection"
+                                />
                             </NavLink>
                         </div>
                     </div>

@@ -1,6 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { animations } from "../../animations"
 import CollectionGallery from "../collectiongallery/collectiongallery"
+import { AnimatePresence } from "motion/react";
+import { motion } from "framer-motion";
 
 type CollectionProps = {
     readonly isDesktop: boolean;
@@ -8,11 +10,16 @@ type CollectionProps = {
 
 export default function CollectionSection({isDesktop} : CollectionProps ) {
     const [filtersIsOpen, setFiltersIsOpen] = useState(false)
-    const [filter, ] = useState("all")
+    const [filter, setFilter] = useState("all")
     const selectedAnimations = filter === "all" ? animations : animations.filter(animation => animation.category === filter);
     const sortedAnimations = [...selectedAnimations].sort(
         (a, b) => b.id - a.id
     )
+    const categories = [...new Set(animations.map(animation => animation.category))]
+
+    useEffect(() => {
+        console.log(categories)
+    })
 
     return(
         <section className="pb-20">
@@ -23,22 +30,32 @@ export default function CollectionSection({isDesktop} : CollectionProps ) {
                 </div>
                 {isDesktop ?
                     <div className="flex justify-between items-center">
-                        <div className="overflow-hidden flex items-center py-4">
+                        <div className="overflow-hidden flex items-center py-4 gap-2">
                             <button
-                                    type="button"
-                                    className="text-[11px] uppercase px-4 py-2 rounded-full bg-neutral-50 text-neutral-950 cursor-pointer">
-                                    All
-                                </button>
+                                type="button"
+                                onClick={() => setFilter("all")}
+                                className="text-[11px] uppercase px-4 py-2 rounded-full cursor-pointer duration-300"
+                                style={{ 
+                                    background: filter === "all" ? "white" : "none",
+                                    color: filter === "all" ? "black" : "white",
+                                }}
+                            >
+                                All
+                            </button>
+                            {categories.map((cat, index) => (
                                 <button
+                                    key={index + cat}
+                                    onClick={() => setFilter(cat)}
                                     type="button"
-                                    className="text-[11px] uppercase px-4 py-2 rounded-full cursor-pointer">
-                                    make
+                                    style={{ 
+                                        background: filter === cat ? "white" : "none",
+                                        color: filter === cat ? "black" : "white",
+                                    }}
+                                    className="text-[11px] uppercase px-4 py-2 rounded-full cursor-pointer duration-300"
+                                >
+                                    {cat}
                                 </button>
-                                <button
-                                    type="button"
-                                    className="text-[11px] uppercase px-4 py-2 rounded-full cursor-pointer">
-                                    filter
-                                </button>
+                            ))}
                         </div>
                         <div>
                             <button
@@ -64,28 +81,46 @@ export default function CollectionSection({isDesktop} : CollectionProps ) {
                                 fav
                             </button>
                         </div>
-                        {filtersIsOpen &&
-                            <div className="overflow-hidden flex items-center">
-                                <button
-                                    type="button"
-                                    className="text-[11px] uppercase px-4 py-2 rounded-full bg-neutral-50 text-neutral-950">
-                                    All
-                                </button>
-                                <button
-                                    type="button"
-                                    className="text-[11px] uppercase px-4 py-2 rounded-full">
-                                    make
-                                </button>
-                                <button
-                                    type="button"
-                                    className="text-[11px] uppercase px-4 py-2 rounded-full">
-                                    filter
-                                </button>
-                            </div>
-                        }
+                        <AnimatePresence>
+                            {filtersIsOpen &&
+                                <div className="overflow-hidden">
+                                    <motion.div 
+                                        key={'filter-menu'}
+                                        initial={{ height: 0 }}
+                                        animate={{ height: 69 }}
+                                        exit={{ height: 0 }}
+                                        className="overflow-hidden flex items-center flex-wrap gap-1">
+                                        <button
+                                            onClick={() => setFilter("all")}
+                                            type="button"
+                                            style={{ 
+                                                background: filter === "all" ? "white" : "none",
+                                                color: filter === "all" ? "black" : "white",
+                                            }}
+                                            className="text-[11px] uppercase px-4 py-2 rounded-full cursor-pointer duration-300"
+                                        >
+                                            All
+                                        </button>
+                                        {categories.map((cat, index) => (
+                                            <button
+                                                onClick={() => setFilter(cat)}
+                                                style={{ 
+                                                    background: filter === cat ? "white" : "none",
+                                                    color: filter === cat ? "black" : "white",
+                                                }}
+                                                key={index + cat}
+                                                type="button"
+                                                className="text-[11px] uppercase px-4 py-2 rounded-full cursor-pointer duration-300"
+                                            >
+                                                {cat}
+                                            </button>
+                                        ))}
+                                    </motion.div>
+                                </div>
+                            }
+                        </AnimatePresence>
                     </div>
-                }
-                
+                }                
             </div>
             <CollectionGallery 
                 selectedAnimations={sortedAnimations}

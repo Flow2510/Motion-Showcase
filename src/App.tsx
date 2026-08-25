@@ -8,6 +8,9 @@ import CollectionPage from './pages/collectionpage'
 import EffectPage from './pages/effectpage'
 import Footer from './components/footer/footer'
 import Menu from './components/menu/menu'
+import DemoPage from './pages/demopage'
+import ScrollToTop from './components/scrolltotop/scrolltotop'
+import SmoothScroll from './components/smoothscroll/smoothscroll'
 
 function App() {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -37,16 +40,31 @@ function App() {
         menuIsOpen={menuIsOpen}
         isDesktop={isDesktop}
       />
-      <AnimatePresence mode='wait'>
-        <Routes>
-          <Route path='/' element={<HomePage isDesktop={isDesktop}/>}/>
-          <Route path='/collection' element={<CollectionPage isDesktop={isDesktop}/>}/>
-          <Route path='/collection/:slug' element={<EffectPage />}/>
-        </Routes>
-      </AnimatePresence>
+      <ScrollToTop />
+      <SmoothScroll>
+        <AnimatePresence mode='wait'>
+          <Routes>
+            <Route path='/' element={<HomePage isDesktop={isDesktop}/>}/>
+            <Route path='/collection' element={<CollectionPage isDesktop={isDesktop}/>}/>
+            <Route path='/collection/:slug' element={<EffectPage />}/>
+            <Route path='/collection/:slug/demo' element={<DemoPage />}/>
+          </Routes>
+        </AnimatePresence>
+      </SmoothScroll>
       <Footer />
     </>
   )
 }
 
 export default App
+
+// refaire toutes les videos et photos, 
+// refaire les articles,
+// faire les filtres,
+// choisir une troisieme couleurs et la mettre sur la progress du slider latest et a d'autres endroit
+// refaire les meta, alts, etc
+// enlever l'animation de la page animation
+// refaire la page effect et ajouter du contenu, et le code
+// ajouter 2 sections dans homepage a la place des sections vides,
+// verifier le responsive
+// remplacer le projet lorem agency par celui ci

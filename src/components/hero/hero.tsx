@@ -6,6 +6,8 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { animations } from "../../animations";
 import { Autoplay } from "swiper/modules";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 type Props = {
     readonly isDesktop: boolean;
@@ -14,8 +16,82 @@ type Props = {
 export default function Hero({ isDesktop } : Props) {
     const [isDrag, setIsDrag] = useState(false)
     const [sliderIndex, setSliderIndex] = useState(0)
-    const leftRef = useRef(null)
-    const rightRef = useRef(null)
+    const leftRef = useRef<HTMLDivElement>(null)
+    const rightRef = useRef<HTMLDivElement>(null)
+    const leftTitleRef = useRef<HTMLHeadingElement>(null)
+    const righTitletRef = useRef<HTMLHeadingElement>(null)
+
+    const titleLeft = "Modern JS Effects"
+    const titleSplitLeft = titleLeft.split(" ")
+
+    const titleRight = "Made With Care"
+    const titleSplitRight = titleRight.split(" ")
+
+    useGSAP(() => {
+        if (
+            !leftRef.current ||
+            !leftTitleRef.current ||
+            !rightRef.current ||
+            !righTitletRef.current
+        ) {
+            return
+        }
+
+        const distanceLeft = leftRef.current?.offsetWidth - leftTitleRef.current?.offsetWidth
+        const distanceRight = rightRef.current?.offsetWidth - righTitletRef.current?.offsetWidth
+        const wordsLeft = gsap.utils.toArray<HTMLElement>('.left-word')
+        const wordsRight = gsap.utils.toArray<HTMLElement>('.right-word')
+
+        wordsLeft.forEach((word) => {
+            gsap.set(word, {
+                x: distanceLeft
+            })
+        })
+
+        wordsRight.forEach((word) => {
+            gsap.set(word, {
+                x: -distanceRight
+            })
+        })
+
+        gsap.set('.slider', {
+            opacity: 0
+        })
+
+        gsap.to('.slider', {
+            opacity: 1,
+            duration: 0.5,
+            delay: 3
+        })
+
+        gsap.set('.hero-footer', {
+            opacity: 0
+        })
+
+        gsap.to('.hero-footer', {
+            opacity: 1,
+            duration: 0.5,
+            delay: 3
+        })
+
+        wordsLeft.forEach((word, index) => {
+            gsap.to(word, {
+                x: 0,
+                duration: 1,
+                delay: 2 + (index / 10)
+            })
+        })
+
+        wordsRight.forEach((word, index) => {
+            const reversedIndex = wordsRight.length - 1 - index
+
+            gsap.to(word, {
+                x: 0,
+                duration: 1,
+                delay: 2 + (reversedIndex / 10)
+            })
+        })
+    })
 
     return(
         isDesktop ?
@@ -26,7 +102,7 @@ export default function Hero({ isDesktop } : Props) {
                 className={`duration-300 h-dvh w-full relative ${isDrag ? "bg-neutral-400" : "bg-neutral-50"}`}
             >
                 <div                     
-                    className="w-full h-dvh max-w-[33%] m-auto" 
+                    className="w-full h-dvh max-w-[33%] m-auto slider" 
                 >
                     <Swiper 
                         loop={true}                        
@@ -81,61 +157,79 @@ export default function Hero({ isDesktop } : Props) {
                 <motion.div 
                     className="absolute w-full flex gap-2 top-[50%] translate-y-[-50%] left-0 items-center"
                 >
-                    <motion.div 
-                        ref={leftRef}
-                        className="p-5 w-[50%]"
+                    <motion.div                         
+                        className="w-[50%] p-5 pr-2.5"
                     >
-                        <AnimatePresence mode="wait">
-                            {isDrag ?
-                                <motion.div
-                                    key={'drag-id'}
-                                    className="p-5"
-                                >
-                                    <h2 className="text-2xl w-fit lg:text-4xl">
-                                        #{String(animations[sliderIndex].id).padStart(3, "0")}
-                                    </h2>
-                                </motion.div>
-                            :
-                                <motion.h1 
-                                    key={'initial-title-left'}
-                                    className="text-3xl w-fit lg:text-5xl font-medium"
-                                    style={{ fontFamily: "inter" }}
-                                >
-                                    Modern JS Effects
-                                </motion.h1>
-                            }
-                        </AnimatePresence>
+                        <div 
+                            ref={leftRef}
+                            className="w-full"
+                        >
+                            <AnimatePresence mode="wait">
+                                {isDrag ?
+                                    <motion.div
+                                        key={'drag-id'}
+                                        className="p-5"
+                                    >
+                                        <h2 className="text-2xl w-fit lg:text-3xl">
+                                            #{String(animations[sliderIndex].id).padStart(3, "0")}
+                                        </h2>
+                                    </motion.div>
+                                :
+                                    <div>
+                                        <motion.h1 
+                                            key={'initial-title-left'}
+                                            className="text-3xl w-fit lg:text-4xl xl:text-5xl font-medium flex gap-2 xl:gap-3"
+                                            ref={leftTitleRef}
+                                        >
+                                            {titleSplitLeft.map((word, index) => (
+                                                <span key={word + index} className="inline-block left-word">
+                                                    {word}
+                                                </span>
+                                            ))}
+                                        </motion.h1>
+                                    </div>
+                                }
+                            </AnimatePresence>
+                        </div>
                     </motion.div>
-                    <div 
-                        ref={rightRef}
-                        className="p-5 flex w-[50%] justify-end"
+                    <div                         
+                        className="w-[50%] p-5 pl-2.5"
                     >
-                        <AnimatePresence>
-                            {isDrag ?
-                                <motion.div 
-                                    key={'drag-title'}
-                                    className="p-5">
-                                    <h2 className="text-2xl w-fit lg:text-4xl">
-                                        {animations[sliderIndex].title}
-                                    </h2>                        
-                                </motion.div>
-                            :
-                                <motion.div
-                                    key={'initial-title-right'}
-                                    className="p-5"
-                                >
-                                    <h1 className="text-3xl font-[inter] w-fit lg:text-5xl font-medium">
-                                        Made With Care
-                                    </h1>
-                                </motion.div>
-                            }
-                        </AnimatePresence>
+                        <div
+                            ref={rightRef}
+                            className="w-full flex justify-end"
+                        >
+                            <AnimatePresence>
+                                {isDrag ?
+                                    <motion.div 
+                                        key={'drag-title'}
+                                        className="p-5">
+                                        <h2 className="text-2xl w-fit lg:text-3xl">
+                                            {animations[sliderIndex].title}
+                                        </h2>                        
+                                    </motion.div>
+                                :
+                                    <motion.div
+                                        key={'initial-title-right'}
+                                        className=""
+                                    >
+                                        <h1 className="text-3xl w-fit lg:text-4xl xl:text-5xl font-medium flex gap-2 xl:gap-3" ref={righTitletRef}> 
+                                            {titleSplitRight.map((word, index) => (
+                                                <span key={word + index} className="inline-block right-word">
+                                                    {word}
+                                                </span>
+                                            ))}
+                                        </h1>
+                                    </motion.div>
+                                }
+                            </AnimatePresence>
+                        </div>
                     </div>    
                 </motion.div>            
-                <div className="absolute bottom-0 left-0 p-5 w-full flex justify-between items-end">
-                    <div className="text-lg max-w-100">
+                <div className="absolute bottom-0 left-0 p-5 w-full flex justify-between items-end hero-footer">
+                    <div className="max-w-100">
                         <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, inventore?
+                            Explore ready-made motion patterns for your next build. Smooth, tested, ready to use.
                         </p>
                     </div>
                     <div className="uppercase opacity-50 flex flex-col text-end text-sm">                        
@@ -149,7 +243,7 @@ export default function Hero({ isDesktop } : Props) {
                 <div className="w-full flex flex-col gap-8">
                     <div className="flex flex-col items-center text-center gap-4">
                         <h2 className="text-4xl font-medium max-w-70">JS effects made with care</h2>
-                        <p className="font-medium">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, inventore?</p>
+                        <p className="font-medium max-w-100">Explore ready-made motion patterns for your next build. Smooth, tested, ready to use.</p>
                         <NavLink to={'/collection'} className="font-medium bg-neutral-950 rounded-full text-neutral-50 uppercase p-4 px-6 text-sm inline-block font-[geist]">
                             Explore Collection
                         </NavLink>
