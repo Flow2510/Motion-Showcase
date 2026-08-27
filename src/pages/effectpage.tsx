@@ -13,8 +13,6 @@ export default function EffectPage() {
         return <h2>404</h2>
     }
 
-    const Component = animation.component
-
     return(
         <motion.main 
             key={'effectpage'}
@@ -24,23 +22,13 @@ export default function EffectPage() {
             transition={{ duration: 0.3 }}
             className="bg-neutral-950 w-full">
             <main className=" text-neutral-50 min-h-dvh pt-20 w-full">
-                <div className="">
-                    <section className="p-5 min-h-dvh max-w-150 m-auto">
+                <div className="flex flex-col gap-10">
+                    <section className="p-5 max-w-150 m-auto">
                         <EffectCard 
                             animation={animation}
                         />
-                        <div>
-                            <p className="py-10 text-4xl flex flex-col items-center gap-2">
-                                <span className="inline-block tracking-[8px] font-[Bricolage_Grotesque] font-extralight">
-                                    Scroll
-                                </span>
-                            </p>
-                        </div>
                     </section>
-                    <section className="flex flex-col">
-                        <Component />
-                    </section>
-                    <section className="flex w-full items-center justify-center p-5 h-100 md:h-120 lg:h-140 border-t border-[#999999]">
+                    <section className="flex w-full items-center justify-center p-5 h-80 md:h-100 lg:h-120 border-t border-[#999999]">
                         <div className="flex flex-col items-center gap-6 md:gap-8 lg:gap-10 xl:gap-12">
                             <h2 className="flex flex-col items-center text-4xl text-[#999999] md:text-5xl lg:text-6xl xl:text-7xl md:gap-x-8 lg:gap-x-10 xl:gap-x-12">
                                 <span className="flex gap-2">

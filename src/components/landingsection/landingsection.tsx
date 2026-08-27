@@ -7,7 +7,7 @@ export default function LandingSection(){
     return(
         <div className="h-dvh w-full relative flex flex-col items-center justify-center">
             <div className="top-0 left-0 w-full h-dvh absolute">
-                <video src="/template-transition.mp4" className="h-dvh w-full object-cover" autoPlay muted loop></video>
+                <video src="/videos/template-transition.mp4" className="h-dvh w-full object-cover" autoPlay muted loop></video>
             </div>
             <div className="relative">
                 <h2 className="flex flex-wrap gap-x-5 text-4xl text-neutral-50 max-w-100 md:max-w-160 md:text-6xl lg:max-w-200 lg:text-8xl justify-center uppercase leading-[100%] font-bold">

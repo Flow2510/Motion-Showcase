@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { animations } from "../../animations"
 import { NavLink } from "react-router-dom"
 import TextRevealHover from "../textrevealhover/textrevealhover"
+import type { Swiper as SwiperType } from 'swiper'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -13,25 +14,13 @@ export default function Latest() {
     const [isDesktop, ] = useState(window.innerWidth > 768)
     const sectionRef = useRef(null)
     const titleContainerRef = useRef(null)
-    const title = "Motion Systems For Modern Products"
-    const lettersTitle = title.split("")
     const stickyRef = useRef(null)
-    const containerRef = useRef(null)
-    const sliderItems = animations.slice(-5)
+    const sliderItems = animations.slice(-5).reverse()
     const [sliderIndex, setSliderIndex] = useState(0)
+    const [swiper, setSwiper] = useState<SwiperType | null>(null)
 
     useGSAP(() => {
-        const container = gsap.utils.toArray<HTMLElement>(".container")
         const letters = gsap.utils.toArray<HTMLElement>(".letter")
-
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: stickyRef.current,
-                start: "top center",
-                end: "bottom center",
-                scrub: true,
-            }
-        })
 
         const titleTl = gsap.timeline({
             scrollTrigger: {
@@ -68,15 +57,6 @@ export default function Latest() {
             x: "100vw"
         })
 
-        gsap.set(container, {
-            xPercent: 100
-        })
-
-        tl.to(container, {
-            xPercent: -175,
-            ease: "none"
-        })
-
         letters.forEach((letter, index) => {
             lettersTl.to(letter, {
                 opacity: 1,
@@ -95,15 +75,23 @@ export default function Latest() {
 
     }, {scope: sectionRef})
 
-    useEffect(() => {
-        console.log(sliderIndex)
-    }, [sliderIndex])
+    const prevSlide = () => {
+        if (sliderIndex >= 1) {
+            swiper?.slideTo(sliderIndex - 1)
+        }
+    }
+
+    const nextSlide = () => {
+        if (sliderIndex < sliderItems.length) {
+            swiper?.slideTo(sliderIndex + 1)
+        }
+    }
 
     return(
         <section className="w-full" ref={sectionRef}>
-            <div className="w-full h-dvh rounded-t-2xl bg-neutral-50 overflow-hidden" ref={titleContainerRef}>
+            <div className="w-full min-h-dvh rounded-t-2xl bg-neutral-50 overflow-hidden pt-20 pb-50" ref={titleContainerRef}>
                 <div className="flex flex-col gap-30">
-                    <div className="pt-20">
+                    <div className="">
                         <h2 className="flex flex-col text-5xl items-center font-medium md:text-7xl lg:text-9xl">
                             <span className="title-line-1">Latest effects,</span>
                             <span className="text-[#999999] title-line-2">Freshly added</span>
@@ -113,58 +101,53 @@ export default function Latest() {
                         <Swiper
                             slidesPerView={isDesktop? 3 : 1.2}
                             centeredSlides={true}
+                            onSwiper={setSwiper}
                             onSlideChange={(swiper) => setSliderIndex(swiper.realIndex)}
                             spaceBetween={16}
                             className="w-full h-[45dvh] hover:cursor-grab active:cursor-grabbing"
                         >
-                            {sliderItems.map((item, index) => (
-                                <SwiperSlide className="w-full h-full relative" key={item.id + index}>
+                            {sliderItems.map((item) => (
+                                <SwiperSlide className="w-full h-full relative" key={item.id}>
                                     <article className="w-full h-full flex flex-col">
                                         <div className="w-full h-[70%] xl:h-[80%]" style={{ background: item.color }}>
                                             <video src={item.video} className="w-full h-full object-cover" autoPlay muted loop></video>
                                         </div>
-                                        {index === sliderIndex &&
-                                            <div className="flex flex-1 flex-col p-3 items-center gap-2 xl:flex-row xl:justify-between">
+                                        <div className="flex flex-1 flex-col p-3 items-center gap-2 xl:flex-row xl:justify-between">
                                                 <div className="flex justify-center items-center gap-2 text-[#999999] uppercase text-sm">
-                                                    <p>#{sliderItems[sliderIndex].id}</p>
-                                                    <p>{sliderItems[sliderIndex].title}</p>
+                                                    <p>#{item.id}</p>
+                                                    <p>{item.title}</p>
                                                 </div>
                                                 <div className="flex gap-1">
-                                                    <NavLink to={`/collection/${animations[sliderIndex].name}`} className={'flex items-center rounded-full bg-neutral-950 text-neutral-50 px-4 py-2 text-[11px] font-semibold uppercase group'}>
+                                                    <NavLink to={`/collection/${item.name}`} className={'flex items-center rounded-full bg-neutral-950 text-neutral-50 px-4 py-2 text-[11px] font-semibold uppercase group'}>
                                                         <TextRevealHover 
                                                             text="Info"
                                                         />
                                                     </NavLink>
-                                                    <NavLink to={`/collection/${animations[sliderIndex].name}/demo`} className={'flex items-center rounded-full bg-neutral-950 text-neutral-50 px-4 py-2 text-[11px] font-semibold uppercase group'}>
+                                                    <NavLink to={`/collection/${item.name}/demo`} className={'flex items-center rounded-full bg-neutral-950 text-neutral-50 px-4 py-2 text-[11px] font-semibold uppercase group'}>
                                                         <TextRevealHover 
                                                             text="Demo"
                                                         />
                                                     </NavLink>
                                                 </div>
                                             </div>
-                                        }
                                     </article>
                                 </SwiperSlide>
                             ))}                            
                         </Swiper>
-                        <div className="w-[50%] max-w-100 h-0.5 bg-neutral-950/25 absolute -top-10 left-[50%] translate-x-[-50%]">
-                            <div className="h-full bg-neutral-950" style={{  width: `${(sliderIndex / (sliderItems.length - 1)) * 100}%`}}>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="w-full h-[500dvh] relative bg-neutral-50 rounded-b-2xl" ref={stickyRef}>
-                <div className="sticky top-0 h-dvh overflow-hidden flex items-center">
-                    <div className="flex container" ref={containerRef}>
-                        <h2 className="text-5xl md:text-8xl lg:text-[120px] 2xl:text-[170px] shrink-0 font-medium">
-                            {lettersTitle.map((letter, index) => (
-                                <span key={letter + index} className="letter inline-block">
-                                    {letter === " " ? "\u00A0" : letter}
-                                </span>
-                            ))}
-                        </h2>
+                        {isDesktop && 
+                            <button type="button" className="absolute top-1/2 -translate-x-full left-0 -translate-y-full cursor-pointer disabled:opacity-30" onClick={prevSlide} disabled={sliderIndex === 0}>
+                                <div className="w-15 h-15 p-2">
+                                    <img src={'/icons/chevron.png'} className="w-full h-full -rotate-90" alt="" />
+                                </div>
+                            </button>
+                        }
+                        {isDesktop && 
+                            <button type="button" className="absolute top-1/2 translate-x-full right-0 -translate-y-full cursor-pointer disabled:opacity-30" onClick={nextSlide} disabled={sliderIndex >= sliderItems.length - 1}>
+                                <div className="w-15 h-15 p-2">
+                                    <img src={'/icons/chevron.png'} className="w-full h-full rotate-90" alt="" />
+                                </div>
+                            </button>
+                        }
                     </div>
                 </div>
             </div>

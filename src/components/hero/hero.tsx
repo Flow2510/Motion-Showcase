@@ -1,8 +1,7 @@
-import { NavLink } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { animations } from "../../animations";
 import { Autoplay } from "swiper/modules";
@@ -21,11 +20,16 @@ export default function Hero({ isDesktop } : Props) {
     const leftTitleRef = useRef<HTMLHeadingElement>(null)
     const righTitletRef = useRef<HTMLHeadingElement>(null)
 
-    const titleLeft = "Modern JS Effects"
+    const titleLeft = "Creative Motion"
     const titleSplitLeft = titleLeft.split(" ")
 
     const titleRight = "Made With Care"
     const titleSplitRight = titleRight.split(" ")
+
+    const shuffledList = useMemo(
+        () => [...animations].sort(() => Math.random() - 0.5),
+        [animations]
+    )
 
     useGSAP(() => {
         if (
@@ -121,7 +125,7 @@ export default function Hero({ isDesktop } : Props) {
                         }}
                         className="w-full h-full cursor-grab active:cursor-grabbing"
                     >
-                        {animations.slice(0, 10).map((item, i) =>
+                        {shuffledList.slice(0, 10).map((item, i) =>
                             <SwiperSlide key={item.name}>
                                 <motion.div 
                                     style={{ scale: isDrag ? 0.9 : 1 }}
@@ -155,10 +159,10 @@ export default function Hero({ isDesktop } : Props) {
                     </Swiper>
                 </div>
                 <motion.div 
-                    className="absolute w-full flex gap-2 top-[50%] translate-y-[-50%] left-0 items-center"
+                    className="absolute w-full flex top-[50%] translate-y-[-50%] left-0 items-center"
                 >
                     <motion.div                         
-                        className="w-[50%] p-5 pr-2.5"
+                        className="w-[50%] p-5 pr-2"
                     >
                         <div 
                             ref={leftRef}
@@ -193,7 +197,7 @@ export default function Hero({ isDesktop } : Props) {
                         </div>
                     </motion.div>
                     <div                         
-                        className="w-[50%] p-5 pl-2.5"
+                        className="w-[50%] p-5 pl-2"
                     >
                         <div
                             ref={rightRef}
@@ -229,7 +233,7 @@ export default function Hero({ isDesktop } : Props) {
                 <div className="absolute bottom-0 left-0 p-5 w-full flex justify-between items-end hero-footer">
                     <div className="max-w-100">
                         <p>
-                            Explore ready-made motion patterns for your next build. Smooth, tested, ready to use.
+                            A growing collection of thoughtful motion patterns, interactions, and visual experiments. Built to inspire your next project.
                         </p>
                     </div>
                     <div className="uppercase opacity-50 flex flex-col text-end text-sm">                        
@@ -242,11 +246,8 @@ export default function Hero({ isDesktop } : Props) {
             <section className="h-dvh w-full flex items-center bg-neutral-50">
                 <div className="w-full flex flex-col gap-8">
                     <div className="flex flex-col items-center text-center gap-4">
-                        <h2 className="text-4xl font-medium max-w-70">JS effects made with care</h2>
-                        <p className="font-medium max-w-100">Explore ready-made motion patterns for your next build. Smooth, tested, ready to use.</p>
-                        <NavLink to={'/collection'} className="font-medium bg-neutral-950 rounded-full text-neutral-50 uppercase p-4 px-6 text-sm inline-block font-[geist]">
-                            Explore Collection
-                        </NavLink>
+                        <h2 className="text-4xl font-medium max-w-70">Creative motion Made with care</h2>
+                        <p className="font-medium max-w-100">A growing collection of thoughtful motion patterns, interactions, and visual experiments. Built to inspire your next project.</p>
                     </div>
                     <div className="w-full aspect-1/0.5">
                         <Swiper
@@ -257,7 +258,7 @@ export default function Hero({ isDesktop } : Props) {
                             centeredSlides={true}
                             initialSlide={Math.floor(animations.length / 2)} 
                         >
-                            {animations.map((item) => (
+                            {shuffledList.slice(0, 10).map((item) => (
                                 <SwiperSlide                                    
                                     key={item.name}
                                 >

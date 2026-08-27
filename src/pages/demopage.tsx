@@ -23,7 +23,13 @@ export default function DemoPage() {
             transition={{ duration: 0.3 }}
             className="bg-neutral-950 w-full text-neutral-50"
         >
+            <section className="h-dvh w-full">
+
+            </section>
             <Component />
+            <section className="h-dvh w-full">
+
+            </section>
          </motion.main>
     )
 }

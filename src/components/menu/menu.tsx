@@ -21,7 +21,8 @@ export default function Menu({ toggleMenu } : Props) {
             >
               <div className='flex flex-col text-[22px]'>
                 <NavLink to={'/'} onClick={toggleMenu} className={'py-2 border-b border-neutral-50/15'}>Home</NavLink>
-                <NavLink to={'/collection'} onClick={toggleMenu} className={"flex gap-1 py-2 border-b border-neutral-50/15"}><span>Collection</span> <span className='text-sm text-lime-300'>{animations.length}</span></NavLink>
+                <NavLink to={'/collection'} onClick={toggleMenu} className={"flex gap-1 py-2 border-b border-neutral-50/15"}><span>Collection</span> <span className='text-sm text-lime-400'>{animations.length}</span></NavLink>
+                <NavLink to={'/'} onClick={toggleMenu} className={'py-2 flex gap-1 border-b border-neutral-50/15'}><span>Favorites</span> <span className='text-sm text-lime-400'>0</span></NavLink>
               </div>
               <div>
                 <NavLink to={'/'} className={'flex items-center justify-center gap-1.5 bg-gray-200 rounded-full h-12 cursor-pointer uppercase text-neutral-950'}>

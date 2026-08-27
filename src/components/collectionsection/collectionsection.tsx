@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react"
+import { useRef, useState } from "react"
 import { animations } from "../../animations"
 import CollectionGallery from "../collectiongallery/collectiongallery"
-import { AnimatePresence } from "motion/react";
 import { motion } from "framer-motion";
+import type { AnimationTypes } from "../../types/animation";
 
 type CollectionProps = {
     readonly isDesktop: boolean;
+    readonly favoritesAnimations: AnimationTypes[];
+    readonly setFavoritesAnimations: React.Dispatch<React.SetStateAction<AnimationTypes[]>>;
 }
 
-export default function CollectionSection({isDesktop} : CollectionProps ) {
-    const [filtersIsOpen, setFiltersIsOpen] = useState(false)
+export default function CollectionSection({isDesktop, favoritesAnimations, setFavoritesAnimations} : CollectionProps ) {
+    const isDragging = useRef(false);
     const [filter, setFilter] = useState("all")
     const selectedAnimations = filter === "all" ? animations : animations.filter(animation => animation.category === filter);
     const sortedAnimations = [...selectedAnimations].sort(
@@ -17,30 +19,59 @@ export default function CollectionSection({isDesktop} : CollectionProps ) {
     )
     const categories = [...new Set(animations.map(animation => animation.category))]
 
-    useEffect(() => {
-        console.log(categories)
-    })
-
     return(
-        <section className="pb-20">
-            <div className="xl:pt-20">
-                <div className="w-full flex items-center justify-between border-b border-neutral-50/25 py-4">
-                    <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-9xl">Collection</h2>
-                    <p className="text-4xl md:text-6xl lg:text-7xl xl:text-9xl">{animations.length}</p>
+        <section className="pb-20 overflow-hidden p-5">
+            <div className="">
+                <div className="w-full flex items-end justify-between border-b border-neutral-50/25 py-4">
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl flex flex-col">
+                        <span>Discover effects</span>
+                        <span>For <span className="text-[#999999]">every idea</span></span>
+                    </h2>
+                    <p className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-medium">{animations.length}</p>
                 </div>
-                {isDesktop ?
-                    <div className="flex justify-between items-center">
-                        <div className="overflow-hidden flex items-center py-4 gap-2">
+                <div className="flex justify-between items-center w-full">
+                        <motion.div 
+                            {...(!isDesktop && {
+                                drag: "x",
+                                dragConstraints: { left: -400, right: 0 },
+                                onDragStart: () => {
+                                    isDragging.current = true;
+                                },
+                                onDragEnd: () => {
+                                    setTimeout(() => {
+                                        isDragging.current = false;
+                                    }, 0);
+                                },
+                                onClickCapture: (e) => {
+                                    if (isDragging.current) {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                    }
+                                },
+                            })}
+                            className="flex items-center py-4 gap-2"
+                        >
                             <button
-                                type="button"
                                 onClick={() => setFilter("all")}
-                                className="text-[11px] uppercase px-4 py-2 rounded-full cursor-pointer duration-300"
+                                type="button"
                                 style={{ 
-                                    background: filter === "all" ? "white" : "none",
-                                    color: filter === "all" ? "black" : "white",
+                                    background: filter === "all" ? "#fafafa" : "#171717",
+                                    borderColor: filter === "all" ? "#fafafa" : "#404040",
+                                    color: filter === "all" ? "#171717" : "#fafafa",
                                 }}
+                                className="text-sm p-3 rounded-xl cursor-pointer duration-300 flex gap-4 border items-center font-medium shrink-0"
                             >
-                                All
+                                <div className="flex items-center justify-center border rounded-full w-8 h-8 overflow-hidden p-2">
+                                    <img 
+                                        style={{ 
+                                            filter: filter === "all" ? 'brightness(0)' : 'brightness(100)'
+                                        }}
+                                        src={"/public/icons/slash.png"} className="w-full h-full brightness-[100]" alt="" />
+                                </div>
+                                <div className="flex flex-col items-start">
+                                    <p>All effects</p>
+                                    <p>17</p>
+                                </div>
                             </button>
                             {categories.map((cat, index) => (
                                 <button
@@ -48,81 +79,39 @@ export default function CollectionSection({isDesktop} : CollectionProps ) {
                                     onClick={() => setFilter(cat)}
                                     type="button"
                                     style={{ 
-                                        background: filter === cat ? "white" : "none",
-                                        color: filter === cat ? "black" : "white",
+                                        background: filter === cat ? "#fafafa" : "#171717",
+                                        borderColor: filter === cat ? "#fafafa" : "#404040",
+                                        color: filter === cat ? "#171717" : "#fafafa",
                                     }}
-                                    className="text-[11px] uppercase px-4 py-2 rounded-full cursor-pointer duration-300"
+                                    className="text-sm p-3 px-4 rounded-xl cursor-pointer duration-300 flex gap-4 border items-center font-medium shrink-0"
                                 >
-                                    {cat}
+                                    <div className="flex items-center justify-center border rounded-full w-8 h-8 overflow-hidden p-2">
+                                        <img 
+                                            src={`/icons/${cat}.png`} 
+                                            style={{ 
+                                                filter: filter === cat ? 'brightness(0)' : 'brightness(100)'
+                                            }}
+                                            className="w-full h-full brightness-[100]" 
+                                            alt="" 
+                                        />
+                                    </div>
+                                    <div className="flex flex-col items-start">
+                                        <p>{cat}</p>
+                                        <p>10</p>
+                                    </div>
                                 </button>
                             ))}
-                        </div>
-                        <div>
-                            <button
-                                type="button"
-                                className="text-[11px] uppercase px-4 py-2 rounded-full border flex gap-2 cursor-pointer"
-                            >
-                                <span>length</span>
-                                <span>Fav</span>
+                        </motion.div>
+                        {/* <div>  bouton fav
+                            <button type="button" className="text-neutral-950 flex items-center justify-center">
+                                <img src="/icons/heart.png" alt="" className="w-5 h-5 brightness-[100]" />
                             </button>
-                        </div>
-                    </div>
-                :
-                    <div>
-                        <div className="flex justify-between py-4">
-                            <button 
-                                type="button"
-                                onClick={() => setFiltersIsOpen(prev => !prev)}>
-                                filter
-                            </button>
-                            <button
-                                type="button"
-                            >
-                                fav
-                            </button>
-                        </div>
-                        <AnimatePresence>
-                            {filtersIsOpen &&
-                                <div className="overflow-hidden">
-                                    <motion.div 
-                                        key={'filter-menu'}
-                                        initial={{ height: 0 }}
-                                        animate={{ height: 69 }}
-                                        exit={{ height: 0 }}
-                                        className="overflow-hidden flex items-center flex-wrap gap-1">
-                                        <button
-                                            onClick={() => setFilter("all")}
-                                            type="button"
-                                            style={{ 
-                                                background: filter === "all" ? "white" : "none",
-                                                color: filter === "all" ? "black" : "white",
-                                            }}
-                                            className="text-[11px] uppercase px-4 py-2 rounded-full cursor-pointer duration-300"
-                                        >
-                                            All
-                                        </button>
-                                        {categories.map((cat, index) => (
-                                            <button
-                                                onClick={() => setFilter(cat)}
-                                                style={{ 
-                                                    background: filter === cat ? "white" : "none",
-                                                    color: filter === cat ? "black" : "white",
-                                                }}
-                                                key={index + cat}
-                                                type="button"
-                                                className="text-[11px] uppercase px-4 py-2 rounded-full cursor-pointer duration-300"
-                                            >
-                                                {cat}
-                                            </button>
-                                        ))}
-                                    </motion.div>
-                                </div>
-                            }
-                        </AnimatePresence>
-                    </div>
-                }                
+                        </div> */}
+                    </div>                
             </div>
             <CollectionGallery 
+                favoritesAnimations={favoritesAnimations} 
+                setFavoritesAnimations={setFavoritesAnimations}
                 selectedAnimations={sortedAnimations}
             />
         </section>

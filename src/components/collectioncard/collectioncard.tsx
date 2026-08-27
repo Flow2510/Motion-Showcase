@@ -1,28 +1,35 @@
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import TextRevealHover from "../textrevealhover/textrevealhover";
+import type { AnimationTypes } from "../../types/animation";
 
 type CardProps = {
     readonly animation: {
-        component: () => React.JSX.Element;
-        id: number;
+        component: () => React.JSX.Element | undefined;
         name: string;
+        id: number;
         title: string;
         category: string;
         video: string;
-        description: string;
+        color: string;
         image: string;
-    }
+        sourcePath: string;
+        description: string;
+    };
+    readonly favoritesAnimations: AnimationTypes[];
+    readonly setFavoritesAnimations: React.Dispatch<React.SetStateAction<AnimationTypes[]>>;
 }
 
-export default function CollectionCard({ animation } : CardProps) {
+export default function CollectionCard({ animation, favoritesAnimations, setFavoritesAnimations } : CardProps) {
     const videoRef = useRef<HTMLVideoElement>(null)
     const [playVideo, setPlayVideo] = useState(false)
     const [isHover, setIsHover] = useState(false)
     const [isDesktop, ] = useState(window.innerWidth > 768)
+    const navigate = useNavigate()
 
-    const toggleVideo = () => {
+    const toggleVideo = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
         setPlayVideo(prev => !prev)
     }
 
@@ -50,13 +57,28 @@ export default function CollectionCard({ animation } : CardProps) {
         }
     }, [isHover, isDesktop])
 
+    const isFavorite = favoritesAnimations.some(
+        (item) => item.id === animation.id
+    )
+
+    const toggleToFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation()
+        
+        if (!isFavorite) {
+            setFavoritesAnimations(prev => [...prev, animation])
+        } else {
+            setFavoritesAnimations(prev => prev.filter(item => item.id !== animation.id))
+        }
+    }
+
     return(
         <motion.article 
+            onClick={() => navigate(`/collection/${animation.name}`)}
             onHoverStart={() => isDesktop ? setIsHover(true) : setIsHover(false)}       
             onHoverEnd={() => setIsHover(false)}      
             className="flex flex-col gap-4 cursor-pointer"
         >
-            <div className="aspect-[1/0.8] w-full bg-gray-200 rounded-2xl flex items-center justify-center relative">
+            <div className="aspect-[1/0.8] w-full bg-neutral-50 rounded-2xl flex items-center justify-center relative">
                 <div className="duration-300 bg-neutral-950 rounded-sm aspect-video w-[80%]" style={{ scale: isHover? 1.05 : 1 }}>
                     {isHover || playVideo ?
                         <video 
@@ -88,13 +110,13 @@ export default function CollectionCard({ animation } : CardProps) {
                     </button>
                 }
                 {isDesktop && isHover &&
-                    <button type="button" className="absolute right-4 top-4 text-neutral-950">
-                        Fav
+                    <button type="button" className="absolute right-4 top-4 w-10 h-10 p-2 text-neutral-950" onClick={toggleToFavorite}>
+                        <img src={isFavorite? "/icons/heart-filled.png" : "/icons/heart.png"} alt="" className="w-full h-full" />
                     </button>
                 }
                 {!isDesktop && 
-                    <button type="button" className="absolute right-4 top-4 text-neutral-950">
-                        Fav
+                    <button type="button" className="absolute right-4 top-4 w-10 h-10 p-2 text-neutral-950" onClick={toggleToFavorite}>
+                        <img src={isFavorite? "/icons/heart-filled.png" : "/icons/heart.png"} className="w-full h-full" alt="" />
                     </button>
                 }
             </div>
@@ -111,12 +133,7 @@ export default function CollectionCard({ animation } : CardProps) {
                     <p className="text-sm uppercase leading-[110%] opacity-50">{animation.category}</p>
                 </div>
                 <div className="flex gap-1">
-                    <NavLink to={`/collection/${animation.name}`} className={'flex items-center rounded-full bg-neutral-50 px-4 py-2 text-neutral-950 text-[11px] font-semibold uppercase group'}>
-                        <TextRevealHover 
-                            text="Info"
-                        />
-                    </NavLink>
-                    <NavLink to={`/collection/${animation.name}/demo`} className={'flex items-center rounded-full bg-neutral-50 px-4 py-2 text-neutral-950 text-[11px] font-semibold uppercase group'}>
+                    <NavLink onClick={(e) => e.stopPropagation()} to={`/collection/${animation.name}/demo`} className={'flex items-center rounded-full bg-neutral-50 px-4 py-2 text-neutral-950 text-[11px] font-semibold uppercase group'}>
                         <TextRevealHover 
                             text="Demo"
                         />

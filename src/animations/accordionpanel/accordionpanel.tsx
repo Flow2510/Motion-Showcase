@@ -38,7 +38,7 @@ export default function AccordionPanel() {
                             >
                                 <div className="h-full w-full flex flex-col text-left justify-between">
                                     <div className="relative">
-                                        <h2 className="text-8xl max-w-130">
+                                        <h2 className="text-8xl font-semibold max-w-130">
                                             {item.title}
                                         </h2>
                                     </div>
@@ -46,7 +46,7 @@ export default function AccordionPanel() {
                                         <div className="w-full h-full">
                                             <img alt="" src={item.img} className="h-full w-full bg-white object-cover rounded-lg" loading="lazy"/>
                                         </div>
-                                        <p className="">{item.description}</p>
+                                        <p className="font-medium">{item.description}</p>
                                     </div>
                                 </div>
                             </button>
@@ -64,8 +64,9 @@ export default function AccordionPanel() {
                                 }}
                             >
                                 <div className="absolute text-nowrap origin-center w-fit h-fit flex items-center justify-center -rotate-z-90 top-[50%] left-[50%] translate-[-50%] font-semibold text-2xl">
-                                    <motion.h2                                        
-                                    >{item.title}</motion.h2>
+                                    <motion.h2>
+                                        {item.title}
+                                    </motion.h2>
                                 </div>
                             </button>
                     ))}

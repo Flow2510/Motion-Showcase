@@ -11,7 +11,7 @@ type MenuProps = {
 export default function Header({ toggleMenu, menuIsOpen, isDesktop } : MenuProps ) {
     return(
         <>
-            <h1 className="fixed z-51 top-4 left-4 duration-700 text-2xl font-medium tracking-tight text-white mix-blend-difference">
+            <h1 className="fixed z-51 top-5 md:top-5.5 left-4 duration-700 text-2xl font-medium tracking-tight text-white mix-blend-difference">
                 <NavLink to={'/'} className={'hover:cursor-pointer'}>
                     The Motion Library
                 </NavLink>
@@ -19,20 +19,28 @@ export default function Header({ toggleMenu, menuIsOpen, isDesktop } : MenuProps
             {isDesktop ?
                 <header className="fixed z-50 top-0 left-0 w-full">
                     <div className="flex justify-end p-4 items-center">
-                        <div className="">
+                        <div className=" flex gap-2">
+                            <NavLink to={'/favorites'} className="relative flex items-center justify-center p-2 gap-1.5 bg-lime-300 rounded-full w-12 h-12 cursor-pointer">
+                                <img src="/icons/heart-filled.png" className="brightness-[0]" alt="" />
+                            </NavLink>
                             <NavLink to={'/collection'} className={'relative flex items-center justify-end gap-1.5 bg-gray-200 rounded-full px-5 h-12 cursor-pointer group'}>
                                 <TextRevealHover 
                                     text="Collection"
                                 />
-                            </NavLink>
+                            </NavLink>                            
                         </div>
                     </div>
                 </header>
             :
                 <header className="fixed z-50 top-0 left-0 w-full">
-                    <div className="flex justify-end p-4 items-center">
+                    <div className="flex justify-end p-4 items-center gap-2">
+                        <div>
+                            <NavLink to={'/favorites'} className="relative flex items-center justify-center p-2 gap-1.5 bg-lime-300 rounded-full w-10 h-10 cursor-pointer">
+                                <img src="/icons/heart-filled.png" className="brightness-[0]" alt="" />
+                            </NavLink>
+                        </div>
                         <div className="group">
-                            <button type="button" className="relative flex items-center justify-center gap-1.5 bg-gray-200 rounded-full w-12 h-12 cursor-pointer" onClick={toggleMenu}>
+                            <button type="button" className="relative flex items-center justify-center gap-1.5 bg-gray-200 rounded-full w-10 h-10 cursor-pointer" onClick={toggleMenu}>
                                 <AnimatePresence>
                                     {menuIsOpen ?
                                         <div className="relative size-5">
@@ -47,7 +55,7 @@ export default function Header({ toggleMenu, menuIsOpen, isDesktop } : MenuProps
                                     }
                                 </AnimatePresence>
                             </button>
-                        </div>
+                        </div>                        
                     </div>
                 </header>
             }

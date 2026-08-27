@@ -1,13 +1,15 @@
 type EffectCardProps = {
     readonly animation: {
-        component: () => React.JSX.Element;
-        id: number;
+        component: () => React.JSX.Element | undefined;
         name: string;
+        id: number;
         title: string;
         category: string;
         video: string;
-        description: string;
         color: string;
+        image: string;
+        sourcePath: string;
+        description: string;
     }
 }
 

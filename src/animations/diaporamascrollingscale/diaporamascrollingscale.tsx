@@ -19,11 +19,13 @@ export default function DiaporamaScrollingScale(){
     const width = useTransform(scrollYProgress, [0, 0.5], ["100%", "50%"])
     const height = useTransform(scrollYProgress, [0, 0.5], ["100%", "50%"])
     const lastStep = useRef(0)
+    const itemsList = [...article, ...article]
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
+        
         const step = Math.min(
-            Math.floor((latest / 0.5) * article.length),
-            article.length - 1
+            Math.floor((latest / 0.5) * itemsList.length),
+            itemsList.length - 1
         )
 
         if (step !== lastStep.current) {
@@ -64,16 +66,16 @@ export default function DiaporamaScrollingScale(){
             <div className="sticky top-0 h-dvh w-full flex items-center justify-center flex-col">
                 <motion.div className='w-full h-full relative' style={{ width, height }}>
                     <img 
-                        src={article[imageIndex].img} 
+                        src={itemsList[imageIndex].img} 
                         className='w-full h-full object-cover' 
                         alt="" 
                     />
                     <div className='absolute p-5 flex flex-col left-[50%] translate-x-[-50%] w-full items-center'>
                         <h2 className='text-3xl md:text-5xl lg:7xl font-semibold flex gap-x-4 max-w-200 flex-wrap justify-center'>
                             {title.split(" ").map((word, wordIndex) => (
-                                <span key={wordIndex} className="inline-flex">
+                                <span key={word + wordIndex} className="inline-flex">
                                     {word.split("").map((letter, letterIndex) => (
-                                        <span key={letterIndex} className="inline-block overflow-hidden">
+                                        <span key={letter + letterIndex} className="inline-block overflow-hidden">
                                             <motion.span className="letter-diaporama inline-block">
                                                 {letter}
                                             </motion.span>

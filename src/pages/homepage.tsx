@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import Hero from "../components/hero/hero";
 import Latest from "../components/latest/latest";
-import CardsStack from "../components/cardsstack/cardsstack";
+import AboutSection from "../components/aboutsection/aboutsection";
+import Cta from "../components/cta/cta";
 
 type Props = {
     readonly isDesktop: boolean;
@@ -20,9 +21,9 @@ export default function HomePage({ isDesktop } : Props) {
             <Hero 
                 isDesktop={isDesktop}
             />
-            <CardsStack />
+            <Cta />
             <Latest />
-            <section className="h-dvh w-full bg-neutral-950"></section>
+            <AboutSection />
         </motion.main>
     )
 }

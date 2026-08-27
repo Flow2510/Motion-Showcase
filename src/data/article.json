@@ -1,42 +1,47 @@
 [
+  
   {
     "id": 1,
-    "title": "Le Signal",
-    "img": "/spoutnik.jpg",
-    "color": "#0B1026",
-    "textcolor": "#A9B4E8",
-    "description": "Le 4 octobre 1957, l'Union soviétique met en orbite Spoutnik 1, le premier satellite artificiel de l'histoire. Ce petit objet de métal marque le début de l'ère spatiale et bouleverse la rivalité scientifique entre les grandes puissances."
+    "title": "Pear Rush",
+    "img": "/images/pear.jpg",
+    "alt": "Pear Rush drink",
+    "color": "#A8B95A",
+    "textcolor": "#F0F4C4",
+    "description": "A crisp and juicy pear flavor with a naturally sweet character and a fresh, delicate finish. Pear Rush combines soft fruity notes with a light tanginess for a clean and refreshing taste that's easy to drink."
   },
   {
     "id": 2,
-    "title": "Le Premier Pas",
-    "img": "/gagarine.jpg",
-    "color": "#006D77",
-    "textcolor": "#9DE1E5",
-    "description": "Le 12 avril 1961, Youri Gagarine devient le premier être humain à voyager dans l'espace. Sa mission Vostok 1 ne dure que 108 minutes, mais elle transforme définitivement notre vision de ce qui est possible."
-  },
-  {
+    "title": "Cherry Riot",
+    "img": "/images/cherry.jpg",
+    "alt": "Cherry Riot drink",
+    "color": "#E63946",
+    "textcolor": "#FFD0D4",
+    "description": "A bold and juicy cherry flavor with an intense burst of red fruit and a sharp, refreshing edge. Cherry Riot balances rich sweetness with a playful sour kick, creating a vibrant flavor that stays bright from the first sip to the last."
+  },{
     "id": 3,
-    "title": "La Lune",
-    "img": "/apollo.jpg",
-    "color": "#D6A15D",
-    "textcolor": "#6B4528",
-    "description": "Le programme Apollo pousse les États-Unis à réaliser l'un des exploits les plus célèbres du XXe siècle. En juillet 1969, Apollo 11 atteint la Lune et permet à Neil Armstrong et Buzz Aldrin d'y poser les premiers pas humains."
+    "title": "Berry Eclipse",
+    "img": "/images/berry.jpg",
+    "alt": "Berry Eclipse drink",
+    "color": "#0B1026",
+    "textcolor": "#A9B4E8",
+    "description": "A rich and vibrant berry blend bursting with deep blackberry, blueberry, and wild raspberry notes. Smooth and juicy with a subtle tartness, Berry Eclipse delivers an intense fruit flavor balanced by a clean and refreshing finish."
   },
   {
     "id": 4,
-    "title": "Au-delà",
-    "img": "/voyager.jpg",
-    "color": "#E63946",
-    "textcolor": "#FFD0D4",
-    "description": "Lancées en 1977, les sondes Voyager partent explorer les planètes géantes du système solaire. Des décennies plus tard, elles poursuivent leur voyage bien au-delà des planètes connues et transmettent encore des informations précieuses vers la Terre."
+    "title": "Mango Glow",
+    "img": "/images/mango.jpg",
+    "alt": "Mango Glow drink",
+    "color": "#D6A15D",
+    "textcolor": "#6B4528",
+    "description": "A smooth tropical mango blend filled with juicy, sun-ripened fruit notes. Mango Glow brings together rich sweetness, bright tropical aromas, and a subtle tangy finish for a vibrant taste that feels like summer in every sip."
   },
   {
     "id": 5,
-    "title": "L'Univers",
-    "img": "/james-webb.jpg",
-    "color": "#2D6A4F",
-    "textcolor": "#A8D5BD",
-    "description": "Le télescope spatial James Webb ouvre une nouvelle fenêtre sur l'univers. Ses observations permettent de remonter très loin dans le temps et d'étudier la naissance des premières galaxies, des étoiles et des systèmes planétaires."
+    "title": "Passion Bloom",
+    "img": "/images/passion.jpg",
+    "alt": "Passion Bloom drink",
+    "color": "#F4A261",
+    "textcolor": "#FFF0D5",
+    "description": "A bright and exotic passion fruit blend bursting with tropical aromas and refreshing acidity. Passion Bloom combines juicy sweetness with a distinctive tangy kick, creating a lively and aromatic drink with a long, vibrant finish."
   }
 ]

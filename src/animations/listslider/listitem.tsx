@@ -26,7 +26,7 @@ export default function ListItem({ item } : Props){
                 onMouseLeave={() => setIsHovered(false)}
             >
                 <div className="relative">
-                    <h2 className="lg:text-5xl xl:text-6xl 2xl:text-8xl uppercase font-semibold flex gap-4 2xl:gap-5" style={{ color: isHovered? "white" : "#999999"}}>
+                    <h2 className="lg:text-5xl xl:text-6xl 2xl:text-8xl uppercase font-semibold flex gap-4 2xl:gap-5" style={{ color: isHovered? item.textcolor : "white" }}>
                         {titleSplit.map((word, index) => (
                             <span                        
                                 key={word + index} 
