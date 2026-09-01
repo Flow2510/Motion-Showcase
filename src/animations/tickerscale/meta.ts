@@ -1,5 +1,7 @@
 const tickerScale = {
     name: "ticker-scale",
+    sectionBefore: true,
+    sectionAfter: true,
     id: 12,
     title: "Ticker Scale",
     category: "Scroll",

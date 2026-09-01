@@ -16,9 +16,10 @@ export default function CollectionPage({isDesktop, favoritesAnimations, setFavor
             animate={{ opacity: 1 }}
             exit={{ opacity: 0}}
             transition={{ duration: 0.3 }}
-            className="bg-neutral-950 w-full">
+            className="bg-neutral-950 w-full"
+        >
             <main className="min-h-dvh w-full m-auto text-neutral-50 pt-40">
-                <CollectionSection 
+                <CollectionSection
                     favoritesAnimations={favoritesAnimations} 
                     setFavoritesAnimations={setFavoritesAnimations}
                     isDesktop={isDesktop}

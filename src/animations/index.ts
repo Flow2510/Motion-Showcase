@@ -22,6 +22,8 @@ import sectionSlideAnimation from "./sectionslideanimation/meta";
 import SectionSlideAnimation from "./sectionslideanimation/sectionslideanimation";
 import stickyCardStack from "./stickycardstack/meta";
 import StickyCardStack from "./stickycardstack/stickycardstack";
+import stickyGridScroll from "./stickygridscroll/meta";
+import StickyGridScroll from "./stickygridscroll/stickygridscroll";
 import stripeWipe from "./stripewipe/meta";
 import StripeWipe from "./stripewipe/stripewipe";
 import svgDecay from "./svgdecay/meta";
@@ -100,6 +102,10 @@ export const animations = [
     }, 
     {
         ...listSlider,
-        component: ListSlider
+        component: ListSlider,
+    },
+    {
+        ...stickyGridScroll,
+        component: StickyGridScroll,
     }
 ]

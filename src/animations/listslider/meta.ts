@@ -1,5 +1,7 @@
 const listSlider = {
     name: "list-slider",
+    sectionBefore: false,
+    sectionAfter: false,
     id: 17,
     title: "List Slider",
     category: "Hover",

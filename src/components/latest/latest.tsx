@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { animations } from "../../animations"
 import { NavLink } from "react-router-dom"
@@ -137,14 +137,14 @@ export default function Latest() {
                         {isDesktop && 
                             <button type="button" className="absolute top-1/2 -translate-x-full left-0 -translate-y-full cursor-pointer disabled:opacity-30" onClick={prevSlide} disabled={sliderIndex === 0}>
                                 <div className="w-15 h-15 p-2">
-                                    <img src={'/icons/chevron.png'} className="w-full h-full -rotate-90" alt="" />
+                                    <img src={'/icons/chevron.png'} className="w-full h-full -rotate-90 brightness-0" alt="" />
                                 </div>
                             </button>
                         }
                         {isDesktop && 
                             <button type="button" className="absolute top-1/2 translate-x-full right-0 -translate-y-full cursor-pointer disabled:opacity-30" onClick={nextSlide} disabled={sliderIndex >= sliderItems.length - 1}>
                                 <div className="w-15 h-15 p-2">
-                                    <img src={'/icons/chevron.png'} className="w-full h-full rotate-90" alt="" />
+                                    <img src={'/icons/chevron.png'} className="w-full h-full rotate-90 brightness-0" alt="" />
                                 </div>
                             </button>
                         }

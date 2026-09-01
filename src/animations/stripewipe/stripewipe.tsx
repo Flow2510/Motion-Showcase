@@ -8,7 +8,6 @@ gsap.registerPlugin(ScrollTrigger)
 export default function StripeWipe(){
     const sectionRef = useRef<HTMLElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
-    const zoneRef = useRef<HTMLButtonElement>(null)
     const text = "Call to action with wide diagonal stripes across the entire hero section."
     
     const [stripeHeights] = useState(() => {
@@ -20,7 +19,6 @@ export default function StripeWipe(){
     useGSAP(() => {
         const stripes = gsap.utils.toArray<HTMLElement>(".stripe")
         const words = gsap.utils.toArray<HTMLElement>(".word")
-        const zone = zoneRef.current
 
         gsap.set(words, {
             opacity: 0
@@ -61,46 +59,6 @@ export default function StripeWipe(){
                 opacity: 1
             })
         })
-
-        const strength = 0.4;
-
-        zone?.addEventListener("mousemove", (e) => {
-            const rect = zone.getBoundingClientRect();
-
-            const x = gsap.utils.mapRange(
-                rect.left,
-                rect.right,
-                -rect.width / 2,
-                rect.width / 2,
-                e.clientX
-            );
-
-            const y = gsap.utils.mapRange(
-                rect.top,
-                rect.bottom,
-                -rect.height / 2,
-                rect.height / 2,
-                e.clientY
-            );
-
-            gsap.to(".cta-button", {
-                x: x * strength,
-                y: y * strength,
-                duration: 0.4,
-                ease: "elastic.out(1, 0.4)",
-                overwrite: true
-            });
-        });
-
-        zone?.addEventListener("mouseleave", () => {
-            gsap.to(".cta-button", {
-                x: 0,
-                y: 0,
-                duration: 0.7,
-                ease: "elastic.out(1, 0.4)",
-                overwrite: true
-            });
-        });
     })
 
     return(
@@ -128,16 +86,6 @@ export default function StripeWipe(){
                             </span>
                         ))}
                     </p>
-                    <button type="button" className="w-50 h-50 rounded-full flex items-center justify-center cursor-pointer" ref={zoneRef}>
-                        <div  className="text-neutral-50 bg-neutral-950 px-4 py-2 flex gap-3 items-center cta-button cursor-pointer">
-                            <span className="text-xl">
-                                Button
-                            </span>
-                            <span className="text-[15px]">
-                                🡕
-                            </span>
-                        </div>
-                    </button>
                 </div>                
             </div>
         </section>

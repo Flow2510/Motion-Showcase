@@ -1,5 +1,7 @@
 const cardsFlowing = {
     name: "cards-flowing",
+    sectionBefore: true,
+    sectionAfter: true,
     id: 6,
     title: "Cards Flowing",
     category: "Scroll",

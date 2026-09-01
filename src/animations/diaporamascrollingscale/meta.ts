@@ -1,5 +1,7 @@
 const diaporamaScrollingScale = {
     name: "diaporama-scrolling-scale",
+    sectionBefore: true,
+    sectionAfter: true,
     id: 14,
     title: "Diaporama Scrolling Scale",
     category: "Scroll",

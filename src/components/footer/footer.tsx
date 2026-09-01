@@ -9,8 +9,8 @@ export default function Footer() {
     const footerRef = useRef(null)
 
     return(
-        <footer className='w-full bg-neutral-950 footer' ref={footerRef}>
-            <div className='flex flex-col gap-10 md:gap-15 lg:gap-20 bg-neutral-50 rounded-t-xl p-5'>
+        <footer className='w-full bg-neutral-950 footer p-1' ref={footerRef}>
+            <div className='flex flex-col gap-10 md:gap-15 lg:gap-20 bg-neutral-50 rounded-xl p-5'>
                 <div>
                     <p className="text-[13px] font-semibold text-center uppercase">Voluptatum accusamus doloribus tenetur sed maiores iste alias laboriosam.</p>
                 </div>
@@ -31,12 +31,12 @@ export default function Footer() {
                         ))}
                     </p>
                     <div className="flex gap-2 lg:gap-5">
-                        <NavLink to={'/collection'} className="relative flex items-center justify-end gap-1.5 bg-lime-300 rounded-full px-5 h-12 cursor-pointer group'">
+                        <NavLink to={'/collection'} className="relative flex items-center justify-end gap-1.5 bg-lime-300 rounded-full px-5 h-12 cursor-pointer group font-medium tracking-tight">
                             <TextRevealHover
                                 text="Contact"
                             />
                         </NavLink>
-                        <NavLink to={'/collection'} className="relative flex items-center justify-end gap-1.5 bg-gray-300 rounded-full px-5 h-12 cursor-pointer group'">
+                        <NavLink to={'/collection'} className="relative flex items-center justify-end gap-1.5 bg-gray-300 rounded-full px-5 h-12 cursor-pointer group font-medium tracking-tight">
                             <TextRevealHover
                                 text="Explore collection"
                             />

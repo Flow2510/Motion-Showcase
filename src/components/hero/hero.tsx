@@ -32,69 +32,70 @@ export default function Hero({ isDesktop } : Props) {
     )
 
     useGSAP(() => {
-        if (
-            !leftRef.current ||
-            !leftTitleRef.current ||
-            !rightRef.current ||
-            !righTitletRef.current
-        ) {
-            return
+        const leftContainer = leftRef.current
+        const rightContainer = rightRef.current
+        const leftTitle = leftTitleRef.current
+        const rightTitle = righTitletRef.current
+
+        if ( !leftContainer || !rightContainer || !leftTitle || !rightTitle) return
+
+        const init = () => {
+            const distanceLeft = leftContainer.offsetWidth - leftTitle.offsetWidth
+            const distanceRight = rightContainer.offsetWidth - rightTitle.offsetWidth
+            const wordsLeft = gsap.utils.toArray<HTMLElement>('.left-word')
+            const wordsRight = gsap.utils.toArray<HTMLElement>('.right-word')
+
+            wordsLeft.forEach((word) => {
+                gsap.set(word, {
+                    x: distanceLeft
+                })
+            })
+
+            wordsRight.forEach((word) => {
+                gsap.set(word, {
+                    x: -distanceRight
+                })
+            })
+
+            gsap.set('.slider', {
+                opacity: 0
+            })
+
+            gsap.to('.slider', {
+                opacity: 1,
+                duration: 0.5,
+                delay: 3
+            })
+
+            gsap.set('.hero-footer', {
+                opacity: 0
+            })
+
+            gsap.to('.hero-footer', {
+                opacity: 1,
+                duration: 0.5,
+                delay: 3
+            })
+
+            wordsLeft.forEach((word, index) => {
+                gsap.to(word, {
+                    x: 0,
+                    duration: 1,
+                    delay: 2 + (index / 10)
+                })
+            })
+
+            wordsRight.forEach((word, index) => {
+                const reversedIndex = wordsRight.length - 1 - index
+
+                gsap.to(word, {
+                    x: 0,
+                    duration: 1,
+                    delay: 2 + (reversedIndex / 10)
+                })
+            })
         }
-
-        const distanceLeft = leftRef.current?.offsetWidth - leftTitleRef.current?.offsetWidth
-        const distanceRight = rightRef.current?.offsetWidth - righTitletRef.current?.offsetWidth
-        const wordsLeft = gsap.utils.toArray<HTMLElement>('.left-word')
-        const wordsRight = gsap.utils.toArray<HTMLElement>('.right-word')
-
-        wordsLeft.forEach((word) => {
-            gsap.set(word, {
-                x: distanceLeft
-            })
-        })
-
-        wordsRight.forEach((word) => {
-            gsap.set(word, {
-                x: -distanceRight
-            })
-        })
-
-        gsap.set('.slider', {
-            opacity: 0
-        })
-
-        gsap.to('.slider', {
-            opacity: 1,
-            duration: 0.5,
-            delay: 3
-        })
-
-        gsap.set('.hero-footer', {
-            opacity: 0
-        })
-
-        gsap.to('.hero-footer', {
-            opacity: 1,
-            duration: 0.5,
-            delay: 3
-        })
-
-        wordsLeft.forEach((word, index) => {
-            gsap.to(word, {
-                x: 0,
-                duration: 1,
-                delay: 2 + (index / 10)
-            })
-        })
-
-        wordsRight.forEach((word, index) => {
-            const reversedIndex = wordsRight.length - 1 - index
-
-            gsap.to(word, {
-                x: 0,
-                duration: 1,
-                delay: 2 + (reversedIndex / 10)
-            })
-        })
+        document.fonts.ready.then(init)
     })
 
     return(
@@ -246,7 +247,7 @@ export default function Hero({ isDesktop } : Props) {
             <section className="h-dvh w-full flex items-center bg-neutral-50">
                 <div className="w-full flex flex-col gap-8">
                     <div className="flex flex-col items-center text-center gap-4">
-                        <h2 className="text-4xl font-medium max-w-70">Creative motion Made with care</h2>
+                        <h2 className="text-4xl font-semibold max-w-70">Creative motion Made with care</h2>
                         <p className="font-medium max-w-100">A growing collection of thoughtful motion patterns, interactions, and visual experiments. Built to inspire your next project.</p>
                     </div>
                     <div className="w-full aspect-1/0.5">

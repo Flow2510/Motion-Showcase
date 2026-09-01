@@ -1,5 +1,7 @@
 const listScale = {
     name: "list-scale",
+    sectionBefore: true,
+    sectionAfter: true,
     id: 11,
     title: "List Scale",
     category: "Scroll",

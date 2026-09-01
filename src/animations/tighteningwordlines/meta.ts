@@ -1,8 +1,10 @@
 const tighteningWordLines = {
     name: "tightening-word-lines",
+    sectionBefore: true,
+    sectionAfter: true,
     id: 3,
     title: "Tightening Word Lines",
-    category: "Scroll",
+    category: "Text",
     video: "/videos/tightening-word-lines.mp4",
     color: "#a2d2ff",
     image: '/images/tightening-word-lines.png',

@@ -1,5 +1,7 @@
 const accordionPanel = {
     name: "accordion-panel",
+    sectionBefore: true,
+    sectionAfter: true,
     sourcePath: "accordionpanel",
     id: 1,
     title: "Accordion Panel",

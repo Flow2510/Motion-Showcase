@@ -1,5 +1,7 @@
 const animatedHero = {
     name: "animated-hero",
+    sectionBefore: false,
+    sectionAfter: true,
     id: 16,
     title: "Animated Hero",
     category: "Scroll",

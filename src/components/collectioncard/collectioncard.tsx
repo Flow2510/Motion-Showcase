@@ -5,18 +5,7 @@ import TextRevealHover from "../textrevealhover/textrevealhover";
 import type { AnimationTypes } from "../../types/animation";
 
 type CardProps = {
-    readonly animation: {
-        component: () => React.JSX.Element | undefined;
-        name: string;
-        id: number;
-        title: string;
-        category: string;
-        video: string;
-        color: string;
-        image: string;
-        sourcePath: string;
-        description: string;
-    };
+    readonly animation: AnimationTypes;
     readonly favoritesAnimations: AnimationTypes[];
     readonly setFavoritesAnimations: React.Dispatch<React.SetStateAction<AnimationTypes[]>>;
 }

@@ -1,5 +1,7 @@
 const scrollingSections = {
     name: "scrolling-sections",
+    sectionAfter: true,
+    sectionBefore: true,
     id: 9,
     title: "Scrolling Sections",
     category: "Scroll",

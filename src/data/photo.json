@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nom": "Montagne au coucher du soleil",
+    "img": "/images/sunset.jpg",
+    "alt": "Montagnes éclairées par la lumière dorée du coucher du soleil"
+  },
+  {
+    "id": 2,
+    "nom": "Forêt mystérieuse",
+    "img": "/images/forest.jpg",
+    "alt": "Forêt verdoyante avec une lumière douce traversant les arbres"
+  },
+  {
+    "id": 3,
+    "nom": "Océan turquoise",
+    "img": "/images/beach.jpg",
+    "alt": "Océan turquoise avec des vagues sur une plage tropicale"
+  },
+  {
+    "id": 4,
+    "nom": "Ville illuminée",
+    "img": "/images/town.jpg",
+    "alt": "Grande ville illuminée pendant la nuit"
+  },
+  {
+    "id": 5,
+    "nom": "Désert doré",
+    "img": "/images/desert.jpg",
+    "alt": "Paysage désertique avec des dunes dorées sous un ciel lumineux"
+  }
+]

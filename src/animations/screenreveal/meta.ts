@@ -1,5 +1,7 @@
 const screenReveal = {
     name: "screen-reveal",
+    sectionBefore: true,
+    sectionAfter: true,
     id: 7,
     title: "Screen Reveal",
     category: "Loader",

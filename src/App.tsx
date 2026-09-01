@@ -29,11 +29,6 @@ function App() {
     return () => window.removeEventListener('resize', handleResize)
   })
   
-    useEffect(() => {
-        console.log(favoritesAnimations.length)
-    
-    }, [favoritesAnimations])
-  
   return (
     <>
       <AnimatePresence mode='wait'>
@@ -54,7 +49,7 @@ function App() {
           <Routes>
             <Route path='/' element={<HomePage isDesktop={isDesktop}/>}/>
             <Route path='/collection' element={<CollectionPage isDesktop={isDesktop} favoritesAnimations={favoritesAnimations} setFavoritesAnimations={setFavoritesAnimations}/>}/>
-            <Route path='/collection/:slug' element={<EffectPage />}/>
+            <Route path='/collection/:slug' element={<EffectPage favoritesAnimations={favoritesAnimations} setFavoritesAnimations={setFavoritesAnimations}/>}/>
             <Route path='/collection/:slug/demo' element={<DemoPage />}/>
             <Route path='/favorites' element={<FavoritesPage favoritesAnimations={favoritesAnimations} setFavoritesAnimations={setFavoritesAnimations}/>}/>
           </Routes>
@@ -68,8 +63,12 @@ function App() {
 export default App
 
 // refaire les meta, alts, etc
+// faire une section pour indiquer qu'il faut scroll sur la page demo et pour indiquer la fin de la page
 // refaire la page effect et ajouter du contenu, et le code
-// ajouter 2 sections dans homepage a la place des sections vides,
+// refaire les meta de chaque et rajouter textes, descriptions, methodes, etc.... (regarder effectPage pour voir les besoins)
 // faire les favoris avec storagesession
+// ajouter contenu pour la section about
 // verifier le responsive
+// ajouter des animations de texte/hover/click/loader pas de scroll
+// faire nouvelle animation titre footer
 // remplacer le projet lorem agency par celui ci

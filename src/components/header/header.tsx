@@ -13,17 +13,19 @@ export default function Header({ toggleMenu, menuIsOpen, isDesktop } : MenuProps
         <>
             <h1 className="fixed z-51 top-5 md:top-5.5 left-4 duration-700 text-2xl font-medium tracking-tight text-white mix-blend-difference">
                 <NavLink to={'/'} className={'hover:cursor-pointer'}>
-                    The Motion Library
+                    <TextRevealHover 
+                        text="The Motion Library"
+                    />
                 </NavLink>
             </h1>
             {isDesktop ?
                 <header className="fixed z-50 top-0 left-0 w-full">
                     <div className="flex justify-end p-4 items-center">
                         <div className=" flex gap-2">
-                            <NavLink to={'/favorites'} className="relative flex items-center justify-center p-2 gap-1.5 bg-lime-300 rounded-full w-12 h-12 cursor-pointer">
+                            <NavLink to={'/favorites'} className="relative flex items-center justify-center p-2 gap-1.5 bg-lime-300 rounded-full w-12 h-12 cursor-pointer font-medium tracking-tight">
                                 <img src="/icons/heart-filled.png" className="brightness-[0]" alt="" />
                             </NavLink>
-                            <NavLink to={'/collection'} className={'relative flex items-center justify-end gap-1.5 bg-gray-200 rounded-full px-5 h-12 cursor-pointer group'}>
+                            <NavLink to={'/collection'} className={'relative flex items-center justify-end gap-1.5 bg-gray-200 rounded-full px-5 h-12 cursor-pointer group font-medium tracking-tight'}>
                                 <TextRevealHover 
                                     text="Collection"
                                 />

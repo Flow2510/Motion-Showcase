@@ -9,4 +9,6 @@ export type AnimationTypes = {
     image: string;
     sourcePath: string;
     description: string;
+    sectionBefore: boolean;
+    sectionAfter: boolean;
 }

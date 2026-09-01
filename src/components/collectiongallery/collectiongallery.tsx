@@ -2,18 +2,7 @@ import type { AnimationTypes } from "../../types/animation";
 import CollectionCard from "../collectioncard/collectioncard";
 
 type GalleryProps = {
-    readonly selectedAnimations: {
-        component: () => React.JSX.Element | undefined;
-        name: string;
-        id: number;
-        title: string;
-        category: string;
-        video: string;
-        color: string;
-        image: string;
-        sourcePath: string;
-        description: string;
-    }[]
+    readonly selectedAnimations: AnimationTypes[]
     readonly favoritesAnimations: AnimationTypes[];
     readonly setFavoritesAnimations: React.Dispatch<React.SetStateAction<AnimationTypes[]>>;
 };

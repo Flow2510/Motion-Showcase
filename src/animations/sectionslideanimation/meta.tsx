@@ -1,5 +1,7 @@
 const sectionSlideAnimation = {
     name: "section-slide-animation",
+    sectionBefore: true,
+    sectionAfter: true,
     id: 5,
     title: "Section Slide Animation",
     category: "Scroll",

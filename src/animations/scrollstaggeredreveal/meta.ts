@@ -1,8 +1,10 @@
 const scrollStaggeredReveal = {
     name: "scroll-staggered-reveal",
+    sectionBefore: true,
+    sectionAfter: true,
     id: 2,
     title: "Staggered Scroll Reveal",
-    category: "Scroll",
+    category: "Text",
     video: "/videos/scroll-staggered-reveal.mp4",
     color: "#a7c957",
     image: '/images/scroll-staggered-reveal.png',

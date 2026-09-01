@@ -1,8 +1,10 @@
 const titleRandomReveal = {
     name: "title-random-reveal",
+    sectionBefore: true,
+    sectionAfter: true,
     id: 13,
     title: "Title Random Reveal",
-    category: "Scroll",
+    category: "Text",
     video: "/videos/title-random-reveal.mp4",
     color: "#f6ac69",
     image: '/images/title-random-reveal.png',

@@ -1,5 +1,7 @@
 const stripeWipe = {
     name: "stripe-wipe",
+    sectionBefore: true,
+    sectionAfter: true,
     id: 15,
     title: "Stripe Wipe",
     category: "Scroll",

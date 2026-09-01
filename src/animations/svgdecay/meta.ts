@@ -1,5 +1,7 @@
 const svgDecay = {
     name: "svg-decay",
+    sectionBefore: true,
+    sectionAfter: true,
     id: 10,
     title: "Svg Decay",
     category: "Scroll",
