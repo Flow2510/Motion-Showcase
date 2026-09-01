@@ -1,12 +1,42 @@
 import { NavLink } from "react-router-dom";
 import TextRevealHover from "../textrevealhover/textrevealhover";
 import { useRef } from "react";
-import { motion } from "motion/react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export default function Footer() {
     const title = "Get ready to animate"
-    const words = title.split (" ")
-    const footerRef = useRef(null)
+    const letters = title.split ("")
+    const footerRef = useRef<HTMLElement>(null)
+    const textRef = useRef<HTMLParagraphElement>(null)
+
+    useGSAP(() => {
+        const initialLetter = gsap.utils.toArray<HTMLSpanElement>('.initial-letter')
+        const revealLetter = gsap.utils.toArray<HTMLSpanElement>('.reveal-letter')
+        const text = textRef.current
+
+        
+        const tl = gsap.timeline({
+            scrollTrigger:{
+                trigger: text,
+                start: "bottom bottom"
+            }
+        })
+
+        initialLetter.forEach((letter, index) => {
+            const randomDelay = gsap.utils.random(0.1, 2)
+
+            tl.to(letter, {
+                yPercent: -100,
+                duration: 0.3
+            }, 0 + randomDelay)
+
+            tl.to(revealLetter[index], {
+                yPercent: -100,
+                duration: 0.3
+            }, randomDelay)
+        })
+    }, { scope: footerRef })
 
     return(
         <footer className='w-full bg-neutral-950 footer p-1' ref={footerRef}>
@@ -15,18 +45,17 @@ export default function Footer() {
                     <p className="text-[13px] font-semibold text-center uppercase">Voluptatum accusamus doloribus tenetur sed maiores iste alias laboriosam.</p>
                 </div>
                 <div className="text-center flex flex-col items-center gap-6 lg:gap-10">
-                    <p className="text-5xl font-[Bricolage Grotesque] tracking-tight font-semibold lg:text-7xl max-w-100 flex gap-x-2 flex-wrap leading-[115%] justify-center md:gap-x-3 lg:gap-x-4">
-                        {words.map((word, index) => (
-                            <span className="inline-block overflow-hidden" key={word + index}>
-                                <motion.span 
-                                    initial={{ y: "-100%" }}
-                                    whileInView={{ y: "0%" }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.3, delay: 0 + (index / 10)}}
-                                    className="inline-block word"
+                    <p className="text-5xl font-[Bricolage Grotesque] tracking-tight font-semibold lg:text-7xl max-w-100 flex-wrap leading-[115%]" ref={textRef}>
+                        {letters.map((letter, index) => (
+                            <span className="inline-block overflow-hidden relative" key={letter + index}>
+                                <span 
+                                    className="inline-block initial-letter"
                                 >
-                                    {word}
-                                </motion.span>
+                                    {letter === " " ? "\u00A0" : letter}
+                                </span>
+                                <span className="absolute top-0 left-0 translate-y-full reveal-letter">
+                                    {letter === " " ? "\u00A0" : letter}
+                                </span>
                             </span>
                         ))}
                     </p>

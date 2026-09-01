@@ -26,7 +26,8 @@ export default function AccordionPanel() {
                         index === accordionIndex ?
                             <button 
                                 key={item.id} 
-                                type="button" onClick={() => setAccordionIndex(index)} 
+                                type="button" 
+                                onClick={() => setAccordionIndex(index)} 
                                 className="duration-300 relative flex items-center justify-center p-5 overflow-hidden" 
                                 style={{ 
                                     background: item.color, 
@@ -51,24 +52,24 @@ export default function AccordionPanel() {
                                 </div>
                             </button>
                         :
-                            <button 
-                                key={item.id} 
-                                type="button" onClick={() => setAccordionIndex(index)} 
-                                className="duration-300 relative cursor-pointer"
-                                style={{ 
-                                    background: item.color,
-                                    color: item.textcolor,
-                                    borderRadius: 80,
-                                    width: 100,
-                                    height: "90%",
-                                }}
-                            >
-                                <div className="absolute text-nowrap origin-center w-fit h-fit flex items-center justify-center -rotate-z-90 top-[50%] left-[50%] translate-[-50%] font-semibold text-2xl">
-                                    <motion.h2>
-                                        {item.title}
-                                    </motion.h2>
-                                </div>
-                            </button>
+                        <button 
+                            key={item.id} 
+                            type="button" onClick={() => setAccordionIndex(index)} 
+                            className="duration-300 relative cursor-pointer"
+                            style={{ 
+                                background: item.color,
+                                color: item.textcolor,
+                                borderRadius: 80,
+                                width: 100,
+                                height: "90%",
+                            }}
+                        >
+                            <div className="absolute text-nowrap origin-center w-fit h-fit flex items-center justify-center -rotate-z-90 top-[50%] left-[50%] translate-[-50%] font-semibold text-2xl">
+                                <motion.h2>
+                                    {item.title}
+                                </motion.h2>
+                            </div>
+                        </button>
                     ))}
                 </div>
             </section>

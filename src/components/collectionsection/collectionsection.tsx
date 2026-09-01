@@ -3,6 +3,7 @@ import { animations } from "../../animations"
 import CollectionGallery from "../collectiongallery/collectiongallery"
 import { motion } from "framer-motion";
 import type { AnimationTypes } from "../../types/animation";
+import { useSearchParams } from "react-router-dom";
 
 type CollectionProps = {
     readonly isDesktop: boolean;
@@ -11,8 +12,9 @@ type CollectionProps = {
 }
 
 export default function CollectionSection({isDesktop, favoritesAnimations, setFavoritesAnimations} : CollectionProps ) {
+    const [searchParams] = useSearchParams();
     const isDragging = useRef(false);
-    const [filter, setFilter] = useState("all")
+    const [filter, setFilter] = useState(searchParams.get("filter") || "all")
     const selectedAnimations = filter === "all" ? animations : animations.filter(animation => animation.category === filter);
     const sortedAnimations = [...selectedAnimations].sort(
         (a, b) => b.id - a.id

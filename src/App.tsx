@@ -16,7 +16,7 @@ import type { AnimationTypes } from './types/animation'
 
 function App() {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768)
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024)
   const [favoritesAnimations, setFavoritesAnimations] = useState<AnimationTypes[]>([])
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function App() {
           <Routes>
             <Route path='/' element={<HomePage isDesktop={isDesktop}/>}/>
             <Route path='/collection' element={<CollectionPage isDesktop={isDesktop} favoritesAnimations={favoritesAnimations} setFavoritesAnimations={setFavoritesAnimations}/>}/>
-            <Route path='/collection/:slug' element={<EffectPage favoritesAnimations={favoritesAnimations} setFavoritesAnimations={setFavoritesAnimations}/>}/>
+            <Route path='/collection/:slug' element={<EffectPage favoritesAnimations={favoritesAnimations} setFavoritesAnimations={setFavoritesAnimations} isDesktop={isDesktop}/>}/>
             <Route path='/collection/:slug/demo' element={<DemoPage />}/>
             <Route path='/favorites' element={<FavoritesPage favoritesAnimations={favoritesAnimations} setFavoritesAnimations={setFavoritesAnimations}/>}/>
           </Routes>
@@ -62,13 +62,10 @@ function App() {
 
 export default App
 
-// refaire les meta, alts, etc
 // faire une section pour indiquer qu'il faut scroll sur la page demo et pour indiquer la fin de la page
-// refaire la page effect et ajouter du contenu, et le code
-// refaire les meta de chaque et rajouter textes, descriptions, methodes, etc.... (regarder effectPage pour voir les besoins)
+// ajouter le code sur la page effect,
+// refaire les meta de chaque pour un meilleur contenu
 // faire les favoris avec storagesession
-// ajouter contenu pour la section about
 // verifier le responsive
 // ajouter des animations de texte/hover/click/loader pas de scroll
-// faire nouvelle animation titre footer
 // remplacer le projet lorem agency par celui ci

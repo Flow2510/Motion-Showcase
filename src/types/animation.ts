@@ -5,10 +5,20 @@ export type AnimationTypes = {
     title: string;
     category: string;
     video: string;
-    color: string;
     image: string;
+    color: string;
     sourcePath: string;
     description: string;
     sectionBefore: boolean;
     sectionAfter: boolean;
-}
+    librairies: string[];
+    html: string[];
+    htmlCode: string;
+    javascript: string[];
+    javascriptMethods: string[];
+    javascriptCode: string;
+    animation: string[];
+    animationMethods: string[];
+    gsapCode: string;
+    githubLink: string;
+};
