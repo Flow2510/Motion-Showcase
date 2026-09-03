@@ -64,8 +64,10 @@ export default function AboutSection(){
         }
     ]
 
-    const animatedTitle = "Discover Animations"
-    const splitTitle = animatedTitle.split("")
+    const animatedTitleLine1 = "Endless Ways"
+    const animatedTitleLine2 = "To Animate"
+    const splitTitleLine1 = animatedTitleLine1.split("")
+    const splitTitleLine2 = animatedTitleLine2.split("")
 
     useGSAP(() => {
         const section = sectionRef.current;
@@ -77,7 +79,7 @@ export default function AboutSection(){
             scrollTrigger: {
                 trigger: section, 
                 start: "top top",
-                end: "bottom bottom",
+                end: "90% bottom",
                 scrub: true
             }
         })
@@ -98,9 +100,9 @@ export default function AboutSection(){
         })
 
         const total = letters.length
-        const radius = 150 // distance depuis le centre
+        const radius = 150
 
-        const animationStart = tl.duration()
+        const animationStart = tl.duration() + 1
 
         letters.forEach((letter, index) => {
             const angle = (index / total) * Math.PI * 2
@@ -111,14 +113,14 @@ export default function AboutSection(){
                 x,
                 y,
                 rotateZ: () => gsap.utils.random(-90, 90),
-                duration: 1,
+                duration: 2,
                 ease: "power2.out",
             }, animationStart)
 
             tl.to(letter, {
                 opacity: 0,
                 duration: 0.5
-            }, animationStart + 0.5)
+            }, animationStart + 1.5)
         })
 
         tl.to(slider, {
@@ -129,7 +131,7 @@ export default function AboutSection(){
     }, { scope: sectionRef})
 
     return(
-        <section className="bg-neutral-950 text-neutral-50 relative h-[400dvh]" ref={sectionRef}>
+        <section className="bg-neutral-950 text-neutral-50 relative h-[500dvh]" ref={sectionRef}>
             <div className="sticky top-0 flex flex-col h-dvh justify-between py-20 overflow-hidden">
                 <div className="flex flex-col gap-10 items-center">
                     <h2 className="text-xl md:text-2xl flex gap-2 items-center">
@@ -138,12 +140,21 @@ export default function AboutSection(){
                     </h2>
                 </div>
                 <div className='w-full flex items-center justify-center'>
-                   <h3 className="text-4xl h-20 flex items-center md:text-5xl lg:text-7xl xl:text-9xl font-semibold">
-                        {splitTitle.map((letter, index) => (
-                            <span className="title-letter inline-block" key={letter + index}>
-                                {letter === " " ? "\u00A0" : letter}
-                            </span>
-                        ))}
+                   <h3 className="text-4xl flex flex-col items-center md:text-5xl lg:text-7xl xl:text-9xl font-semibold">
+                        <span className="flex items-center">
+                            {splitTitleLine1.map((letter, index) => (
+                                <span className="title-letter inline-block" key={letter + index}>
+                                    {letter === " " ? "\u00A0" : letter}
+                                </span>
+                            ))}
+                        </span>
+                        <span className="flex items-center">
+                            {splitTitleLine2.map((letter, index) => (
+                                <span className="title-letter inline-block" key={letter + index}>
+                                    {letter === " " ? "\u00A0" : letter}
+                                </span>
+                            ))}
+                        </span>
                    </h3>
                 </div>
                 <div>

@@ -14,6 +14,7 @@ export default function StickyGridScroll() {
     useGSAP(() => {
         const section = sectionRef.current
         const container = containerRef.current
+        
 
         if (!section || !container) return
 
@@ -26,6 +27,8 @@ export default function StickyGridScroll() {
         const rightCards = document.querySelectorAll(".right-image")
 
         const colHeight = container.offsetHeight
+
+        if (!colHeight) return
 
         const colTl = gsap.timeline({
             scrollTrigger:{
@@ -108,21 +111,21 @@ export default function StickyGridScroll() {
                     <div className="flex flex-col gap-10 left-col">
                         {photos.slice(0, 4).map((item) => (
                             <div key={item.id} className='w-full aspect-square left-image'>
-                                <img src={item.img} className='w-full h-full object-cover' alt="" />
+                                <img src={item.img} className='w-full aspect-square object-cover' alt="" />
                             </div>
                         ))}
                     </div>
                     <div className="flex flex-col gap-10 center-col">
                         {photosReverse.slice(1, 5).map((item) => (
                             <div key={item.id} className='w-full aspect-square center-image'>
-                                <img src={item.img} className='w-full h-full object-cover' alt="" />
+                                <img src={item.img} className='w-full aspect-square object-cover' alt="" />
                             </div>
                         ))}
                     </div>
                     <div className="flex flex-col gap-10 right-col">
                         {photos.slice(0, 4).map((item) => (
                             <div key={item.id} className='w-full aspect-square right-image'>
-                                <img src={item.img} className='w-full h-full object-cover' alt="" />
+                                <img src={item.img} className='w-full aspect-square object-cover' alt="" />
                             </div>
                         ))}
                     </div>

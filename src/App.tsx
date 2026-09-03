@@ -64,8 +64,9 @@ export default App
 
 // faire une section pour indiquer qu'il faut scroll sur la page demo et pour indiquer la fin de la page
 // ajouter le code sur la page effect,
+// ajouter icones pour les filtres
 // refaire les meta de chaque pour un meilleur contenu
 // faire les favoris avec storagesession
-// verifier le responsive
 // ajouter des animations de texte/hover/click/loader pas de scroll
 // remplacer le projet lorem agency par celui ci
+// faire/trouver mailleur design pour les cards about section

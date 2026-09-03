@@ -40,12 +40,12 @@ export default function Footer() {
 
     return(
         <footer className='w-full bg-neutral-950 footer p-1' ref={footerRef}>
-            <div className='flex flex-col gap-10 md:gap-15 lg:gap-20 bg-neutral-50 rounded-xl p-5'>
+            <div className='flex flex-col gap-10 md:gap-15 bg-neutral-50 rounded-xl p-5'>
                 <div>
                     <p className="text-[13px] font-semibold text-center uppercase">Voluptatum accusamus doloribus tenetur sed maiores iste alias laboriosam.</p>
                 </div>
                 <div className="text-center flex flex-col items-center gap-6 lg:gap-10">
-                    <p className="text-5xl font-[Bricolage Grotesque] tracking-tight font-semibold lg:text-7xl max-w-100 flex-wrap leading-[115%]" ref={textRef}>
+                    <p className="text-5xl font-[Bricolage Grotesque] tracking-tight font-semibold lg:text-7xl max-w-70 md:max-w-100 flex-wrap leading-[115%]" ref={textRef}>
                         {letters.map((letter, index) => (
                             <span className="inline-block overflow-hidden relative" key={letter + index}>
                                 <span 

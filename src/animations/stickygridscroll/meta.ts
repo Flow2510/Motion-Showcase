@@ -6,41 +6,43 @@ const stickyGridScroll = {
     title: "Sticky Grid Scroll",
     category: "Scroll",
     video: "/videos/sticky-grid-scroll.mp4",
-    color: "#cdb4db",
     image: "/images/sticky-grid-scroll.png",
+    color: "#...",
+    textcolor: "#...",
     sourcePath: "stickygridscroll",
-    description: "A scroll-driven grid layout where a collection of elements remains pinned while the surrounding content continues to move. The sticky positioning creates a layered composition that progressively changes as the user scrolls through the section.",
+    description: "A scroll-driven image composition built around a sticky three-column grid. The images progressively move into view from opposite directions before the entire composition scales and opens up to reveal the content underneath.",
     librairies: [
         "GSAP",
         "ScrollTrigger",
-        "Tailwind",
     ],
     html: [
-        "The layout is organized as a grid containing multiple visual elements or cards. The grid is placed inside a larger scrolling section so its elements can remain visible while the page continues to move.",
-        "Selected grid elements use sticky positioning to stay within the viewport during the scroll. The surrounding containers provide the required scroll space and determine how long the sticky state remains active."
+        "The layout is composed of three vertical columns containing a series of square images. The central column uses the same images in reverse order to create a contrasting movement between the columns.",
+        "The grid and its content are kept inside a sticky viewport, while the surrounding section provides enough scroll space for the entire sequence to unfold progressively."
     ],
     htmlCode: "",
     javascript: [
-        "The component targets the grid elements that need to react to scrolling and prepares their initial positions. Each element can have its own animation range depending on its position in the grid.",
-        "ScrollTrigger monitors the scroll position and coordinates the transformations of the sticky elements. As the user progresses through the section, the grid can shift, scale or reposition while remaining anchored to the viewport.",
-        "The animation setup is shared across the grid so the interaction remains consistent and can easily be reused with different numbers of elements."
+        "The animation is controlled by a single GSAP timeline connected to the section scroll progress. Each image is initially positioned outside the visible grid and brought into place as the user scrolls.",
+        "The left and right columns enter from below, while the center column enters from above. The center cards use a reversed stagger so that their movement follows the opposite visual direction.",
+        "Once the grid is assembled, the container scales up while the outer columns move away from the center. The central cards then split vertically, creating space around the text content.",
+        "The final text scale is synchronized with the split to make the transition from the image composition to the content feel like one continuous movement."
     ],
     javascriptMethods: [
-        "useEffect",
+        "useRef",
+        "useGSAP",
         "querySelectorAll",
-        "gsap",
-        "ScrollTrigger"
+        "gsap.timeline",
     ],
     javascriptCode: "",
     animation: [
-        "The grid remains partially fixed in the viewport while the individual elements react to the user's scroll. Translations, scaling and spacing changes can be combined to create a dynamic layered composition.",
-        "CSS sticky positioning provides the base behavior while GSAP and ScrollTrigger control the additional transformations. The result is a scrolling grid that feels anchored while its visual structure continues to evolve."
+        "The images start outside the viewport and progressively slide into their final positions. A small delay between each card creates a staggered movement while keeping the three columns visually connected.",
+        "The center column moves in the opposite direction and uses a reversed order, giving the grid a more dynamic rhythm as the images settle into place.",
+        "After the grid is assembled, the whole composition scales up while the left and right columns move outward. The central cards then separate vertically, revealing the content positioned underneath.",
+        "All of these movements are tied to the scroll position through ScrollTrigger and scrub, allowing the user to control the progression of the animation directly."
     ],
     animationMethods: [
-        "GSAP",
-        "ScrollTrigger",
-        "CSS Sticky",
-        "Transform",
+        "gsap.set",
+        "gsap.timeline",
+        "gsap.to",
     ],
     gsapCode: "",
     githubLink: "",

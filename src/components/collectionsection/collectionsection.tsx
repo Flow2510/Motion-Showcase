@@ -96,7 +96,7 @@ export default function CollectionSection({isDesktop, favoritesAnimations, setFa
                                 >
                                     <div className="flex items-center justify-center border rounded-full w-8 h-8 overflow-hidden p-2">
                                         <img 
-                                            src={`/icons/${cat}.png`} 
+                                            src={`/icons/${cat}.svg`} 
                                             style={{ 
                                                 filter: filter === cat ? 'brightness(0)' : 'brightness(100)'
                                             }}

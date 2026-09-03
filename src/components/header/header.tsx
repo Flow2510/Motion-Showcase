@@ -22,7 +22,7 @@ export default function Header({ toggleMenu, menuIsOpen, isDesktop } : MenuProps
                 <header className="fixed z-50 top-0 left-0 w-full">
                     <div className="flex justify-end p-4 items-center">
                         <div className=" flex gap-2">
-                            <NavLink to={'/favorites'} className="relative flex items-center justify-center p-2 gap-1.5 bg-lime-300 rounded-full w-12 h-12 hover:scale-1.1 cursor-pointer font-medium tracking-tight">
+                            <NavLink to={'/favorites'} className="relative flex items-center justify-center p-2 gap-1.5 bg-lime-300 rounded-full w-12 h-12 cursor-pointer font-medium tracking-tight">
                                 <img src="/icons/heart-filled.png" className="brightness-[0]" alt="" />
                             </NavLink>
                             <NavLink to={'/collection'} className={'relative flex items-center justify-end gap-1.5 bg-gray-200 rounded-full px-5 h-12 cursor-pointer group font-medium tracking-tight'}>

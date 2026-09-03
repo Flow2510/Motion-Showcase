@@ -1,49 +1,114 @@
-# React + TypeScript + Vite
-Motion Showcase
+The Motion Library
 
-A showcase of modern web animations built with GSAP and Motion for React.
+A collection of modern web animation experiments built with React, TypeScript, GSAP, Motion for React, and Lenis.
 
-This project is a collection of reusable animation examples and UI interactions, created to experiment with modern frontend animation techniques and provide inspiration for future projects.
+The Motion Library is a personal frontend and creative development project focused on exploring web animation, interaction, and motion design.
 
-Features:
+Each experiment explores a specific animation technique or interaction pattern, with an emphasis on clean implementation, smooth interactions, and reusable ideas.
+
+✨ Features
 
 🎬 GSAP timeline animations
-🎯 Scroll-triggered interactions
+🎯 Scroll-driven animations with ScrollTrigger
+🌀 Smooth scrolling with Lenis
 ✨ Motion for React animations
-📌 Sticky effects
-🎠 Horizontal & vertical sliders
-🃏 Cards and accordion animations
+📌 Sticky and scroll-based interactions
+↔️ Horizontal and vertical scrolling
+🃏 Card and image animations
+🎚️ Accordion interactions
 🔤 Text and typography animations
-🧪 UI animation experiments
+🖱️ UI interactions and micro-interactions
+📱 Responsive animation experiments
 
-Tech Stack:
+🛠️ Tech Stack
 
+Frontend
 React
 TypeScript
-Tailwind CSS
-GSAP
-Motion for React
 Vite
+Tailwind CSS
+Animation
+GSAP
+GSAP ScrollTrigger
+Motion for React
+Lenis
 
-Getting Started:
+📂 Project Structure
+src/
+├── animations/
+│   ├── ...
+│   └── ...
+│
+├── components/
+│   ├── ...
+│   └── ...
+│
+├── data/
+│   └── ...
+│
+├── App.tsx
+└── main.tsx
 
-Clone the repository and install the dependencies:
+animations/ — Individual animation experiments and implementations
+components/ — Reusable React components and UI elements
+data/ — Static data used throughout the project
 
-git clone <https://github.com/Flow2510/Motion-Showcase.git>
-cd motion-showcase
+🚀 Getting Started
+
+Clone the repository
+
+git clone https://github.com/Flow2510/Motion-Showcase.git
+cd Motion-Showcase
+Install dependencies
+
 npm install
 
-Start the development server:
+Start the development server
 
 npm run dev
 
-Build for production:
-
+Build for production
 npm run build
-Purpose
 
-The goal of this repository is to explore animation techniques, prototype interactive components, and build a personal library of reusable animation patterns using GSAP and Motion for React.
+🧠 Purpose
 
-License
+The Motion Library was created to explore and develop skills in:
+
+Frontend Development
+Creative Development
+Web Animation
+Interaction Design
+React & TypeScript
+GSAP
+Motion for React
+
+🔬 Experiments
+
+The library is built around independent experiments rather than a traditional component system.
+
+Each experiment focuses on a particular aspect of motion or interaction, such as:
+
+Scroll-based animation
+Timeline sequencing
+Sticky layouts
+Image transitions
+Typography
+Cards
+Sliders
+Accordions
+Micro-interactions
+
+New experiments will be added as the project evolves.
+
+🚧 Status
+
+Work in progress
+
+📄 License
 
 This project is available for educational and personal use.
+
+Feel free to explore the source code and use the techniques as inspiration for your own projects.
+
+🔗 Links
+GitHub Repository
