@@ -99,7 +99,7 @@ export default function CollectionCard({ animation, favoritesAnimations, setFavo
                     </button>
                 }
                 {isDesktop && isHover &&
-                    <button type="button" className="absolute right-4 top-4 w-10 h-10 p-2 text-neutral-950" onClick={toggleToFavorite}>
+                    <button type="button" className="absolute right-4 top-4 w-10 h-10 p-2 text-neutral-950 cursor-pointer hover:scale-[1.1]" onClick={toggleToFavorite}>
                         <img src={isFavorite? "/icons/heart-filled.png" : "/icons/heart.png"} alt="" className="w-full h-full" />
                     </button>
                 }

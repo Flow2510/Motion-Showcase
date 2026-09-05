@@ -42,10 +42,10 @@ export default function Footer() {
         <footer className='w-full bg-neutral-950 footer p-1' ref={footerRef}>
             <div className='flex flex-col gap-10 md:gap-15 bg-neutral-50 rounded-xl p-5'>
                 <div>
-                    <p className="text-[13px] font-semibold text-center uppercase">Voluptatum accusamus doloribus tenetur sed maiores iste alias laboriosam.</p>
+                    <p className="text-[13px] font-semibold text-center uppercase">Creative animations and interactive experiments made for the web.</p>
                 </div>
                 <div className="text-center flex flex-col items-center gap-6 lg:gap-10">
-                    <p className="text-5xl font-[Bricolage Grotesque] tracking-tight font-semibold lg:text-7xl max-w-70 md:max-w-100 flex-wrap leading-[115%]" ref={textRef}>
+                    <p className="text-5xl font-[Bricolage Grotesque] tracking-tight font-semibold lg:text-7xl max-w-70 lg:max-w-100  flex-wrap leading-[115%]" ref={textRef}>
                         {letters.map((letter, index) => (
                             <span className="inline-block overflow-hidden relative" key={letter + index}>
                                 <span 
@@ -60,7 +60,7 @@ export default function Footer() {
                         ))}
                     </p>
                     <div className="flex gap-2 lg:gap-5">
-                        <NavLink to={'/collection'} className="relative flex items-center justify-end gap-1.5 bg-lime-300 rounded-full px-5 h-12 cursor-pointer group font-medium tracking-tight">
+                        <NavLink to={'mailto:sendra.florian@gmail.com'} target="_blank" className="relative flex items-center justify-end gap-1.5 bg-lime-300 rounded-full px-5 h-12 cursor-pointer group font-medium tracking-tight">
                             <TextRevealHover
                                 text="Contact"
                             />

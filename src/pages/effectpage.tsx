@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import type { AnimationTypes } from "../types/animation";
 import TextRevealHover from "../components/textrevealhover/textrevealhover";
-import CodeBlock from "../components/codeblock/codeblock";
+import NextCta from "../components/nextcta/nextcta";
 
 type EffectPageProps= {
     readonly setFavoritesAnimations: React.Dispatch<React.SetStateAction<AnimationTypes[]>>;
@@ -59,7 +59,7 @@ export default function EffectPage({setFavoritesAnimations, favoritesAnimations,
 
     return(
         <motion.main 
-            key={'effectpage'}
+            key={'effect-page'}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0}}
@@ -103,45 +103,40 @@ export default function EffectPage({setFavoritesAnimations, favoritesAnimations,
                                 </div>
                             </div>
                             <div className="flex flex-col gap-10">
-                                <h2 className="text-4xl font-semibold">How I build</h2>
+                                <h2 className="text-4xl font-semibold">Behind the Motion</h2>
                                 <div className="flex flex-col gap-5 font-medium scroll-section" id="html">
-                                    <h3 className="text-2xl ">HTML structure</h3>
+                                    <h3 className="text-2xl ">Structure</h3>
                                         {animation.html.map((text) => (
                                             <p key={text}>{text}</p>
                                         ))}
                                     <div className="w-full rounded-xl flex items-center justify-center">
-                                    <div className="w-full h-full rounded-2xl min-w-0">
-                                        <CodeBlock code={animation.htmlCode} />
-                                    </div>
+
                                 </div>
                                 </div>
                                 <div className="flex flex-col gap-5 font-medium scroll-section" id="javascript">
-                                    <h3 className="text-2xl">Javascript</h3>
+                                    <h3 className="text-2xl">Behavior</h3>
                                         {animation.javascript.map((text) => (
                                             <p key={text}>{text}</p>
                                         ))}
                                         <div className="w-full rounded-xl flex items-center justify-center">
-                                            <div className="w-full h-full rounded-2xl">
-                                                <CodeBlock code={animation.javascriptCode} />
-                                            </div>
+
                                         </div>
                                     </div>
                                 <div className="flex flex-col gap-5 font-medium scroll-section" id="logic">
-                                    <h3 className="text-2xl ">Animation</h3>
+                                    <h3 className="text-2xl ">Motion</h3>
                                     {animation.animation.map((text) => (
                                         <p key={text}>{text}</p>
                                     ))}
                                     <div className="w-full rounded-xl flex items-center justify-center">
-                                        <div className="w-full h-full rounded-2xl">
-                                            <CodeBlock code={animation.gsapCode} />
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex gap-5 text-neutral-950 w-full justify-center">
-                                    <NavLink to={'/'} className="relative flex items-center gap-1.5 bg-lime-300 rounded-full px-5 h-12 cursor-pointer group font-medium tracking-tight">
+                            {!isDesktop &&
+                                <div className="flex gap-5 text-neutral-950 w-full justify-center">
+                                    <NavLink to={`https://github.com/Flow2510/Motion-Showcase/tree/main/src/animations/${animation.sourcePath}`} target="_blank" className="relative flex items-center gap-1.5 bg-lime-300 rounded-full px-5 h-12 cursor-pointer group font-medium tracking-tight">
                                         <TextRevealHover 
-                                            text="Full code"
+                                            text="Show Full code"
                                         />
                                     </NavLink>
                                     <NavLink to={'demo'} type="button" className="relative flex items-center gap-1.5 bg-neutral-50 rounded-full px-5 h-12 cursor-pointer group font-medium tracking-tight">
@@ -150,6 +145,7 @@ export default function EffectPage({setFavoritesAnimations, favoritesAnimations,
                                         />
                                     </NavLink>
                                 </div>
+                            }
                         </div>
                     </div>
                     {isDesktop &&
@@ -188,9 +184,9 @@ export default function EffectPage({setFavoritesAnimations, favoritesAnimations,
                                     </div>
                                 </div>
                                 <div className="flex gap-5 text-neutral-950 w-full justify-center">
-                                    <NavLink to={'/'} className="relative flex items-center gap-1.5 bg-lime-300 rounded-full px-5 h-12 cursor-pointer group font-medium tracking-tight">
+                                    <NavLink to={`https://github.com/Flow2510/Motion-Showcase/tree/main/src/animations/${animation.sourcePath}`} target="_blank" className="relative flex items-center gap-1.5 bg-lime-300 rounded-full px-5 h-12 cursor-pointer group font-medium tracking-tight">
                                         <TextRevealHover 
-                                            text="Github"
+                                            text="Show Full Code"
                                         />
                                     </NavLink>
                                     <NavLink to={'demo'} type="button" className="relative flex items-center gap-1.5 bg-neutral-50 rounded-full px-5 h-12 cursor-pointer group font-medium tracking-tight">
@@ -203,11 +199,7 @@ export default function EffectPage({setFavoritesAnimations, favoritesAnimations,
                         </div>
                     }
                 </section>
-                <section className="p-5">
-                    <div className="">
-                        <h2 className="text-4xl">More Animations</h2>
-                    </div>
-                </section>
+                <NextCta />
             </div>
         </motion.main>
     )

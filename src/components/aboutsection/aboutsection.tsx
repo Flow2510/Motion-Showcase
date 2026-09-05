@@ -20,7 +20,7 @@ export default function AboutSection(){
             id: 1,
             slug: "Scroll",
             title: "Scroll",
-            text: "Playful animations triggered by every click.",
+            text: "Dynamic animations that react to your scroll.",
             img: "",
             alt: "",
             color: "#a2d2ff"
@@ -38,8 +38,7 @@ export default function AboutSection(){
             id: 3,
             slug: "Click",
             title: "Click",
-
-            text: "Dynamic animations that react to your scroll.",
+            text: "Playful animations triggered by every click.",
             img: "",
             alt: "",
             color: "#fadde1"
@@ -80,13 +79,12 @@ export default function AboutSection(){
                 trigger: section, 
                 start: "top top",
                 end: "90% bottom",
-                scrub: true
+                scrub: true,
             }
         })
 
         gsap.set(slider, {
-            yPercent: 100,
-            opacity: 0
+            yPercent: 150,
         })
         
         gsap.set(letters, {
@@ -166,16 +164,18 @@ export default function AboutSection(){
                             className="w-70! h-100!"
                         >
                             {items.map((item) => (
-                                <SwiperSlide key={item.id} className="rounded-2xl w-70! h-80" style={{ background: item.color }}>
-                                    <NavLink to={`/collection?filter=${item.slug}`}>
-                                        <div className="p-8 text-neutral-950 flex flex-col items-center justify-between h-full text-center">
-                                            <h3 className="text-5xl font-bold">
-                                                {item.title}
-                                            </h3>
-                                            <h3 className="text-[175px] text-neutral-950/20 font-bold leading-[90%]">{item.id}</h3>
-                                            <p className="text-xl font-semibold">{item.text}</p>
-                                        </div>
-                                    </NavLink>
+                                <SwiperSlide key={item.id} className="rounded-2xl w-70! h-80 p-1" style={{ background: item.color, color: item.color }}>                                    
+                                    <div className={'w-full h-full bg-neutral-950 rounded-2xl'}>
+                                        <NavLink to={`/collection?filter=${item.slug}`}>
+                                            <div className="p-8 flex flex-col items-center justify-between h-full text-center">
+                                                <h3 className="text-5xl font-bold">
+                                                    {item.title}
+                                                </h3>
+                                                <h3 className="text-[175px] opacity-30 font-bold leading-[90%]">{item.id}</h3>
+                                                <p className="text-xl font-semibold">{item.text}</p>
+                                            </div>
+                                        </NavLink>
+                                    </div>
                                 </SwiperSlide>
                             ))}
                         </Swiper>

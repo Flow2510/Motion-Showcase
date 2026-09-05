@@ -77,7 +77,7 @@ export default function StripeWipe(){
                     ))}
                 </div>
                 <div className="flex flex-col gap-5 items-center" ref={containerRef}>
-                    <p className="flex gap-x-3 lg:text-7xl md:text-5xl font-medium max-w-[75%] lg:max-w-250 text-3xl flex-wrap relative text-neutral-950 justify-center">
+                    <p className="flex gap-x-3 lg:text-7xl md:text-5xl font-semibold max-w-[75%] lg:max-w-250 text-3xl flex-wrap relative text-neutral-950 justify-center">
                         {text.split(" ").map((word, index) => (
                             <span key={word + index}>
                                 <span className="word">

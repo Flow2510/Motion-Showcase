@@ -1,6 +1,6 @@
 const screenReveal = {
     name: "screen-reveal",
-    sectionBefore: true,
+    sectionBefore: false,
     sectionAfter: true,
     id: 7,
     title: "Screen Reveal",

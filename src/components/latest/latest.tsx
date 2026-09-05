@@ -89,7 +89,7 @@ export default function Latest() {
 
     return(
         <section className="w-full" ref={sectionRef}>
-            <div className="w-full min-h-dvh rounded-t-2xl bg-neutral-50 overflow-hidden pt-20 pb-50" ref={titleContainerRef}>
+            <div className="w-full min-h-dvh rounded-2xl bg-neutral-50 overflow-hidden pt-20 pb-50" ref={titleContainerRef}>
                 <div className="flex flex-col gap-30">
                     <div className="">
                         <h2 className="flex flex-col text-5xl items-center font-medium md:text-7xl lg:text-9xl">

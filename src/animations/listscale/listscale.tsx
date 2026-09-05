@@ -13,19 +13,19 @@ export default function ListScale() {
 
     const scale = useTransform(scrollYProgress, [0, 0.5, 0.75], [1, 50, 500])
     const y = useTransform(scrollYProgress, [0.4, 1], ["100%", "0%"])
-    const background = useTransform(scrollYProgress, [0.4, 0.5], ["#fee9ce00", "#fee9ce"])
+    const background = useTransform(scrollYProgress, [0.4, 0.5], [`${article[Math.floor(article.length / 2)].textcolor}00`, `${article[Math.floor(article.length / 2)].textcolor}`])
 
     return(
         <motion.section className="h-[400dvh] relative" ref={sectionRef} style={{ background }}>
-                <div className="h-dvh w-full sticky top-0 flex items-center justify-center overflow-hidden text-[#fee9ce]">
+                <div className="h-dvh w-full sticky top-0 flex items-center justify-center overflow-hidden">
                     <motion.ul className="flex flex-col items-center gap-2 font-[bricolage_grotesque]">
                         {article.map((item, index) => (
                             index === Math.floor(article.length / 2) ?
-                                <motion.li className="text-4xl md:text-6xl lg:text-8xl font-bold origin-center" key={item.title + index} style={{ scale }}>
+                                <motion.li className="text-4xl md:text-6xl lg:text-8xl font-bold origin-center" key={item.title + index} style={{ scale, color: item.textcolor }}>
                                     {item.title}
                                 </motion.li>
                             :
-                            <li className="text-4xl font-bold md:text-6xl lg:text-8xl" key={item.title + index} >
+                            <li className="text-4xl font-bold md:text-6xl lg:text-8xl" key={item.title + index} style={{ color: item.textcolor }}>
                                 {item.title}
                             </li>
                         ))}

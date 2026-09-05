@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth > 768)
+      setIsDesktop(window.innerWidth > 1024)
     }
 
     window.addEventListener('resize', handleResize)
@@ -30,7 +30,7 @@ function App() {
   })
   
   return (
-    <>
+    <SmoothScroll>
       <AnimatePresence mode='wait'>
         {menuIsOpen &&
           <Menu 
@@ -44,7 +44,6 @@ function App() {
         isDesktop={isDesktop}
       />
       <ScrollToTop />
-      <SmoothScroll>
         <AnimatePresence mode='wait'>
           <Routes>
             <Route path='/' element={<HomePage isDesktop={isDesktop}/>}/>
@@ -54,19 +53,16 @@ function App() {
             <Route path='/favorites' element={<FavoritesPage favoritesAnimations={favoritesAnimations} setFavoritesAnimations={setFavoritesAnimations}/>}/>
           </Routes>
         </AnimatePresence>
-      </SmoothScroll>
       <Footer />
-    </>
+    </SmoothScroll>
   )
 }
 
 export default App
 
 // faire une section pour indiquer qu'il faut scroll sur la page demo et pour indiquer la fin de la page
+// faire une section de fin des animations
 // ajouter le code sur la page effect,
-// ajouter icones pour les filtres
-// refaire les meta de chaque pour un meilleur contenu
+// refaire les meta de chaque pour un meilleur contenu, verifier les sections Before/After sur chaque
 // faire les favoris avec storagesession
-// ajouter des animations de texte/hover/click/loader pas de scroll
-// remplacer le projet lorem agency par celui ci
-// faire/trouver mailleur design pour les cards about section
+// faire/trouver meilleur design pour les cards about section
