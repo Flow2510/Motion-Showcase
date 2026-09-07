@@ -8,6 +8,9 @@ import DiaporamaScrollingScale from "./diaporamascrollingscale/diaporamascrollin
 import diaporamaScrollingScale from "./diaporamascrollingscale/meta";
 import ImageScrollFlow from "./Imagescrollflow/imagescrollflow";
 import imageScrollFlow from "./Imagescrollflow/meta";
+import ImageToCards from "./imagetocards/imagetocards";
+
+import imageToCards from "./imagetocards/meta";
 import ListScale from "./listscale/listscale";
 import listScale from "./listscale/meta";
 import ListSlider from "./listslider/listslider";
@@ -28,6 +31,8 @@ import stripeWipe from "./stripewipe/meta";
 import StripeWipe from "./stripewipe/stripewipe";
 import svgDecay from "./svgdecay/meta";
 import SvgDecay from "./svgdecay/svgdecay";
+import svgHoverCards from "./svghovercards/meta";
+import SvgHoverCards from "./svghovercards/svghovercards";
 import tickerScale from "./tickerscale/meta";
 import TickerScale from "./tickerscale/tickerscale";
 import tighteningWordLines from "./tighteningwordlines/meta";
@@ -107,5 +112,13 @@ export const animations = [
     {
         ...stickyGridScroll,
         component: StickyGridScroll,
+    },
+    {
+        ...svgHoverCards,
+        component: SvgHoverCards,
+    },
+    {
+        ...imageToCards,
+        component: ImageToCards,
     }
 ]
