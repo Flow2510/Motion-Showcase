@@ -45,10 +45,12 @@ export default function ScreenReveal(){
                 width: 0,
                 duration: 1
             }, "<")
+
             .to(containerRef.current, {
                 opacity: 0,
                 duration: 0.3
             })
+            
             .call(() => {
                 setIsLoading(false)
             })

@@ -111,20 +111,20 @@ export default function AboutSection(){
                 x,
                 y,
                 rotateZ: () => gsap.utils.random(-90, 90),
-                duration: 2,
+                duration: 3,
                 ease: "power2.out",
             }, animationStart)
 
             tl.to(letter, {
                 opacity: 0,
-                duration: 0.5
+                duration: 1
             }, animationStart + 1.5)
         })
 
         tl.to(slider, {
             opacity: 1,
             yPercent: -50,
-            duration: 0.5
+            duration: 1
         }, animationStart - 0.1)
     }, { scope: sectionRef})
 

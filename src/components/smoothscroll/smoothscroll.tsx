@@ -9,7 +9,7 @@ export function useLenis() {
 }
 
 type SmoothScrollProps = {
-    children: ReactNode
+    readonly children: ReactNode
 }
 
 export default function SmoothScroll({

@@ -1,7 +1,7 @@
 import { motion } from "motion/react"
 
 export default function LandingSection(){
-    const title = "The Foundry Boxing & Fight Club"
+    const title = "Screen Reveal Loader"
     const words = title.split(' ')
 
     return(
@@ -10,7 +10,7 @@ export default function LandingSection(){
                 <video src="/videos/template-transition.mp4" className="h-dvh w-full object-cover" autoPlay muted loop></video>
             </div>
             <div className="relative">
-                <h2 className="flex flex-wrap gap-x-5 text-4xl text-neutral-50 max-w-100 md:max-w-160 md:text-6xl lg:max-w-200 lg:text-8xl justify-center uppercase leading-[100%] font-bold">
+                <h2 className="flex flex-wrap gap-x-5 text-4xl text-neutral-50 max-w-100 md:max-w-160 md:text-6xl lg:max-w-200 lg:text-8xl justify-center leading-[100%] font-bold">
                     {words.map((word, index) => (
                         <span key={index + word} className="inline-block overflow-hidden">
                             <motion.span

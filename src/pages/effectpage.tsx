@@ -70,11 +70,11 @@ export default function EffectPage({setFavoritesAnimations, favoritesAnimations,
                 <section className="flex justify-between w-full relative">
                     {isDesktop &&
                         <div 
-                            className="w-81 flex flex-col sticky top-25 justify-end pb-5 gap-2.5"
+                            className="w-81 flex-col sticky top-25 justify-end pb-5 gap-2.5 hidden xl:flex"
                             style={{ height: "calc(100dvh - 100px)"}}
                         >
                             <div>
-                                <button type="button" onClick={toggleToFavorite} className="w-8 h-8 cursor-pointer">
+                                <button type="button" onClick={toggleToFavorite} className="w-8 h-8 cursor-pointer hover:scale-[1.05] active:scale-[1.1]">
                                     <img src={isFavorite? "/icons/heart-filled.png" : "/icons/heart.png"} className="w-full h-full brightness-[100]" alt="" />
                                 </button>
                                 <nav className="flex flex-col">

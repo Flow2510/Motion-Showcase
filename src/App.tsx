@@ -17,7 +17,18 @@ import type { AnimationTypes } from './types/animation'
 function App() {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024)
-  const [favoritesAnimations, setFavoritesAnimations] = useState<AnimationTypes[]>([])
+  const [favoritesAnimations, setFavoritesAnimations] = useState<AnimationTypes[]>(() => {
+    try {
+      const saved = sessionStorage.getItem('favoritesAnimations')
+      return saved ? JSON.parse(saved) : []
+    } catch {
+      return [];
+    }
+  })
+
+  useEffect(() => {
+      sessionStorage.setItem("favoritesAnimations", JSON.stringify(favoritesAnimations));
+  }, [favoritesAnimations]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -60,9 +71,6 @@ function App() {
 
 export default App
 
-// faire une section pour indiquer qu'il faut scroll sur la page demo et pour indiquer la fin de la page
-// faire une section de fin des animations
-// ajouter le code sur la page effect,
 // refaire les meta de chaque pour un meilleur contenu, verifier les sections Before/After sur chaque
-// faire les favoris avec storagesession
 // faire/trouver meilleur design pour les cards about section
+// faire screen et video nouvelles animations

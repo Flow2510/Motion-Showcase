@@ -9,6 +9,7 @@ const accordionPanel = {
     video: "/videos/accordion-panel.mp4",
     color: "#ffafcc",
     image: '/images/accordion-panel.png',
+    alt: "Screenshot of the animation",
     description: "A simple expandable card layout built around a single active panel. Four cards are displayed side by side, with the selected card expanding to reveal its content while the others collapse into compact vertical tabs.",
     librairies: [
         "Tailwind",
@@ -33,10 +34,10 @@ const accordionPanel = {
         "When another card is clicked, its index becomes active and the layout automatically changes. The width and height transitions create the expanding accordion effect without requiring a complex animation timeline."
     ],
     animationMethods: [
-        "CSS",
+        "transition-duration",
     ],
     gsapCode: "",
-    githubLink: "",
+    githubLink: "https://github.com/Flow2510/Motion-Showcase/tree/main/src/animations/accordionpanel",
 }
 
 export default accordionPanel;

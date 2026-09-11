@@ -82,7 +82,7 @@ export default function CollectionCard({ animation, favoritesAnimations, setFavo
 
                         </video>
                     :
-                        <img src={animation.image} alt="" className="w-full h-full rounded-sm object-cover"/>
+                        <img src={animation.image} alt="" className="w-full h-full rounded-sm object-cover" loading="lazy"/>
                     }
                 </div>
                 {!isDesktop && 
@@ -100,12 +100,12 @@ export default function CollectionCard({ animation, favoritesAnimations, setFavo
                 }
                 {isDesktop && isHover &&
                     <button type="button" className="absolute right-4 top-4 w-10 h-10 p-2 text-neutral-950 cursor-pointer hover:scale-[1.1]" onClick={toggleToFavorite}>
-                        <img src={isFavorite? "/icons/heart-filled.png" : "/icons/heart.png"} alt="" className="w-full h-full" />
+                        <img src={isFavorite? "/icons/heart-filled.png" : "/icons/heart.png"} alt="" className="w-full h-full" loading="lazy"/>
                     </button>
                 }
                 {!isDesktop && 
                     <button type="button" className="absolute right-4 top-4 w-10 h-10 p-2 text-neutral-950" onClick={toggleToFavorite}>
-                        <img src={isFavorite? "/icons/heart-filled.png" : "/icons/heart.png"} className="w-full h-full" alt="" />
+                        <img src={isFavorite? "/icons/heart-filled.png" : "/icons/heart.png"} className="w-full h-full" alt="" loading="lazy"/>
                     </button>
                 }
             </div>

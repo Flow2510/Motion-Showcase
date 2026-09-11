@@ -77,10 +77,10 @@ export default function Footer() {
                         <p className='text-[13px] uppercase font-medium'>©2026 Build With Motion/Gsap</p>
                     </div>
                     <div>
-                        <a href={'https://www.google.com'} target="_blank">
+                        <a href={'https://sendra-florian.vercel.app/'} target="_blank">
                             <div className="text-xl tracking-tight flex gap-1 items-center justify-center font-bold">
                                 <div className="w-8 h-8 bg-black">
-                                    <img src="/public/icons/logo.jpg" className="w-full h-full object-cover" style={{ filter: 'invert(100)'}} alt="" />
+                                    <img src="/icons/logo.jpg" className="w-full h-full object-cover" style={{ filter: 'invert(100)'}} alt="" />
                                 </div>                       
                             </div>
                         </a>

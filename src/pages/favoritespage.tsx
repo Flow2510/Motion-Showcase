@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 import CollectionCard from "../components/collectioncard/collectioncard";
 import TextRevealHover from "../components/textrevealhover/textrevealhover";
 import type { AnimationTypes } from "../types/animation"
-import { animations } from "../animations";
 import { motion } from "motion/react";
+import Cards3dHover from "../components/cards3dhover/cards3dhover";
 
 type FavoritesProps={
     readonly setFavoritesAnimations: React.Dispatch<React.SetStateAction<AnimationTypes[]>>;
@@ -11,10 +11,6 @@ type FavoritesProps={
 }
 
 export default function FavoritesPage({ favoritesAnimations, setFavoritesAnimations } : FavoritesProps){
-    const randomAnimations = Array.from(
-        { length: 3 },
-        () => Math.floor(Math.random() * animations.length)
-    )
 
     return(
         <motion.main
@@ -60,19 +56,7 @@ export default function FavoritesPage({ favoritesAnimations, setFavoritesAnimati
                                 </NavLink>
                             </div>
                         </div>
-                        <div className="w-full flex flex-col items-center gap-5 max-w-100 m-auto md:max-w-none text-neutral-50 px-5 pt-15 pb-20 overflow-hidden">
-                            <div className="flex items-center gap-4 md:gap-10 lg:gap-12 xl:gap-16 mb-8 flex-wrap justify-center">
-                                <NavLink to={`/collection/${animations[randomAnimations[0]].name}`} className="w-22 aspect-square md:w-28 lg:w-32 xl:w-48 rounded-lg rotate-[-8deg] border border-neutral-600">
-                                    <img src={animations[randomAnimations[0]].image} className="w-full h-full object-cover rounded-lg" alt="" />
-                                </NavLink> 
-                                <NavLink to={`/collection/${animations[randomAnimations[1]].name}`} className="w-36 aspect-square md:w-40 lg:w-46 xl:w-64 rounded-lg rotate-[4deg] border border-neutral-600">
-                                    <video src={animations[randomAnimations[1]].video} autoPlay muted loop className="w-full h-full object-cover rounded-lg"></video>
-                                </NavLink>
-                                <NavLink to={`/collection/${animations[randomAnimations[2]].name}`} className="w-22 aspect-square md:w-28 lg:w-32 xl:w-48 rounded-lg rotate-12 border border-neutral-600">
-                                    <img src={animations[randomAnimations[2]].image} className="w-full h-full object-cover rounded-lg" alt="" />
-                                </NavLink>
-                            </div>
-                        </div>
+                        <Cards3dHover />
                     </div>
                 </section>
                 :
@@ -80,7 +64,7 @@ export default function FavoritesPage({ favoritesAnimations, setFavoritesAnimati
                     {favoritesAnimations.map((animation) => (
                         <div
                             key={animation.name}
-                            className="w-full md:w-[calc(50%-8px)] xl:w-[calc(33.333%-11px)] 2xl:w-[calc(25%-13px)]"
+                            className="w-full md:w-[calc(50%-8px)] xl:w-[calc(33.333%-11px)] 2xl:w-[calc(25%-13px)] text-neutral-50"
                         >
                             <CollectionCard
                                 favoritesAnimations={favoritesAnimations} 

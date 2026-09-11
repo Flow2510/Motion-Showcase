@@ -44,10 +44,6 @@ export default function TickerScale() {
         [0, distanceSecondTicker]
     )
 
-    useEffect(() => {
-        console.log(showCard)
-    }, [showCard])
-
     useMotionValueEvent(progressB, "change", (latest) => {
         if (latest > 0 && latest < 0.01) {
             const rect = cardRef.current?.getBoundingClientRect()

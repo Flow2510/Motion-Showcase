@@ -7,6 +7,7 @@ import { animations } from "../../animations";
 import { Autoplay } from "swiper/modules";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { NavLink } from "react-router-dom";
 
 type Props = {
     readonly isDesktop: boolean;
@@ -15,6 +16,7 @@ type Props = {
 export default function Hero({ isDesktop } : Props) {
     const [isDrag, setIsDrag] = useState(false)
     const [sliderIndex, setSliderIndex] = useState(0)
+    const sectionRef = useRef<HTMLElement>(null)
     const leftRef = useRef<HTMLDivElement>(null)
     const rightRef = useRef<HTMLDivElement>(null)
     const leftTitleRef = useRef<HTMLHeadingElement>(null)
@@ -96,11 +98,12 @@ export default function Hero({ isDesktop } : Props) {
             })
         }
         document.fonts.ready.then(init)
-    })
+    }, {scope: sectionRef})
 
     return(
         isDesktop ?
             <motion.section 
+                ref={sectionRef}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1}}
                 transition={{ duration: 0.5 }}
@@ -176,7 +179,7 @@ export default function Hero({ isDesktop } : Props) {
                                         className="p-5"
                                     >
                                         <h2 className="text-2xl w-fit lg:text-3xl">
-                                            #{String(animations[sliderIndex].id).padStart(3, "0")}
+                                            #{String(shuffledList[sliderIndex].id).padStart(3, "0")}
                                         </h2>
                                     </motion.div>
                                 :
@@ -210,7 +213,7 @@ export default function Hero({ isDesktop } : Props) {
                                         key={'drag-title'}
                                         className="p-5">
                                         <h2 className="text-2xl w-fit lg:text-3xl">
-                                            {animations[sliderIndex].title}
+                                            {shuffledList[sliderIndex].title}
                                         </h2>                        
                                     </motion.div>
                                 :
@@ -263,9 +266,9 @@ export default function Hero({ isDesktop } : Props) {
                                 <SwiperSlide                                    
                                     key={item.name}
                                 >
-                                    <div className="rounded-sm flex items-center justify-center h-full w-full relative" style={{ background: item.color }}>
+                                    <NavLink to={`/collection/${item.name}`} draggable={false} className="rounded-sm flex items-center justify-center h-full w-full relative" style={{ background: item.color }}>
                                         <video src={item.video} className="w-full h-full object-cover" muted autoPlay loop></video>
-                                    </div>
+                                    </NavLink>
                                 </SwiperSlide>
                             ))}
                         </Swiper>

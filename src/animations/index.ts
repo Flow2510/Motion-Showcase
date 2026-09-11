@@ -4,17 +4,22 @@ import AnimatedHero from "./animatedhero/animatedhero";
 import animatedHero from "./animatedhero/meta";
 import CardsFlowing from "./cardsflowing/cardsflowing";
 import cardsFlowing from "./cardsflowing/meta";
+import CircularStack from "./circularstack/circularstack";
+import circularStack from "./circularstack/meta";
 import DiaporamaScrollingScale from "./diaporamascrollingscale/diaporamascrollingscale";
 import diaporamaScrollingScale from "./diaporamascrollingscale/meta";
 import ImageScrollFlow from "./Imagescrollflow/imagescrollflow";
 import imageScrollFlow from "./Imagescrollflow/meta";
 import ImageToCards from "./imagetocards/imagetocards";
-
 import imageToCards from "./imagetocards/meta";
+import LandingPageReveal from "./landingpagereveal/landingpagereveal";
+import landingPageReveal from "./landingpagereveal/meta";
 import ListScale from "./listscale/listscale";
 import listScale from "./listscale/meta";
 import ListSlider from "./listslider/listslider";
 import listSlider from "./listslider/meta";
+import rotatingSlider from "./rotatingslider/meta";
+import RotatingSlider from "./rotatingslider/rotatingslider";
 import screenReveal from "./screenreveal/meta";
 import ScreenReveal from "./screenreveal/screenreveal";
 import scrollingSections from "./scrollingsections/meta";
@@ -120,5 +125,17 @@ export const animations = [
     {
         ...imageToCards,
         component: ImageToCards,
+    },
+    {
+        ...landingPageReveal,
+        component: LandingPageReveal,
+    },
+    {
+        ...rotatingSlider,
+        component: RotatingSlider,
+    }, 
+    {
+        ...circularStack,
+        component: CircularStack,
     }
 ]
