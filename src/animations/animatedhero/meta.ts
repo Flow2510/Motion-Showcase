@@ -9,38 +9,46 @@ const animatedHero = {
     color: "#e7c6ff",
     image: "/images/animated-hero.png",
     sourcePath: "animatedhero",
-    description: "A dynamic hero section enhanced with scroll-based animations that progressively transform the main visual elements as the user moves through the page. The combination of movement, scaling and layered transitions creates an engaging introduction to the website.",
+    alt: "Screenshot of the animation",
+    description: "A scroll-driven hero transition where a centered image progressively expands to fill the viewport before leading into a multi-column image composition. Different image columns move at varying speeds to create a layered sense of depth around the central content.",
     librairies: [
         "GSAP",
         "ScrollTrigger",
         "Tailwind",
     ],
     html: [
-        "The layout is centered around a full-screen hero section containing the main heading, supporting content and visual elements. The different parts of the hero are structured independently so they can be animated without affecting the overall layout.",
-        "The hero uses a layered composition with a main content container and visual elements positioned around it. This structure provides individual animation targets for the scroll interactions."
+        "The hero starts with a small centered image inside a full-screen sticky viewport. The image is wrapped in a dedicated container so its position, scale and border radius can be controlled independently during the scroll animation.",
+        "Below the hero, the layout is divided into multiple image columns surrounding a central text block. The left and right sides contain repeated image sequences, with the center columns using reversed data to create opposing visual patterns.",
+        "The surrounding section provides enough vertical space for the image expansion and keeps the first hero view sticky while the scroll-driven transition takes place."
     ],
     htmlCode: "",
     javascript: [
-        "The component selects the main hero elements and prepares their initial animation states when the section is mounted. Each element can have its own movement, scale or opacity behavior.",
-        "ScrollTrigger connects the hero animations to the user's scroll position. As the user moves away from the hero, the different elements progressively transform to create a smooth transition into the following section.",
-        "The animation logic coordinates several elements through a shared GSAP timeline, keeping the different movements synchronized while allowing each element to have its own transformation."
+        "The component uses refs to target the main image, sticky section, text content and image grid. The initial image scale is calculated from the viewport dimensions so that it already covers the entire screen before the animation starts.",
+        "A GSAP timeline connected to ScrollTrigger progressively reduces the image scale back to its original size while adding a rounded border radius. This creates the transition from a full-screen visual back to the smaller image.",
+        "A second ScrollTrigger timeline controls the image columns below the hero. Each column receives a different vertical movement, creating different scrolling speeds across the composition.",
+        "The central text is also repositioned during the column animation, allowing the content to move together with the surrounding image composition while maintaining its position between the different image streams."
     ],
     javascriptMethods: [
-        "useEffect",
-        "querySelector",
-        "gsap",
+        "useRef",
+        "useState",
+        "useGSAP",
+        "gsap.timeline",
+        "gsap.set",
         "ScrollTrigger"
     ],
     javascriptCode: "",
     animation: [
-        "The hero elements react progressively to scrolling through a combination of translations, scaling and opacity changes. The main visual can move or scale while the surrounding content transitions at a different speed to create depth.",
-        "GSAP handles the individual transformations while ScrollTrigger controls their progress based on the scroll position. The overlapping movements create a fluid transition from the hero into the rest of the page."
+        "The initial image is scaled up so that it covers the entire viewport. As the user scrolls, the scale progressively returns to its natural size while the image becomes rounded, creating a smooth transition from a full-screen hero to a contained visual.",
+        "Once the image transition is complete, the surrounding image columns begin moving vertically at different speeds. The left and right columns travel further than the inner columns, producing a layered depth effect.",
+        "The center image sequences use reversed content to create visual symmetry between the different columns. Their different movement percentages make the composition feel dynamic without requiring each image to have its own timeline.",
+        "The entire sequence is controlled by scroll progress through scrubbed GSAP timelines, allowing the expansion, contraction and column movements to remain directly synchronized with the user's scrolling."
     ],
     animationMethods: [
-        "GSAP",
-        "ScrollTrigger",
-        "Timeline",
-        "Parallax",
+        "Scale",
+        "Border Radius",
+        "Scroll Scrub",
+        "Different Speeds",
+        "Staggered Movement"
     ],
     gsapCode: "",
     githubLink: "",

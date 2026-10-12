@@ -1,46 +1,54 @@
-const svgHoverCards = {
-    name: "svg-hover-cards",
+const svgHoverCard = {
+    name: "svg-hover-card",
     sectionBefore: true,
     sectionAfter: true,
     id: 19,
-    title: "Svg Hover Cards",
+    title: "SVG Hover Card",
     category: "Hover",
     video: "/videos/svg-hover-cards.mp4",
-    color: "#90e0ef",
+    color: "#cdb4db",
     image: "/images/svg-hover-cards.png",
-    sourcePath: "svghovercards",
-    description: "make content",
+    sourcePath: "svghovercard",
+    alt: "Screenshot of the animation",
+    description: "An interactive image card that reveals animated SVG strokes on hover. The strokes progressively draw themselves across the image while increasing in thickness, followed by a word-by-word title reveal that completes the interaction.",
     librairies: [
         "GSAP",
-        "ScrollTrigger",
+        "Framer Motion",
     ],
     html: [
-        "The layout contains an SVG element inside a dedicated scroll section. The SVG is composed of paths or shapes that can be individually targeted and transformed during the animation.",
-        "The graphic is placed inside a container that provides the required scrolling space. Its SVG elements remain structured independently so their position, scale or opacity can be modified without rebuilding the graphic."
+        "The card contains a full-size background image with two layered SVG paths positioned over it. The paths use the card color and a contrasting white stroke to create the visual hover effect.",
+        "The card title is conditionally rendered when the pointer enters the card. Each word is wrapped individually so its vertical entrance and exit can be animated independently."
     ],
     htmlCode: "",
     javascript: [
-        "The component selects the SVG elements and prepares their initial properties before the scroll animation starts. Each path or shape can then receive its own transformation during the decay effect.",
-        "ScrollTrigger synchronizes the SVG transformations with the user's scroll progress. As the section moves through the viewport, the individual elements progressively move away from their original positions.",
-        "The animation uses the same setup across the SVG elements while allowing variations in movement, rotation and timing to make the decay feel organic rather than perfectly uniform."
+        "The component stores a reference to the card and keeps track of the hover state. When the component mounts, each SVG path is measured and its stroke dash properties are initialized so the paths start completely hidden.",
+        "On mouse enter, a GSAP timeline animates every SVG path from its hidden dash offset to its full length while simultaneously increasing its stroke width. Any previous timeline is stopped before starting the new hover animation.",
+        "On mouse leave, the same paths are animated back to their initial dash offset and thinner stroke width. The hover state is also reset, causing the title to leave through its Framer Motion exit animation."
     ],
     javascriptMethods: [
-        "useEffect",
+        "useRef",
+        "useState",
+        "useGSAP",
         "querySelectorAll",
-        "gsap",
-        "ScrollTrigger"
+        "getTotalLength",
+        "gsap.timeline",
+        "AnimatePresence"
     ],
     javascriptCode: "",
     animation: [
-        "The decay effect is created by progressively transforming the individual SVG paths or shapes. Elements can move, rotate, scale or fade away from their original position as the user scrolls.",
-        "GSAP controls the transformations while ScrollTrigger links them to the scroll progress. Small variations between the elements create a fragmented and dynamic result as the original SVG gradually loses its initial form."
+        "The SVG paths begin with their entire length hidden through stroke-dashoffset. When the card is hovered, the dashoffset animates toward zero, progressively drawing the paths across the image.",
+        "At the same time, the SVG strokes become significantly thicker, transforming the thin decorative lines into a more prominent visual overlay. Two paths are animated simultaneously, with one rotated to create a layered composition.",
+        "The card title appears only while hovered. Each word slides vertically into view with a small delay between words, while leaving the card reverses the sequence and hides the title again."
     ],
     animationMethods: [
-        "GSAP",
-        "ScrollTrigger",
-        "SVG Transform",
+        "SVG Stroke",
+        "Stroke Dashoffset",
+        "Stroke Width",
+        "Draw",
+        "Stagger",
+        "TranslateY",
     ],
     gsapCode: "",
     githubLink: "",
 }
-export default svgHoverCards;
+export default svgHoverCard;

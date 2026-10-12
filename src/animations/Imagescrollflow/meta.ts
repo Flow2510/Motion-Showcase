@@ -9,36 +9,47 @@ const imageScrollFlow = {
     color: "#72ddf7",
     image: "/images/image-scroll-flow.png",
     sourcePath: "imagescrollflow",
-    description: "A scroll-driven image animation where visuals smoothly move through the viewport as the user scrolls. The images follow a continuous flow that creates depth and movement while keeping the content connected to the scrolling experience.",
+    description: "A scroll-driven stream of images flowing horizontally across the viewport. Each image appears at a random size and depth, scales in and out while drifting vertically, and travels from right to left in a staggered sequence, creating a continuous river-like flow of visuals as the user scrolls.",
     librairies: [
         "GSAP",
         "ScrollTrigger",
+        "@gsap/react",
     ],
     html: [
-        "The layout is built around a collection of image elements placed inside a dedicated scrolling section. Each image is wrapped in its own container so its position, size and movement can be controlled independently.",
-        "The images are arranged along the scrolling area to create a continuous visual composition. The parent container provides the space required for the animation while each image acts as an individual animation target."
+        "The layout duplicates the article list four times to generate a large pool of image items, each rendered as an absolutely positioned square anchored to the right side of a sticky full-screen container.",
+        "The section itself is very tall to provide enough scroll distance for the whole staggered sequence to play out, while the sticky inner container keeps the images visible in a fixed viewport throughout."
     ],
     htmlCode: "",
     javascript: [
-        "The component selects the image elements and prepares their initial positions before the scroll animation starts. Each image can then be transformed according to its position within the scrolling section.",
-        "ScrollTrigger links the image movement directly to the user's scroll progress. As the section moves through the viewport, the images are translated or scaled to create the flowing visual effect.",
-        "The animation logic is reused for the entire image collection, allowing multiple images to move with the same overall behavior while maintaining individual positions and timing."
+        "A single GSAP timeline is driven by a scrubbed ScrollTrigger spanning nearly the entire height of the section, so the whole staggered animation progresses in sync with scroll position rather than playing automatically.",
+        "The fromTo call assigns each image a random starting height, width, z-index and a zero scale using gsap.utils.random, with the random ranges adapted depending on whether the layout is detected as desktop or mobile via window.innerWidth.",
+        "Each image is animated through two keyframes: first scaling up to full size while moving to a random vertical offset, then scaling back down to zero and returning to its original vertical position, while horizontally translating across the full viewport width with a stagger between items."
     ],
     javascriptMethods: [
-        "useEffect",
-        "querySelectorAll",
-        "gsap",
-        "ScrollTrigger"
+        "useRef",
+        "useState",
+        "useGSAP",
+        "gsap.timeline",
+        "gsap.utils.random",
+        "tl.fromTo",
+        "keyframes",
+        "stagger",
+        "ScrollTrigger",
     ],
     javascriptCode: "",
     animation: [
-        "The images move progressively as the user scrolls, creating a smooth flow between different positions in the composition. Transforms such as translate, scale or rotation can be combined to give the movement more depth.",
-        "The animation is directly connected to scroll progress, making the images respond naturally to the user's movement. GSAP handles the transformations while ScrollTrigger keeps the animation synchronized with the viewport."
+        "Each image starts invisible at scale 0, with a randomized size and stacking order, positioned on the right edge of the screen.",
+        "As the scroll progresses, every image scales up while drifting to a random vertical position, then scales back down to zero and resets its vertical offset, all while continuously translating horizontally from right to left across the viewport.",
+        "The stagger between each image's timeline creates a continuous flowing stream rather than a single simultaneous movement, giving the impression of images drifting past at different depths and speeds."
     ],
     animationMethods: [
-        "GSAP",
-        "ScrollTrigger",
-        "Transform",
+        "Translate X",
+        "Translate Y",
+        "Scale",
+        "Random Values",
+        "Stagger",
+        "Keyframes",
+        "Scrub",
     ],
     gsapCode: "",
     githubLink: "",

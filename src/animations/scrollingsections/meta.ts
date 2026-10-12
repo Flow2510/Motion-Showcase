@@ -9,36 +9,39 @@ const scrollingSections = {
     color: "#a7c957",
     image: "/images/scrolling-sections.png",
     sourcePath: "scrollingsections",
-    description: "A scroll-based section transition where each section moves into view as the user progresses through the page. The layout creates a continuous sequence of full-screen sections with smooth movement and controlled transitions between each part.",
+    description: "A scroll-driven stacked cards layout where each full-screen section sticks to the top of the viewport while the following section slides over it. As a new card covers the previous one, the covered card tilts back in 3D, shrinks, darkens and fades away, creating a continuous stacking effect down the page.",
     librairies: [
-        "GSAP",
-        "ScrollTrigger",
+        "Motion",
     ],
     html: [
-        "The layout is composed of multiple full-screen sections stacked vertically inside a main scrolling container. Each section contains its own content and visual elements while following the same structural pattern.",
-        "The sections are organized to create a continuous scrolling experience. Their containers provide the necessary space for the scroll interaction while the individual sections act as animation targets."
+        "The layout is composed of a parent container mapping over an article list, rendering one tall section per item, each containing a sticky full-height card with a title, an index number, an image and a description.",
+        "Every card except the last one is set up to receive 3D transforms, while the final card in the list is left static so the stacking sequence has a clean resting point at the end."
     ],
     htmlCode: "",
     javascript: [
-        "The component selects the different sections and prepares them for scroll-based animation. Each section is associated with its position in the page so the transition can be triggered at the appropriate moment.",
-        "ScrollTrigger connects the movement of each section to the user's scroll position. This allows the sections to animate progressively as they enter or leave the viewport.",
-        "The same animation setup is reused across the section collection, keeping the behavior consistent while allowing each section to contain different content."
+        "Each section holds a ref used by useScroll, which tracks scrollYProgress between the offsets \"end end\" and \"end start\", meaning the progress value evolves specifically while the section is being scrolled past and covered by the next one.",
+        "Several useTransform hooks derive rotateX, rotateZ, scale, vertical translation, opacity and a brightness filter from that scroll progress, alternating the rotateZ direction depending on whether the card's index is even or odd.",
+        "All transformed style values are conditionally applied only when the card is not the last item in the list, and each card receives an incremental z-index based on its index so newer cards stack visually above older ones."
     ],
     javascriptMethods: [
-        "useEffect",
-        "querySelectorAll",
-        "gsap",
-        "ScrollTrigger"
+        "useRef",
+        "useScroll",
+        "useTransform",
+        "motion.div",
     ],
     javascriptCode: "",
     animation: [
-        "Each section moves through the viewport as the user scrolls, creating smooth transitions from one full-screen block to the next. The movement can combine translations, scaling or opacity changes depending on the desired visual effect.",
-        "ScrollTrigger controls the progress of the animations based on the scroll position. This keeps the transitions synchronized with the user's movement and creates a fluid scrolling sequence."
+        "As the user scrolls past a card, it progressively rotates on the X and Z axes inside a 3D perspective container, giving it a subtle tilting-back motion as if it were being pushed down under the next card.",
+        "At the same time the card scales down, moves downward, and its brightness darkens, while its opacity only drops sharply at the very end of the scroll range so it disappears just before being fully covered.",
+        "Because every section is sticky within its own tall scroll container, the next card's section naturally overlaps and covers the previous one, producing a continuous sequence of cards stacking on top of each other."
     ],
     animationMethods: [
-        "GSAP",
-        "ScrollTrigger",
-        "CSS",
+        "3D Rotation",
+        "Scale",
+        "Translate Y",
+        "Opacity",
+        "Brightness Filter",
+        "Sticky Stacking",
     ],
     gsapCode: "",
     githubLink: "",

@@ -78,34 +78,3 @@ export default function FavoritesPage({ favoritesAnimations, setFavoritesAnimati
         </motion.main>
     )
 }
-
-
-
-{/* <section className="w-full flex flex-col items-center gap-5 max-w-100 m-auto md:max-w-none text-neutral-50 px-5 pt-15 pb-20">
-                    <div className="flex items-center gap-4 md:gap-6 lg:gap-8 xl:gap-10 mb-8 flex-wrap justify-center">
-                        <NavLink to={`/collection/${animations[15].name}`} className="w-22 aspect-square md:w-24 lg:w-28 xl:w-32 rounded-lg rotate-[-8deg]">
-                            <img src={animations[15].image} className="w-full h-full object-cover rounded-lg" alt="" />
-                        </NavLink> 
-                        <NavLink to={`/collection/${animations[13].name}`} className="w-28 aspect-square md:w-32 lg:w-38 xl:w-48 rounded-lg rotate-[4deg]">
-                            <video src={animations[13].video} autoPlay muted className="w-full h-full object-cover rounded-lg"></video>
-                        </NavLink>
-                        <NavLink to={`/collection/${animations[14].name}`} className="w-22 aspect-square md:w-24 lg:w-28 xl:w-32 rounded-lg rotate-12">
-                            <img src={animations[14].image} className="w-full h-full object-cover rounded-lg" alt="" />
-                        </NavLink>
-                    </div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-neutral-400">
-                        Your collection is empty
-                    </p>
-                    <h2 className="text-3xl md:text-5xl font-medium">
-                        Nothing saved yet.
-                    </h2>
-                    <p className="max-w-md text-sm text-neutral-500 text-center">
-                        Discover animations and save the ones you want to keep
-                        for later.
-                    </p>
-                    <NavLink to={'/collection'} className="relative flex items-center justify-end gap-1.5 bg-lime-300 rounded-full px-5 h-12 cursor-pointer group text-neutral-950">
-                        <TextRevealHover
-                            text="Collection"
-                        />
-                    </NavLink>
-                </section> */}

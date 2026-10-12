@@ -9,36 +9,43 @@ const cardsFlowing = {
     color: "#cdb4db",
     image: "/images/cards-flowing.png",
     sourcePath: "cardsflowing",
-    description: "A scroll-driven card animation where a collection of cards continuously flows through the viewport. The cards move and transition between different positions as the user scrolls, creating a smooth and fluid visual sequence.",
+    description: "A scroll-driven horizontal card carousel where a duplicated row of cards translates across the full width of the screen inside a 3D perspective container. As the row scrolls past, each card tips forward from below and later flips away with a reversed stagger, creating a wave-like 3D flip effect.",
     librairies: [
         "GSAP",
         "ScrollTrigger",
+        "@gsap/react",
     ],
     html: [
-        "The layout contains a collection of cards inside a dedicated animation container. Each card follows the same structure and can contain text, images or other content depending on the item.",
-        "The cards are arranged in a way that allows them to move freely through the viewport. The parent container provides the scrolling area while the individual cards act as independent animation targets."
+        "The layout duplicates the article list once to fill a horizontal row of cards, all placed inside a flex container that sits within a perspective-enabled, overflow-hidden sticky viewport.",
+        "Each card is a fixed-size rounded rectangle displaying an image, with 3D transform capabilities enabled on both the row container and the individual cards so they can be rotated in space."
     ],
     htmlCode: "",
     javascript: [
-        "The component selects all cards and prepares them for scroll-based animation. Each card is assigned a position within the animation so the elements can move continuously while the user scrolls.",
-        "ScrollTrigger connects the card movement to the scroll progress. As the user moves through the section, the cards are translated, rotated or repositioned to create the flowing effect.",
-        "The animation logic is shared between all cards, making it possible to control the entire sequence from a single reusable setup while keeping each card's movement independent."
+        "On mount, the component measures the row's full scrollable width against the viewport width, then positions the row fully off-screen to the left using gsap.set, while every card is set to an initial rotated and vertically offset state with rotateX and yPercent.",
+        "Two separate GSAP timelines share the same ScrollTrigger configuration on the section, one driving the horizontal translation of the whole row from its off-screen position to fully off-screen on the right, the other animating each card's 3D flip.",
+        "The cards timeline loops through every card in reverse order, tweening each one's yPercent and rotateX back to neutral, offset by a small delay per reversed index so the last cards in the row animate first, creating a staggered wave across the row."
     ],
     javascriptMethods: [
-        "useEffect",
-        "querySelectorAll",
-        "gsap",
-        "ScrollTrigger"
+        "useRef",
+        "useGSAP",
+        "gsap.timeline",
+        "gsap.set",
+        "gsap.utils.toArray",
+        "ScrollTrigger",
     ],
     javascriptCode: "",
     animation: [
-        "The cards move along different positions or paths as the section progresses through the viewport. Their movement is synchronized with scrolling to create a continuous flowing composition rather than a simple entrance animation.",
-        "GSAP controls the transforms applied to each card while ScrollTrigger determines the animation progress. Different delays, rotations and translations can be combined to give each card a slightly different trajectory."
+        "The entire row of cards is dragged horizontally across the screen as the user scrolls, moving from fully off-screen on the left to fully off-screen on the right over the course of the section.",
+        "At the same time, each card starts tilted backward and pushed downward in 3D space, then straightens up into its flat resting position as its turn comes up in the staggered sequence.",
+        "The stagger is applied in reverse card order, so the flipping motion appears to ripple backward through the row rather than progressing card by card in a straightforward line, reinforcing the sense of a continuous flowing wave."
     ],
     animationMethods: [
-        "GSAP",
-        "ScrollTrigger",
-        "Transform",
+        "Translate X",
+        "3D Rotation",
+        "Perspective",
+        "Reversed Stagger",
+        "Timeline Sequencing",
+        "Scrub",
     ],
     gsapCode: "",
     githubLink: "",

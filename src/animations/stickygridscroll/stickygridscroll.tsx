@@ -39,9 +39,13 @@ export default function StickyGridScroll() {
             }
         })
 
-        gsap.set([...leftCards, ...rightCards], { y: colHeight })
+        gsap.set(leftCards, { y: colHeight })
+        gsap.set(rightCards, { y: colHeight })
         gsap.set(centerCards, { y: -colHeight })
         gsap.set(container, { autoAlpha: 1 })
+        gsap.set(".text-content", {
+            scale: 0
+        })
 
         leftCards.forEach((card, index) => {
             colTl.to(card, {
@@ -81,7 +85,7 @@ export default function StickyGridScroll() {
             xPercent: 40
         }, "<")
 
-        const splitStart = colTl.duration() - 0.4
+        const splitStart = colTl.duration() - 0.5
 
         centerCards.forEach((card, index) => {
             colTl.to(card, {

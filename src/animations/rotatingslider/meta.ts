@@ -4,44 +4,50 @@ const rotatingSlider = {
     sectionAfter: true,
     id: 22,
     title: "Rotating Slider",
-    category: "Loader",
+    category: "Drag",
     video: "/videos/rotating-slider.mp4",
-    color: "#c1ff9b",
+    color: "#cdb4db",
     image: "/images/rotating-slider.png",
     sourcePath: "rotatingslider",
-    description: "make content",
+    alt: "Screenshot of the animation",
+    description: "A draggable image slider built around a rotating stack of cards. The cards appear progressively from a compact rotated state before the entire slider settles into its final vertical layout, creating a playful entrance animation with an interactive drag gesture.",
     librairies: [
         "GSAP",
-        "ScrollTrigger",
+        "Motion",
+        "Tailwind",
     ],
     html: [
-        "The layout contains a collection of cards inside a dedicated animation container. Each card follows the same structure and can contain text, images or other content depending on the item.",
-        "The cards are arranged in a way that allows them to move freely through the viewport. The parent container provides the scrolling area while the individual cards act as independent animation targets."
+        "The layout is built around a vertical collection of image cards displayed inside a full-screen section. The cards alternate between two sizes to create a varied composition while each item uses its own image and background color.",
+        "The complete card list is wrapped inside a draggable Motion container. Vertical drag constraints are calculated from the container height so the user can move through the duplicated list without freely dragging it outside its intended area."
     ],
     htmlCode: "",
     javascript: [
-        "The component selects all cards and prepares them for scroll-based animation. Each card is assigned a position within the animation so the elements can move continuously while the user scrolls.",
-        "ScrollTrigger connects the card movement to the scroll progress. As the user moves through the section, the cards are translated, rotated or repositioned to create the flowing effect.",
-        "The animation logic is shared between all cards, making it possible to control the entire sequence from a single reusable setup while keeping each card's movement independent."
+        "The component duplicates the image data to create a continuous-looking list and uses a ref to measure the slider container. The measured height is stored in state and used to calculate the vertical drag boundaries.",
+        "GSAP initializes every card with a small scale and a 90-degree rotation while the slider container itself starts rotated by -90 degrees. The cards are then progressively made visible using a staggered sequence.",
+        "The timeline rotates the entire container back to its natural position while the cards simultaneously scale up and rotate to their final state. Motion then handles the interactive vertical dragging once the entrance animation is complete."
     ],
     javascriptMethods: [
         "useEffect",
-        "querySelectorAll",
-        "gsap",
-        "ScrollTrigger"
+        "useRef",
+        "useState",
+        "useGSAP",
+        "gsap.timeline",
+        "motion"
     ],
     javascriptCode: "",
     animation: [
-        "The cards move along different positions or paths as the section progresses through the viewport. Their movement is synchronized with scrolling to create a continuous flowing composition rather than a simple entrance animation.",
-        "GSAP controls the transforms applied to each card while ScrollTrigger determines the animation progress. Different delays, rotations and translations can be combined to give each card a slightly different trajectory."
+        "The entrance starts with the complete card column rotated by -90 degrees while each card is hidden, scaled down and rotated by 90 degrees. The cards progressively become visible with a short stagger.",
+        "The container then rotates from -90 degrees back to 0 while the cards grow from their small scale to their normal size and rotate back to 0 degrees. The overlapping timing makes the cards and their container settle into place together.",
+        "Once the entrance sequence is complete, the card column can be dragged vertically. The duplicated list and calculated drag constraints allow the user to move through the collection while keeping the interaction contained within the slider."
     ],
     animationMethods: [
-        "GSAP",
-        "ScrollTrigger",
-        "Transform",
+        "RotateZ",
+        "Scale",
+        "Stagger",
+        "Drag",
+        "Drag Constraints",
     ],
     gsapCode: "",
     githubLink: "",
 }
-
 export default rotatingSlider;

@@ -10,31 +10,37 @@ const accordionPanel = {
     color: "#ffafcc",
     image: '/images/accordion-panel.png',
     alt: "Screenshot of the animation",
-    description: "A simple expandable card layout built around a single active panel. Four cards are displayed side by side, with the selected card expanding to reveal its content while the others collapse into compact vertical tabs.",
+    description: "A responsive accordion where four cards sit side by side on desktop and stacked vertically on mobile, with the active card expanding to fill the available space while the others collapse into narrow tabs, one showing its title rotated on its side, the other keeping it horizontal.",
     librairies: [
-        "Tailwind",
+        "Motion",
     ],
     html: [
-        "The layout is made of four buttons displayed in a horizontal flex container. Each item can either render as a compact vertical tab or as the currently expanded panel.",
-        "The active panel contains its title, image and description, while the inactive panels only display their title vertically. The same structure is reused for every item."
+        "The component renders one of two full layouts depending on viewport width: a horizontal row of buttons on desktop where inactive tabs are narrow rounded pills with a rotated title, or a vertical stack on mobile where inactive tabs stay horizontal and simply shrink in height.",
+        "In both layouts, the active button expands to show the full card content — a title, an image and a description — while every inactive button only renders its title, styled with the item's own background and text color."
     ],
     htmlCode: "",
     javascript: [
-        "The component keeps track of the currently active card with a single state. This index determines which item should be rendered as the expanded panel.",
-        "Clicking a card updates the index with the position of the clicked item. React then re-renders the list and moves the expanded state to the new card.",
-        "There is no complex interaction logic here: the animation is mostly driven by the layout changing between the active and inactive states."
+        "A resize event listener updates an isDesktop boolean state whenever the window crosses the 768px breakpoint, which determines which of the two JSX layouts is rendered.",
+        "A single accordionIndex state tracks which of the first four article items is currently active, defaulting to the first one on mount.",
+        "Clicking any button, active or inactive, calls setAccordionIndex with that button's index, causing React to re-render the list with the new item expanded and the previous one collapsed back into a tab."
     ],
     javascriptMethods: [
         "useState",
-        "onClick"
+        "useEffect",
+        "addEventListener",
+        "onClick",
     ],
     javascriptCode: "",
     animation: [
-        "The four cards share the available space using flexbox. The active card receives the remaining space with a flexible width, while the inactive cards keep a fixed narrow width.",
-        "When another card is clicked, its index becomes active and the layout automatically changes. The width and height transitions create the expanding accordion effect without requiring a complex animation timeline."
+        "The expansion effect relies entirely on CSS width, height and border-radius changes transitioning over duration-300 as the active index changes, rather than an explicit JavaScript-driven animation.",
+        "On desktop, the active card grows to fill the full width and height of the row while inactive cards shrink to a fixed 100px-wide rounded pill, with their title rotated -90 degrees to read vertically.",
+        "On mobile, the same active/inactive distinction plays out vertically instead, with inactive tabs collapsing to a fixed 80px height while keeping their title horizontal, and the active card expanding to fill the remaining vertical space."
     ],
     animationMethods: [
-        "transition-duration",
+        "CSS Transition",
+        "Width/Height Toggle",
+        "Border Radius Toggle",
+        "Responsive Layout Switch",
     ],
     gsapCode: "",
     githubLink: "https://github.com/Flow2510/Motion-Showcase/tree/main/src/animations/accordionpanel",

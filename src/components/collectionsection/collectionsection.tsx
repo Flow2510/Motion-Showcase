@@ -42,7 +42,7 @@ export default function CollectionSection({isDesktop, favoritesAnimations, setFa
                         <motion.div 
                             {...(!isDesktop && {
                                 drag: "x",
-                                dragConstraints: { left: -400, right: 0 },
+                                dragConstraints: { left: -565, right: 0 },
                                 onDragStart: () => {
                                     isDragging.current = true;
                                 },

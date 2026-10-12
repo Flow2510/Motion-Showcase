@@ -1,6 +1,6 @@
 const stickyGridScroll = {
     name: "sticky-grid-scroll",
-    sectionBefore: false,
+    sectionBefore: true,
     sectionAfter: false,
     id: 18,
     title: "Sticky Grid Scroll",
@@ -10,21 +10,21 @@ const stickyGridScroll = {
     color: "#...",
     textcolor: "#...",
     sourcePath: "stickygridscroll",
-    description: "A scroll-driven image composition built around a sticky three-column grid. The images progressively move into view from opposite directions before the entire composition scales and opens up to reveal the content underneath.",
+    alt: "Screenshot of the animation",
+    description: "A scroll-driven image composition built around a sticky three-column grid. Images enter the layout from different directions before the grid expands and separates to reveal the content beneath.",
     librairies: [
         "GSAP",
         "ScrollTrigger",
     ],
     html: [
-        "The layout is composed of three vertical columns containing a series of square images. The central column uses the same images in reverse order to create a contrasting movement between the columns.",
-        "The grid and its content are kept inside a sticky viewport, while the surrounding section provides enough scroll space for the entire sequence to unfold progressively."
+        "The layout is organized into three vertical columns containing multiple image cards. The columns are positioned inside a sticky viewport so the grid remains fixed while the surrounding section provides the scroll distance for the animation.",
+        "The center column uses a reversed image order to create a different visual flow from the outer columns. The images are individually targeted so each column can be animated with its own direction and stagger."
     ],
     htmlCode: "",
     javascript: [
-        "The animation is controlled by a single GSAP timeline connected to the section scroll progress. Each image is initially positioned outside the visible grid and brought into place as the user scrolls.",
-        "The left and right columns enter from below, while the center column enters from above. The center cards use a reversed stagger so that their movement follows the opposite visual direction.",
-        "Once the grid is assembled, the container scales up while the outer columns move away from the center. The central cards then split vertically, creating space around the text content.",
-        "The final text scale is synchronized with the split to make the transition from the image composition to the content feel like one continuous movement."
+        "The component uses references and GSAP selectors to target the grid, its columns and individual images. The animation is built as a single timeline connected to the section scroll progress through ScrollTrigger.",
+        "The images are initially positioned outside their final locations. The left and right columns animate upward into the grid while the center column moves downward, with staggered timing applied to the individual cards.",
+        "Once the images have formed the grid, the composition scales up and the outer columns move away from the center. The central cards then separate vertically, progressively exposing the content positioned behind the grid."
     ],
     javascriptMethods: [
         "useRef",
@@ -34,15 +34,18 @@ const stickyGridScroll = {
     ],
     javascriptCode: "",
     animation: [
-        "The images start outside the viewport and progressively slide into their final positions. A small delay between each card creates a staggered movement while keeping the three columns visually connected.",
-        "The center column moves in the opposite direction and uses a reversed order, giving the grid a more dynamic rhythm as the images settle into place.",
-        "After the grid is assembled, the whole composition scales up while the left and right columns move outward. The central cards then separate vertically, revealing the content positioned underneath.",
-        "All of these movements are tied to the scroll position through ScrollTrigger and scrub, allowing the user to control the progression of the animation directly."
+        "The three columns begin with their images offset outside the final composition. As the user scrolls, the cards slide into position with a staggered rhythm, progressively building the complete grid.",
+        "The outer columns move upward while the center column follows the opposite direction. Reversing the order of the center cards reinforces the opposing movement and gives the composition a more dynamic visual rhythm.",
+        "After the grid is assembled, the entire composition scales forward while the outer columns move away from the center. The middle cards then split vertically, creating an opening that reveals the content underneath.",
+        "The animation is tied directly to scroll progress, so every movement can be controlled by scrolling through the section rather than playing as an independent sequence."
     ],
     animationMethods: [
-        "gsap.set",
-        "gsap.timeline",
-        "gsap.to",
+        "TranslateY",
+        "Scale",
+        "Stagger",
+        "Reverse Order",
+        "Split",
+        "Sticky Position",
     ],
     gsapCode: "",
     githubLink: "",

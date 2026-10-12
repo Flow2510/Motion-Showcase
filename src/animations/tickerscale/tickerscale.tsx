@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import article from '../../data/article.json'
 import { useScroll, useTransform } from 'motion/react'
 import { motion, useMotionValueEvent } from 'framer-motion'

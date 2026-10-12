@@ -4,6 +4,7 @@ import AboutSection from "../components/aboutsection/aboutsection";
 import Cta from "../components/cta/cta";
 import Hero from "../components/hero/hero";
 
+
 type Props = {
     readonly isDesktop: boolean;
 }
@@ -18,7 +19,7 @@ export default function HomePage({ isDesktop } : Props) {
             transition={{ duration: 0.3 }}
             className=""
         >
-            <Hero
+            <Hero 
                 isDesktop={isDesktop}
             />
             <Cta />

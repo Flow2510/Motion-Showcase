@@ -9,35 +9,44 @@ const titleRandomReveal = {
     color: "#f6ac69",
     image: "/images/title-random-reveal.png",
     sourcePath: "titlerandomreveal",
-    description: "A text reveal animation where the characters of a title appear progressively in a randomized order. The effect creates an unpredictable and playful entrance while keeping the final typography clean and readable.",
+    description: "A scroll-driven text reveal where the letters of a title appear in a randomized order before scattering away to reveal a card underneath. The combination of random sequencing, radial movement and rotation creates a playful transition from typography to visual content.",
     librairies: [
         "GSAP",
+        "ScrollTrigger",
     ],
     html: [
-        "The layout is built around a title whose characters are separated into individual elements. Wrapping each character independently makes it possible to control its visibility, opacity or position during the reveal.",
-        "The characters remain inside a common text container so the final title keeps its original typography and alignment. Each character acts as an independent animation target while preserving the overall structure of the heading."
+        "The layout contains a large title split into separate lines and individual letter elements. Each character is wrapped independently so it can be revealed, moved and hidden without affecting the other characters.",
+        "A card is positioned behind the title and starts outside the visible area. It becomes part of the animation later in the sequence, creating a transition from the text composition to the visual content."
     ],
     htmlCode: "",
     javascript: [
-        "The component splits the title into individual characters and prepares them for animation. The characters are collected into an array so their animation order can be randomized before the reveal starts.",
-        "GSAP animates each character independently, progressively changing its opacity, position or visibility. A randomized sequence makes the title reveal in a different order instead of following the natural reading direction.",
-        "Once all characters have been revealed, the animation reaches its final state and the title remains fully visible without requiring additional interaction logic."
+        "The component selects each title line and collects its individual letters. The letters are shuffled independently so their reveal order is different from the natural reading order.",
+        "A GSAP timeline controls the initial reveal by progressively changing each letter from hidden to visible. All lines are added to the same timeline so the complete title can appear as one coordinated sequence.",
+        "A second timeline prepares the exit animation. Each letter receives a position calculated around a circular path, then moves away from the center while rotating and fading out.",
+        "When the title starts leaving the screen, the card moves upward into view. ScrollTrigger is used to trigger this second transition near the end of the section."
     ],
     javascriptMethods: [
-        "useEffect",
-        "split",
-        "map",
-        "gsap"
+        "useRef",
+        "useGSAP",
+        "querySelectorAll",
+        "gsap.utils.shuffle",
+        "gsap.timeline",
+        "ScrollTrigger.create",
     ],
     javascriptCode: "",
     animation: [
-        "The reveal starts with the individual characters hidden or offset from their final position. They then appear one by one in a randomized order until the complete title is visible.",
-        "GSAP controls the timing and easing of each character while a randomized sequence determines the order of appearance. Small variations in delay and movement give the reveal a more organic and unpredictable feel."
+        "The title begins with all of its letters hidden. The characters are then revealed one after another in a randomized order, creating a reveal that does not follow the normal reading direction.",
+        "After the title has been fully revealed, the letters scatter outward from the center. Each character follows a different position around a circular trajectory and receives an individual rotation before fading away.",
+        "At the same time, the card positioned behind the title moves upward into the viewport. This creates a transition where the typography breaks apart and gives way to the visual content underneath.",
+        "The combination of randomized sequencing, radial movement, rotation and opacity creates a playful text transition rather than a conventional letter-by-letter reveal."
     ],
     animationMethods: [
-        "GSAP",
-        "Stagger",
         "Randomization",
+        "Stagger",
+        "Radial Motion",
+        "Rotation",
+        "Opacity",
+        "Scroll Reveal",
     ],
     gsapCode: "",
     githubLink: "",

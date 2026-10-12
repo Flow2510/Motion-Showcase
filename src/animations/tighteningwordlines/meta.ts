@@ -9,33 +9,34 @@ const tighteningWordLines = {
     video: "/videos/tightening-word-lines.mp4",
     color: "#a2d2ff",
     image: "/images/tightening-word-lines.png",
-    description: "A text-focused animation where individual words progressively tighten together to create a compact and dynamic typographic composition. The spacing between words changes smoothly as the animation plays, giving the text a more condensed and expressive appearance.",
+    description: "A text reveal animation where paragraphs are split into individual lines using SplitType, then each line is rendered through a dedicated Line component that animates it independently, creating a progressive line-by-line reveal effect for both the title and the description text.",
     librairies: [
-        "GSAP",
+        "split-type",
     ],
     html: [
-        "The layout is built around a text container holding a series of words that can be animated independently. Each word is wrapped in its own element so that its position and spacing can be controlled without affecting the rest of the text.",
-        "The words are displayed as a flexible line of text with controlled spacing. The surrounding container provides the visual structure while the individual word elements act as animation targets."
+        "Each article item is rendered inside its own container holding a hidden, invisible duplicate of the title and text used purely for measurement, plus the visible version of the content built from a title and two paragraphs.",
+        "The visible title is passed directly to a single Line component, while the visible paragraphs map over an array of split line strings, rendering one Line component per line so each one can be animated on its own."
     ],
     htmlCode: "",
     javascript: [
-        "The component selects the individual word elements and prepares them as animation targets. Each word can then be manipulated independently to control the final spacing of the line.",
-        "The animation is triggered when the component enters the viewport or when the associated interaction occurs. The JavaScript logic coordinates the timing of each word so the tightening effect happens progressively rather than all at once.",
-        "The interaction remains lightweight, relying on DOM references and GSAP to update the position and spacing of the words during the animation."
+        "On mount, a SplitType instance is created on the hidden text paragraph with the \"lines\" type, splitting the text into individual line elements purely to extract their text content.",
+        "The extracted line strings are stored in React state and used to render the visible paragraph as a list of Line components, one per line, while the SplitType instance is reverted on cleanup since it's only used for measurement.",
+        "The actual animation logic lives inside the Line component, which isn't included here, so the per-line reveal or tightening behavior it applies to each line can't be precisely described without its code."
     ],
     javascriptMethods: [
+        "useRef",
+        "useState",
         "useEffect",
-        "querySelectorAll",
-        "gsap"
+        "SplitType",
     ],
     javascriptCode: "",
     animation: [
-        "The main effect comes from progressively reducing the space between the individual words. GSAP interpolates the position of each element to create a smooth transition from the initial loose layout to the final tightened composition.",
-        "The animation uses staggered timing so the words do not move simultaneously. This creates a subtle progressive effect and makes the typography feel more dynamic while keeping the overall movement controlled."
+        "The title and each line of the description are handed off individually to a Line component, suggesting a line-by-line reveal where lines animate in sequence rather than the whole block appearing at once.",
+        "Because the animation itself is implemented inside the Line component, which wasn't provided, the exact transform, easing or trigger used to produce the \"tightening\" effect can't be confirmed here."
     ],
     animationMethods: [
-        "GSAP",
-        "Stagger",
+        "Line-by-line Reveal",
+        "Text Splitting",
     ],
     gsapCode: "",
     githubLink: "",

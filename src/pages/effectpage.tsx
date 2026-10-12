@@ -90,7 +90,7 @@ export default function EffectPage({setFavoritesAnimations, favoritesAnimations,
                         <div className="flex flex-1 flex-col gap-10 max-w-150">
                             <div className="p-5 w-full bg-neutral-800 rounded-xl text-neutral-50 flex flex-col gap-5 scroll-section" id="overview">
                                 <div className="w-full aspect-video ">
-                                    <video src={animation.video} className="w-full h-full rounded-xl" autoPlay muted loop>
+                                    <video src={animation.video} className="w-full aspect-video rounded-xl object-cover " autoPlay muted loop>
                                         
                                     </video>
                                 </div>

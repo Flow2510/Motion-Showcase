@@ -9,41 +9,41 @@ const listSlider = {
     color: "#f9f6b4",
     image: "/images/list-slider.png",
     sourcePath: "listslider",
-    description: "A hover-driven list interaction where moving across the different items smoothly changes the position of a visual slider or preview. The effect creates a responsive connection between the selected list item and its associated content.",
+    alt: "Screenshot of the animation",
+    description: "A hover-based list interaction where each item reveals its associated image and index alongside the title. The text is introduced word by word when it enters the viewport, while hovering an item brings its visual preview into view with a smooth scaling transition.",
     librairies: [
         "Framer Motion",
     ],
-    html: [ 
-        "The layout is built around a centered list of interactive items. Each item contains a title split into individual words, allowing the text to be animated independently.", 
-        "Each list item acts as a hover target and contains an associated image preview positioned outside the main title. A separate item number is displayed on the opposite side when the item becomes active."
+    html: [
+        "The layout is composed of a vertical list of interactive titles. Each title is split into individual words and wrapped in an overflow-hidden container so every word can move independently during the initial reveal.",
+        "On desktop, each item also contains a hidden image preview positioned to the left of the title and its corresponding index positioned on the right. These elements are only rendered while the item is hovered."
     ],
     htmlCode: "",
-    javascript: [ 
-        "The component stores the hovered state of each list item with useState. Mouse enter and mouse leave events are used to activate and deactivate the corresponding visual elements.", 
-        "Each title is split into individual words using the split method. The words are rendered as separate elements so they can animate independently when they enter the viewport.", 
-        "The same ListItem component is reused for every item in the list through map, allowing the interaction logic and animation behavior to remain consistent across all entries." 
+    javascript: [
+        "The component uses local hover state to determine when the visual elements of an item should be displayed. Mouse enter and leave events toggle this state and control the title color and preview visibility.",
+        "Each title is split into individual words so Framer Motion can animate every word separately. The words use a small incremental delay to create a staggered upward reveal when they enter the viewport.",
+        "The same ListItem component is reused for every entry in the collection. On desktop, the hover state controls both the image preview and item number, while the mobile layout keeps the interaction focused on the animated title."
     ],
-    javascriptMethods: [ 
-        "useState", 
-        "onMouseEnter", 
-        "onMouseLeave", 
-        "map", 
-        "split", 
+    javascriptMethods: [
+        "useState",
+        "onMouseEnter",
+        "onMouseLeave",
+        "map",
+        "split",
     ],
     javascriptCode: "",
-    animation: [ 
-        "When a list item enters the viewport, each word of its title slides upward from below its container. A small delay between each word creates a staggered text reveal effect.", 
-        "When the user hovers over an item, its title changes to the item's associated text color. At the same time, an image preview appears on the left side of the title and smoothly scales from zero to its full size.", 
-        "An item number appears on the opposite side of the title using the same scale-based transition. Both the image preview and number disappear smoothly when the pointer leaves the item.", 
-        "AnimatePresence handles the mounting and unmounting of the hover elements, allowing their entrance and exit animations to play smoothly instead of instantly appearing or disappearing." 
+    animation: [
+        "Each word of the title starts below its visible container and slides upward into place when the item enters the viewport. The incremental delay between words creates a short staggered text reveal.",
+        "When an item is hovered, its title changes from white to its associated text color. At the same time, the image preview appears on the left and scales from zero to its natural size.",
+        "The item number appears on the opposite side using the same scale transition. When the pointer leaves, both the image and number scale back down and are removed from the layout.",
+        "AnimatePresence allows the hover elements to animate when they are mounted and unmounted, giving the interaction a smooth entrance and exit instead of an immediate visibility change."
     ],
-    animationMethods: [ 
-        "Hover", 
-        "Scale", 
-        "Translate", 
-        "Stagger", 
-        "AnimatePresence", 
-        "Viewport Reveal"
+    animationMethods: [
+        "Hover",
+        "Scale",
+        "TranslateY",
+        "Stagger",
+        "Viewport Reveal",
     ],
     gsapCode: "",
     githubLink: "",

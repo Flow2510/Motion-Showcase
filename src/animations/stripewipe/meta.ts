@@ -9,37 +9,44 @@ const stripeWipe = {
     color: "#84ffc9",
     image: "/images/stripe-wipe.png",
     sourcePath: "stripewipe",
-    description: "A scroll-driven transition built from multiple horizontal or vertical stripes that progressively wipe across the screen. The layered movement creates a bold visual reveal that can be used to transition between sections or uncover new content.",
+    alt: "Screenshot of the animation",
+    description: "A scroll-driven transition made from a sequence of progressively sized stripes. The stripes move downward in a cascading pattern while the central content moves upward and the text gradually appears, creating a layered wipe transition.",
     librairies: [
         "GSAP",
         "ScrollTrigger",
     ],
     html: [
-        "The layout contains a group of stripe elements positioned inside a full-screen container. Each stripe acts as an independent layer that can move across the viewport during the wipe transition.",
-        "The stripes are grouped inside a parent overlay so they can cover or reveal the underlying content. Their shared structure makes it possible to animate the complete transition while keeping individual stripes independently controllable."
+        "The layout uses a full-screen sticky container with a stack of thirty stripe elements covering the viewport. Each stripe is given a progressively increasing height, creating a stepped visual pattern across the section.",
+        "The central content is positioned independently from the stripe layer and contains a text block split into individual words. This allows the stripe transition and text reveal to be controlled separately while remaining visually connected."
     ],
     htmlCode: "",
     javascript: [
-        "The component selects the stripe elements and prepares their initial positions before the scroll animation starts. Each stripe is positioned outside or across the viewport depending on the direction of the wipe.",
-        "ScrollTrigger connects the movement of the stripes to the user's scroll progress. As the section reaches the trigger area, the stripes move across the screen in a coordinated sequence to reveal the content underneath.",
-        "The animation uses the same logic for every stripe while small timing offsets can be applied to create a staggered and more dynamic wipe effect."
+        "The stripe heights are generated programmatically so each successive stripe becomes slightly taller than the previous one. This creates the diagonal or stepped rhythm used by the wipe effect.",
+        "A GSAP timeline targets every stripe and moves them downward by more than their own height. The animation is synchronized with scrolling through ScrollTrigger and each stripe receives a progressively delayed start based on its reversed index.",
+        "At the same time, the central content container is translated upward, matching the duration of the stripe animation so that the content moves away as the stripes reveal the next part of the page.",
+        "A separate GSAP timeline controls the text words. Each word starts hidden and progressively changes its opacity as the section moves through the viewport."
     ],
     javascriptMethods: [
-        "useEffect",
-        "querySelectorAll",
-        "gsap",
+        "useState",
+        "useGSAP",
+        "Array.from",
+        "gsap.timeline",
+        "gsap.to",
         "ScrollTrigger"
     ],
     javascriptCode: "",
     animation: [
-        "The wipe is created by moving multiple stripes across the viewport so they progressively cover or reveal the underlying content. Their movement can be horizontal or vertical depending on the desired transition.",
-        "GSAP controls the position of each stripe while ScrollTrigger synchronizes the animation with scrolling. A stagger between the stripes creates a layered transition instead of moving every element at exactly the same time."
+        "The transition is built from thirty stripes with progressively increasing heights. Each stripe moves downward by 105% of its height, producing a cascading wipe rather than a uniform movement across the screen.",
+        "The animation starts from the last stripe toward the first one, creating a reversed stagger where the different stripe sizes progressively reveal the content underneath.",
+        "While the stripes move downward, the central content is translated upward by one viewport height. The two movements run together to create a continuous transition through the section.",
+        "The text uses a separate opacity reveal synchronized with scrolling. Individual words progressively become visible while the stripe transition and content movement take place."
     ],
     animationMethods: [
-        "GSAP",
-        "ScrollTrigger",
+        "Scroll Scrub",
         "Stagger",
-        "Transform",
+        "Opacity Reveal",
+        "TranslateY",
+        "Layered Transition"
     ],
     gsapCode: "",
     githubLink: "",
