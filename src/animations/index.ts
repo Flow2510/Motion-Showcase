@@ -20,6 +20,8 @@ import ListSlider from "./listslider/listslider";
 import listSlider from "./listslider/meta";
 import rotatingSlider from "./rotatingslider/meta";
 import RotatingSlider from "./rotatingslider/rotatingslider";
+import rotatingSphere from "./rotatingsphere/meta";
+import RotatingSphere from "./rotatingsphere/rotatingsphere";
 import screenReveal from "./screenreveal/meta";
 import ScreenReveal from "./screenreveal/screenreveal";
 import scrollingSections from "./scrollingsections/meta";
@@ -137,5 +139,9 @@ export const animations = [
     {
         ...circularStack,
         component: CircularStack,
+    },
+    {
+        ...rotatingSphere,
+        component: RotatingSphere
     }
 ]
