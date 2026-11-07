@@ -18,6 +18,8 @@ import ListScale from "./listscale/listscale";
 import listScale from "./listscale/meta";
 import ListSlider from "./listslider/listslider";
 import listSlider from "./listslider/meta";
+import puzzleImage from "./puzzleimage/meta";
+import PuzzleImage from "./puzzleimage/puzzleimage";
 import rotatingSlider from "./rotatingslider/meta";
 import RotatingSlider from "./rotatingslider/rotatingslider";
 import rotatingSphere from "./rotatingsphere/meta";
@@ -142,6 +144,10 @@ export const animations = [
     },
     {
         ...rotatingSphere,
-        component: RotatingSphere
+        component: RotatingSphere,
+    },
+    {
+        ...puzzleImage,
+        component:PuzzleImage,
     }
 ]

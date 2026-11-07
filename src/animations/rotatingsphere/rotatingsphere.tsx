@@ -115,7 +115,7 @@ export default function RotatingSphere(){
     }, { scope: containerRef, dependencies: [isDesktop] })
 
     return(
-        <div className="w-full h-dvh relative flex flex-col items-center justify-center">
+        <div className="w-full h-dvh relative flex flex-col items-center justify-center bg-neutral-50">
             <div ref={dragProxyRef} className="hidden"></div>
             <div
                 ref={containerRef}
