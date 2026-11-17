@@ -45,6 +45,4 @@ function App() {
 
 export default App
 
-// refaire les meta de chaque pour un meilleur contenu, verifier les sections Before/After sur chaque
-// faire/trouver meilleur design pour les cards about section
-// faire screen et video nouvelles animations
+// faire un nouveau design
