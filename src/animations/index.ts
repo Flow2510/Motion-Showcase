@@ -1,53 +1,31 @@
 import AccordionPanel from "./accordionpanel/accordionpanel";
 import accordionPanel from "./accordionpanel/meta";
-import AnimatedHero from "./animatedhero/animatedhero";
-import animatedHero from "./animatedhero/meta";
 import CardsFlowing from "./cardsflowing/cardsflowing";
 import cardsFlowing from "./cardsflowing/meta";
 import CircularStack from "./circularstack/circularstack";
 import circularStack from "./circularstack/meta";
-import DiaporamaScrollingScale from "./diaporamascrollingscale/diaporamascrollingscale";
-import diaporamaScrollingScale from "./diaporamascrollingscale/meta";
 import ImageScrollFlow from "./Imagescrollflow/imagescrollflow";
 import imageScrollFlow from "./Imagescrollflow/meta";
 import ImageToCards from "./imagetocards/imagetocards";
 import imageToCards from "./imagetocards/meta";
-import LandingPageReveal from "./landingpagereveal/landingpagereveal";
-import landingPageReveal from "./landingpagereveal/meta";
-import ListScale from "./listscale/listscale";
-import listScale from "./listscale/meta";
-import ListSlider from "./listslider/listslider";
-import listSlider from "./listslider/meta";
+import InfiniteSlider from "./infiniteslider/infiniteslider";
+import infiniteSlider from "./infiniteslider/meta";
 import puzzleImage from "./puzzleimage/meta";
 import PuzzleImage from "./puzzleimage/puzzleimage";
+import rotatingGallery from "./rotatinggallery/meta";
+import RotatingGallery from "./rotatinggallery/rotatinggallery";
 import rotatingSlider from "./rotatingslider/meta";
 import RotatingSlider from "./rotatingslider/rotatingslider";
 import rotatingSphere from "./rotatingsphere/meta";
 import RotatingSphere from "./rotatingsphere/rotatingsphere";
-import screenReveal from "./screenreveal/meta";
-import ScreenReveal from "./screenreveal/screenreveal";
 import scrollingSections from "./scrollingsections/meta";
 import ScrollingSections from "./scrollingsections/scrollingsections";
-import scrollStaggeredReveal from "./scrollstaggeredreveal/meta";
-import ScrollStaggeredRevealComponent from "./scrollstaggeredreveal/scrollstaggeredrevealcomponent";
-import sectionSlideAnimation from "./sectionslideanimation/meta";
-import SectionSlideAnimation from "./sectionslideanimation/sectionslideanimation";
 import stickyCardStack from "./stickycardstack/meta";
 import StickyCardStack from "./stickycardstack/stickycardstack";
 import stickyGridScroll from "./stickygridscroll/meta";
 import StickyGridScroll from "./stickygridscroll/stickygridscroll";
-import stripeWipe from "./stripewipe/meta";
-import StripeWipe from "./stripewipe/stripewipe";
-import svgDecay from "./svgdecay/meta";
-import SvgDecay from "./svgdecay/svgdecay";
 import svgHoverCards from "./svghovercards/meta";
 import SvgHoverCards from "./svghovercards/svghovercards";
-import tickerScale from "./tickerscale/meta";
-import TickerScale from "./tickerscale/tickerscale";
-import tighteningWordLines from "./tighteningwordlines/meta";
-import TighteningWordLines from "./tighteningwordlines/tighteningwordlines";
-import titleRandomReveal from "./titlerandomreveal/meta";
-import TitleRandomReveal from "./titlerandomreveal/titilerandomreveal";
 
 export const animations = [
     {
@@ -55,29 +33,13 @@ export const animations = [
         component: AccordionPanel,
     },
     {
-        ...scrollStaggeredReveal,
-        component: ScrollStaggeredRevealComponent,
-    },
-    {
-        ...tighteningWordLines,
-        component: TighteningWordLines,
-    },
-    {
         ...stickyCardStack,
         component: StickyCardStack,
-    },
-    {
-        ...sectionSlideAnimation,
-        component: SectionSlideAnimation,
     },
     {
         ...cardsFlowing,
         component: CardsFlowing
     }, 
-    {
-        ...screenReveal,
-        component: ScreenReveal,
-    },
     {
         ...imageScrollFlow,
         component: ImageScrollFlow,
@@ -85,38 +47,6 @@ export const animations = [
     {
         ...scrollingSections,
         component: ScrollingSections,
-    },
-    {
-        ...svgDecay,
-        component: SvgDecay,
-    },
-    {
-        ...listScale,
-        component: ListScale,
-    },
-    {
-        ...tickerScale,
-        component: TickerScale,
-    },
-    {
-        ...titleRandomReveal,
-        component: TitleRandomReveal,
-    },
-    {
-        ...diaporamaScrollingScale,
-        component: DiaporamaScrollingScale,
-    },
-    {
-        ...stripeWipe,
-        component: StripeWipe,
-    },
-    {
-        ...animatedHero,
-        component: AnimatedHero,
-    }, 
-    {
-        ...listSlider,
-        component: ListSlider,
     },
     {
         ...stickyGridScroll,
@@ -129,10 +59,6 @@ export const animations = [
     {
         ...imageToCards,
         component: ImageToCards,
-    },
-    {
-        ...landingPageReveal,
-        component: LandingPageReveal,
     },
     {
         ...rotatingSlider,
@@ -149,5 +75,12 @@ export const animations = [
     {
         ...puzzleImage,
         component:PuzzleImage,
+    },{
+        ...infiniteSlider,
+        component:InfiniteSlider,
+    },
+    {
+        ...rotatingGallery,
+        component: RotatingGallery,
     }
 ]

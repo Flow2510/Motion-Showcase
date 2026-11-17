@@ -2,34 +2,25 @@ import { NavLink, useParams } from "react-router-dom"
 import { animations } from "../animations";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import type { AnimationTypes } from "../types/animation";
 import TextRevealHover from "../components/textrevealhover/textrevealhover";
 import NextCta from "../components/nextcta/nextcta";
 
 type EffectPageProps= {
-    readonly setFavoritesAnimations: React.Dispatch<React.SetStateAction<AnimationTypes[]>>;
-    readonly favoritesAnimations: AnimationTypes[];
     readonly isDesktop: boolean;
 }
 
-export default function EffectPage({setFavoritesAnimations, favoritesAnimations, isDesktop} : EffectPageProps) {
+export default function EffectPage({ isDesktop} : EffectPageProps) {
     const { slug } = useParams();
     const animationIndex = animations.findIndex(a => a.name === slug)
     const animation = animations[animationIndex]
     const [activeSection, setActiveSection] = useState("overview")
 
-    const isFavorite = favoritesAnimations.some(
-        (item) => item.id === animation.id
-    )
+    useEffect(() => {
+        console.log(animation)
+    }, [animation])
 
     const toggleToFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation()
-        
-        if (!isFavorite) {
-            setFavoritesAnimations(prev => [...prev, animation])
-        } else {
-            setFavoritesAnimations(prev => prev.filter(item => item.id !== animation.id))
-        }
     }
 
     if (!animation) {
@@ -75,7 +66,7 @@ export default function EffectPage({setFavoritesAnimations, favoritesAnimations,
                         >
                             <div>
                                 <button type="button" onClick={toggleToFavorite} className="w-8 h-8 cursor-pointer hover:scale-[1.05] active:scale-[1.1]">
-                                    <img src={isFavorite? "/icons/heart-filled.png" : "/icons/heart.png"} className="w-full h-full brightness-[100]" alt="" />
+                                    <img src={"/icons/heart.png"} className="w-full h-full brightness-[100]" alt="" />
                                 </button>
                                 <nav className="flex flex-col">
                                     <a href="#overview" style={{ color: activeSection === "overview" ? "#fafafa" : "#a1a1a1" }}>Animation Overview</a>

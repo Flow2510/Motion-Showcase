@@ -64,7 +64,7 @@ export default function Cards3dHover(){
                         ref={(el) => { cardsRef.current[0] = el }}
                         className="w-22 aspect-square md:w-28 lg:w-32 xl:w-48 rounded-lg rotate-[-8deg] border border-neutral-600"
                     >
-                        <NavLink to={`/collection/${animations[randomAnimations[0]].name}`}>
+                        <NavLink to={`/animations/${animations[randomAnimations[0]].name}`}>
                             <img src={animations[randomAnimations[0]].image} className="w-full h-full object-cover rounded-lg" alt="" />
                         </NavLink> 
                     </div>
@@ -75,7 +75,7 @@ export default function Cards3dHover(){
                         ref={(el) => { cardsRef.current[1] = el }}
                         className="w-30 aspect-square md:w-36 lg:w-40 xl:w-56 rounded-lg rotate-[5deg] border border-neutral-600"
                     >
-                        <NavLink to={`/collection/${animations[randomAnimations[1]].name}`}>
+                        <NavLink to={`/animations/${animations[randomAnimations[1]].name}`}>
                             <img src={animations[randomAnimations[1]].image} className="w-full h-full object-cover rounded-lg" alt="" />
                         </NavLink> 
                     </div>
@@ -86,7 +86,7 @@ export default function Cards3dHover(){
                         ref={(el) => { cardsRef.current[2] = el }}
                         className="w-18 aspect-square md:w-24 lg:w-28 xl:w-40 rounded-lg -rotate-3 border border-neutral-600"
                     >
-                        <NavLink to={`/collection/${animations[randomAnimations[2]].name}`}>
+                        <NavLink to={`/animations/${animations[randomAnimations[2]].name}`}>
                             <img src={animations[randomAnimations[2]].image} className="w-full h-full object-cover rounded-lg" alt="" />
                         </NavLink> 
                     </div>

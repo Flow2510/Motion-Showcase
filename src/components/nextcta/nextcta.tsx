@@ -5,7 +5,7 @@ import Cards3dHover from "../cards3dhover/cards3dhover";
 export default function NextCta(){
 
     return(
-        <section className="min-h-dvh w-full flex justify-center items-center">
+        <section className="min-h-dvh w-full flex justify-center items-center bg-neutral-950">
             <div className="flex flex-col gap-5">
                 <div className="flex flex-col items-center gap-5">
                     <h2 className="flex gap-2 items-center">

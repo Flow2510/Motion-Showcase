@@ -77,12 +77,12 @@ export default function CircularStack(){
     }, { scope: sectionRef })
 
     const items = [
-        "/images/beach.jpg",
-        "/images/desert.jpg",
-        "/images/forest.jpg",
-        "/images/sunset.jpg",
-        "/images/town.jpg",
-        "/images/beach.jpg"
+        "/images/beach.webp",
+        "/images/desert.webp",
+        "/images/forest.webp",
+        "/images/sunset.webp",
+        "/images/town.webp",
+        "/images/beach.webp"
     ]
 
     return(

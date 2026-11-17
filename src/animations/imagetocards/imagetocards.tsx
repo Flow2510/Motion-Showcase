@@ -71,7 +71,7 @@ export default function ImageToCards(){
                     <div className="w-full h-full perspective-[1000px]">
                         <div className="w-full h-full relative transform-3d" ref={leftImgRef}>
                             <div className="absolute inset-0 w-full h-full backface-hidden overflow-hidden rounded-l-2xl recto">
-                                <img src="/images/sunset.jpg" className="absolute -top-full left-0 w-[300%] h-[300%] max-w-none object-cover" alt="" />
+                                <img src="/images/sunset.webp" className="absolute -top-full left-0 w-[300%] h-[300%] max-w-none object-cover" alt="" />
                             </div>
                             <div 
                                 className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 text-neutral-950 flex flex-col justify-between rounded-2xl p-5"
@@ -88,7 +88,7 @@ export default function ImageToCards(){
                     <div className="w-full h-full perspective-1000 relative">
                         <div className="w-full h-full relative transform-3d" ref={centerImgRef}>
                             <div className="absolute inset-0 w-full h-full backface-hidden overflow-hidden recto">
-                                <img src="/images/sunset.jpg" className="absolute -top-full -left-full w-[300%] h-[300%] max-w-none object-cover" alt="" />
+                                <img src="/images/sunset.webp" className="absolute -top-full -left-full w-[300%] h-[300%] max-w-none object-cover" alt="" />
                             </div>
                             <div 
                                 style={{ background: "linear-gradient(177deg, rgb(250, 76, 45) -18%, rgb(191, 24, 21) 31%, rgb(74, 10, 8) 100%)", boxShadow: "rgb(0, 0, 0) 0px 24px 65px 0px, rgba(255, 143, 143, 0.77) 0px 2px 1px 0px inset" }}
@@ -105,7 +105,7 @@ export default function ImageToCards(){
                     <div className="w-full h-full perspective-1000">
                         <div className="w-full h-full relative transform-3d" ref={rightImgRef}>
                             <div className="absolute inset-0 w-full h-full backface-hidden overflow-hidden rounded-r-2xl recto">
-                                <img src="/images/sunset.jpg" className="absolute -top-full left-[-200%] w-[300%] h-[300%] max-w-none object-cover" alt="" />
+                                <img src="/images/sunset.webp" className="absolute -top-full left-[-200%] w-[300%] h-[300%] max-w-none object-cover" alt="" />
                             </div>
                             <div 
                                 style={{ background: "linear-gradient(rgb(31, 31, 31) 0%, rgb(22, 22, 22) 100%)", boxShadow: "rgb(0, 0, 0) 0px 24px 65px 0px, rgba(255, 255, 255, 0.3) 0px 1px 2px 0px inset" }}
