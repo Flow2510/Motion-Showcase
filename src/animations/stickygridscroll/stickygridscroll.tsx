@@ -103,7 +103,7 @@ export default function StickyGridScroll() {
     }, { scope: sectionRef })
 
     return(
-        <section className="relative h-[700dvh] w-full mb-25" ref={sectionRef}>
+        <section className="relative h-[700dvh] w-full" ref={sectionRef}>
             <div className="sticky top-0 h-dvh w-full bg-neutral-50 text-neutral-950 flex items-center justify-center overflow-hidden">
                 <div className="flex flex-col items-center relative font-medium gap-2 text-content p-10">
                     <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-[bricolage_grotesque]">Sticky Grid Scroll</h2>

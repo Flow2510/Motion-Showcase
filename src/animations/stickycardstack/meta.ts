@@ -1,7 +1,7 @@
 const stickyCardStack = {
     name: "sticky-card-stack",
-    sectionBefore: true,
-    sectionAfter: true,
+    sectionBefore: false,
+    sectionAfter: false,
     id: 4,
     title: "Sticky Card Stack",
     category: "Scroll",

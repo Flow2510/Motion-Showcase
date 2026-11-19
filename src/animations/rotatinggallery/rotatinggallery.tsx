@@ -121,7 +121,7 @@ export default function RotatingGallery() {
     }, [activeCard])
 
     return(
-        <section className="h-dvh w-full bg-neutral-200 flex items-center justify-center overflow-hidden relative" ref={sectionRef}>
+        <section className="h-dvh w-full bg-neutral-50 flex items-center justify-center overflow-hidden relative" ref={sectionRef}>
             <div className="w-full h-full flex items-center justify-center" ref={wheelRef}>
                 {itemslist.map((item, index) => (
                     <button

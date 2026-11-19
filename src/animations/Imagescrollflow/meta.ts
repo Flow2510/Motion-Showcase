@@ -1,7 +1,7 @@
 const imageScrollFlow = {
     name: "image-scroll-flow",
-    sectionBefore: true,
-    sectionAfter: true,
+    sectionBefore: false,
+    sectionAfter: false,
     id: 8,
     title: "Image Scroll Flow",
     category: "Scroll",

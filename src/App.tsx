@@ -27,8 +27,10 @@ function App() {
     
   return (
     <>
-      <header className='absolute top-0 left-0 flex justify-between w-full px-5 py-2.5 items-center z-100'>
-        <h1 className='text-sm font-semibold'>Sendra Florian</h1>
+      <header className='fixed top-0 left-0 flex justify-between w-full px-5 py-2.5 items-center z-100 mix-blend-difference text-white'>
+        <NavLink to={'/'}>
+          <h1 className='text-sm font-semibold'>Sendra Florian</h1>
+        </NavLink>
         <div>
           <NavLink to={'/'} className='text-sm font-semibold cursor-pointer'>
             menu
@@ -46,3 +48,5 @@ function App() {
 export default App
 
 // faire un nouveau design
+// animer le site
+// faire un svg qui se rempli au progress
