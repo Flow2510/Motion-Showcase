@@ -95,7 +95,7 @@ export default function Slider({ mainRef } : SliderProps) {
                             scale: 1,
                             duration: 0.3
                         }),
-                        gsap.to('.third-pin', {
+                        gsap.to('.second-pin', {
                             borderColor: "#171717",
                             duration: 0.3
                         })

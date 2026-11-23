@@ -1,5 +1,3 @@
-import AccordionPanel from "./accordionpanel/accordionpanel";
-import accordionPanel from "./accordionpanel/meta";
 import CardsFlowing from "./cardsflowing/cardsflowing";
 import cardsFlowing from "./cardsflowing/meta";
 import CircularStack from "./circularstack/circularstack";
@@ -8,6 +6,8 @@ import ImageScrollFlow from "./Imagescrollflow/imagescrollflow";
 import imageScrollFlow from "./Imagescrollflow/meta";
 import ImageToCards from "./imagetocards/imagetocards";
 import imageToCards from "./imagetocards/meta";
+import InfiniteCarousel from "./infinitcarousel/infinitecarousel";
+import infiniteCarousel from "./infinitcarousel/meta";
 import InfiniteSlider from "./infiniteslider/infiniteslider";
 import infiniteSlider from "./infiniteslider/meta";
 import puzzleImage from "./puzzleimage/meta";
@@ -29,8 +29,8 @@ import SvgHoverCards from "./svghovercards/svghovercards";
 
 export const animations = [
     {
-        ...accordionPanel,
-        component: AccordionPanel,
+        ...infiniteCarousel,
+        component: InfiniteCarousel,
     },
     {
         ...stickyCardStack,

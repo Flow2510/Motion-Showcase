@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Slider from "../components/slider/slider";
 import { animations } from "../animations";
 import { NavLink } from "react-router-dom";
+import gsap from "gsap";
 
 type Props = {
     readonly isDesktop: boolean;
@@ -9,6 +10,43 @@ type Props = {
 
 export default function HomePage({ isDesktop } : Props) {
     const mainRef = useRef<HTMLDivElement>(null)
+    const cursorRef = useRef<HTMLDivElement>(null)
+
+    // useEffect(() => {
+    //     const trails = gsap.utils.toArray<HTMLDivElement>(".cursor-trail");
+
+    //     if (!trails.length || !isDesktop) return;
+
+    //     const animations = trails.map((trail, index) => ({
+    //         xTo: gsap.quickTo(trail, "x", {
+    //             duration: 0.2 + index * 0.015,
+    //             ease: "power3.out",
+    //             stagger: {
+    //                 from: "end"
+    //             }
+    //         }),
+    //         yTo: gsap.quickTo(trail, "y", {
+    //             duration: 0.2 + index * 0.015,
+    //             ease: "power3.out",
+    //             stagger: {
+    //                 from: "end"
+    //             }
+    //         })
+    //     }));
+
+    //     const handleMouseMove = (e : MouseEvent) => {
+    //         animations.forEach(({ xTo, yTo }) => {
+    //             xTo(e.clientX);
+    //             yTo(e.clientY);
+    //         });
+    //     };
+
+    //     window.addEventListener("mousemove", handleMouseMove);
+
+    //     return () => {
+    //         window.removeEventListener("mousemove", handleMouseMove);
+    //     };
+    // }, []);
 
     return(
         <main
@@ -44,7 +82,7 @@ export default function HomePage({ isDesktop } : Props) {
                         </button>
                     </div>
                 </div>
-                <div className="absolute bottom-5 left-5 flex gap-5">
+                <div className="absolute bottom-5 left-5 hidden gap-5 lg:flex">
                     <a href="/">
                         site
                     </a>
@@ -76,6 +114,22 @@ export default function HomePage({ isDesktop } : Props) {
                     </div>
                 }
             </section>
+            <div 
+                ref={cursorRef}
+                className="fixed rounded-full z-10 mix-blend-difference cursor hidden lg:flex pointer-events-none  items-center justify-center"
+            >
+                {Array.from({ length: 20 }).map((_, index) => (
+                    <div
+                        key={index}
+                        className="cursor-trail aspect-square rounded-full bg-neutral-50 absolute"
+                        style={{
+                            width: 2 * (10 - index)
+                        }}
+                    >
+
+                    </div>
+                ))}
+            </div>
         </main>
     )
 }

@@ -736,9 +736,9 @@ balanced-match@^4.0.2:
   integrity sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==
 
 baseline-browser-mapping@^2.11.37:
-  version "2.11.38"
-  resolved "https://registry.yarnpkg.com/baseline-browser-mapping/-/baseline-browser-mapping-2.11.38.tgz#3f7be275be548fb58ebce2b15cd2d2533141e4b5"
-  integrity sha512-rMgy5YW7x28SMfXHLlVZDBqlWzYZ0x2rVR/6FWrNBF0chjigARK1H6nM0hKA1Um3kPOlkQFVtjJs00d2N1ezuw==
+  version "2.11.39"
+  resolved "https://registry.yarnpkg.com/baseline-browser-mapping/-/baseline-browser-mapping-2.11.39.tgz#4e99c4845e0c2100b6b1ef189bce3643d11e604e"
+  integrity sha512-Q9buOYhr2ggrEZpImICecZTJHCCd8yXkRUokFlUEQ8uiD6oP82F4W4jWnhOHZYV+wlvrC51V7Wy0ULyWjil5Wg==
 
 brace-expansion@^5.0.12:
   version "5.0.13"
@@ -816,9 +816,9 @@ detect-libc@^2.0.3:
   integrity sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==
 
 electron-to-chromium@^1.5.486:
-  version "1.5.487"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.487.tgz#9a1e2861c50b08b0d2a4f3b6e3a37f9d72b00700"
-  integrity sha512-qWotOhQYeYEj+DK4+Y+cfPj44qiC6ETIiWtJLfmDJydED2BJJ7loPA4SfBbbrMI6X/X3tryJgxnY9nxsO545Zw==
+  version "1.5.492"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.5.492.tgz#bd63a064a6ab036db630af5dfe83f4533de7cbf0"
+  integrity sha512-4uMs7omhajKiud0GqALLTazS/zyvHLTLmDWVTR+e6BnyJo5bSNrph/JoRWEFJJmY75ct9hCiSGsbFF9fLe5gDw==
 
 enhanced-resolve@^5.24.5:
   version "5.27.0"
@@ -1367,16 +1367,16 @@ react-dom@^19.2.7:
     scheduler "^0.28.0"
 
 react-router-dom@^7.18.2:
-  version "7.18.5"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-7.18.5.tgz#25e19a13396de166785c1199227a64bcd6815a8d"
-  integrity sha512-9HcfDMU6JJ/fp6gJZYGwNE6RknVGS4kBjH1HkNw959mCJi70TVwdipQWv2FEol9uGpi+SZTFtVpJPtEQfayeOw==
+  version "7.18.6"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-7.18.6.tgz#f924708031845e12158c5c63302dc644b3ede88e"
+  integrity sha512-a8JzFsKEY3EY9QL7t4T1b1OhuY0ngEfwMzXQNgBO/2cuIW9028JbVq3uk2rKnjLredzcIoDKLzUkguIq6fnkFA==
   dependencies:
-    react-router "7.18.5"
+    react-router "7.18.6"
 
-react-router@7.18.5:
-  version "7.18.5"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-7.18.5.tgz#808611f9f8675fe4506699815168822f4d9f3ee3"
-  integrity sha512-dTgvcXDOrLPrlLHrcZAqWveiK1hMSqN+rGAJzegP8HtmNkfRxOoshGWBNX3ZJ0cZjOHkRdlUJtaIhZMLLyGyPw==
+react-router@7.18.6:
+  version "7.18.6"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-7.18.6.tgz#b769c92ec74a89e20b57b40725175d74038880a2"
+  integrity sha512-SP8KqKfRLlJzqzPseC+r6yYFsqPEavtQCC4BKV810tBGijjESLtwVPam+gPOO+wYeXrYN/TNy2CAykQVcNg4iQ==
   dependencies:
     cookie "^1.0.1"
     set-cookie-parser "^2.6.0"
@@ -1444,9 +1444,9 @@ shebang-regex@^3.0.0:
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
 source-map-js@^1.2.1, source-map-js@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.2.2.tgz#79fb88d97535a21cb27162cb05d211b67acea4ab"
-  integrity sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.2.4.tgz#b9303bf27115446da5e6ca3a4a2ee3e9f7b69633"
+  integrity sha512-J7ZjMvHd9O1fcT/5V09QWaaSl2BbWx3F6O08spde82Namf9UB0GxRVIPiNbVsdKkoizHiSpTodo3vp2bAy91MA==
 
 split-type@^0.3.4:
   version "0.3.4"

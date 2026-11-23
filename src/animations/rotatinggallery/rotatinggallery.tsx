@@ -23,10 +23,6 @@ export default function RotatingGallery() {
         return () => window.removeEventListener("resize", handleResize)
     }, [])
 
-    useEffect(() => {
-        console.log(activeCard)
-    }, [activeCard])
-
     const radius = activeCard === null ? Math.min(window.innerWidth * 0.3, window.innerHeight * 0.3, 250) : Math.min(window.innerWidth * 0.3, window.innerHeight * 0.3, 250) * 2
 
     useGSAP(() => {
@@ -104,7 +100,7 @@ export default function RotatingGallery() {
     useEffect(() => {
         if (!cardsRef.current) return
         
-        cardsRef.current.forEach((card, index) => {
+        cardsRef.current.forEach((card) => {
             gsap.to(card, {
                 opacity: () => {
                     if (activeCard === null) return 1
