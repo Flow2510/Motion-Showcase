@@ -1,8 +1,8 @@
 const infiniteCarousel = {
     name: "infinite-carousel",
-    sectionBefore: true,
+    sectionBefore: false,
     sectionAfter: false,
-    id: 29,
+    id: 1,
     title: "Infinite Carousel",
     category: "Scroll",
     video: "/videos/infinite-carousel.mp4",

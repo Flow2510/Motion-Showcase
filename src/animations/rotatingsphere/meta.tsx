@@ -1,8 +1,8 @@
 const rotatingSphere = {
     name: "rotating-sphere",
     sectionBefore: false,
-    sectionAfter: true,
-    id: 24,
+    sectionAfter: false,
+    id: 9,
     title: "Rotating Sphere",
     category: "Drag",
     video: "/videos/rotating-sphere.mp4",

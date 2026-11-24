@@ -1,8 +1,8 @@
 const svgHoverCard = {
     name: "svg-hover-card",
-    sectionBefore: true,
-    sectionAfter: true,
-    id: 19,
+    sectionBefore: false,
+    sectionAfter: false,
+    id: 5,
     title: "SVG Hover Card",
     category: "Hover",
     video: "/videos/svg-hover-cards.mp4",

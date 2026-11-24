@@ -1,8 +1,8 @@
 const puzzleImage = {
     name: "puzzle-image",
     sectionBefore: false,
-    sectionAfter: true,
-    id: 25,
+    sectionAfter: false,
+    id: 10,
     title: "Puzzle Image",
     category: "Scroll",
     video: "/videos/puzzle-image.mp4",

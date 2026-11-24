@@ -195,7 +195,7 @@ export default function InfiniteCarousel() {
 
     return (
         <section
-            className="carousel relative h-dvh w-full overflow-hidden"
+            className="carousel relative h-dvh w-full overflow-hidden bg-neutral-50"
             ref={sectionRef}
         >
             <div

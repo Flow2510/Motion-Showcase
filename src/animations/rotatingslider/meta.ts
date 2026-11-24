@@ -1,8 +1,8 @@
 const rotatingSlider = {
     name: "rotating-slider",
     sectionBefore: false,
-    sectionAfter: true,
-    id: 22,
+    sectionAfter: false,
+    id: 7,
     title: "Rotating Slider",
     category: "Drag",
     video: "/videos/rotating-slider.mp4",

@@ -6,12 +6,10 @@ import { useRef, useState } from "react";
 type CardProps = {
     readonly item: {
         id: number;
-        title: string;
+        nom: string;
         img: string;
         alt: string;
         color: string;
-        textcolor: string;
-        description: string;
     }
 }
 
@@ -113,7 +111,7 @@ export default function SvgHoverCard({ item }: CardProps) {
                 </svg>
             </div>
             <div className="absolute inset-0 w-full h-full flex items-center justify-center rotate-90 svg-stroke pointer-events-none">
-                <svg width="2250" height="2535" viewBox="0 0 2250 2535" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="2250" aria-hidden='true' height="2535" viewBox="0 0 2250 2535" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path 
                         d="M1661.28 2255.51C1661.28 2255.51 2311.09 1960.37 2111.78 1817.01C1944.47 1696.67 718.456 2870.17 499.781 2255.51C308.969 1719.17 2457.51 1613.83 2111.78 963.512C1766.05 313.198 427.949 2195.17 132.281 1455.51C-155.219 736.292 2014.78 891.514 1708.78 252.012C1437.81 -314.29 369.471 909.169 132.281 566.512C18.1772 401.672 244.781 193.012 244.781 193.012" 
                         stroke="#fafafa" 
@@ -126,7 +124,7 @@ export default function SvgHoverCard({ item }: CardProps) {
                 <AnimatePresence>
                     {isHovered &&
                         <h3 style={{ color: item.color}} className="flex gap-2.5 font-bold">
-                            {item.title.split(' ').map((word, index) => (
+                            {item.nom.split(' ').map((word, index) => (
                                 <span key={word + index} className="inline-block overflow-hidden">
                                     <motion.span 
                                         initial={{ y: '100%'}}

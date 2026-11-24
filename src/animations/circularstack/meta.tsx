@@ -1,8 +1,8 @@
 const circularStack = {
     name: "circular-stack",
-    sectionBefore: true,
-    sectionAfter: true,
-    id: 23,
+    sectionBefore: false,
+    sectionAfter: false,
+    id: 8,
     title: "Circular Stack",
     category: "Scroll",
     video: "/videos/circular-stack.mp4",

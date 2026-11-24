@@ -1,8 +1,8 @@
 const imageToCards = {
     name: "image-to-cards",
-    sectionBefore: true,
-    sectionAfter: true,
-    id: 20,
+    sectionBefore: false,
+    sectionAfter: false,
+    id: 6,
     title: "Image To Cards",
     category: "Scroll",
     video: "/videos/image-to-cards.mp4",

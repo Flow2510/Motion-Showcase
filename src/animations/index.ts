@@ -18,10 +18,6 @@ import rotatingSlider from "./rotatingslider/meta";
 import RotatingSlider from "./rotatingslider/rotatingslider";
 import rotatingSphere from "./rotatingsphere/meta";
 import RotatingSphere from "./rotatingsphere/rotatingsphere";
-import scrollingSections from "./scrollingsections/meta";
-import ScrollingSections from "./scrollingsections/scrollingsections";
-import stickyCardStack from "./stickycardstack/meta";
-import StickyCardStack from "./stickycardstack/stickycardstack";
 import stickyGridScroll from "./stickygridscroll/meta";
 import StickyGridScroll from "./stickygridscroll/stickygridscroll";
 import svgHoverCards from "./svghovercards/meta";
@@ -33,20 +29,12 @@ export const animations = [
         component: InfiniteCarousel,
     },
     {
-        ...stickyCardStack,
-        component: StickyCardStack,
-    },
-    {
         ...cardsFlowing,
         component: CardsFlowing
     }, 
     {
         ...imageScrollFlow,
         component: ImageScrollFlow,
-    },
-    {
-        ...scrollingSections,
-        component: ScrollingSections,
     },
     {
         ...stickyGridScroll,

@@ -1,8 +1,8 @@
 const infiniteSlider = {
     name: "infinite-slider",
-    sectionBefore: true,
+    sectionBefore: false,
     sectionAfter: false,
-    id: 28,
+    id: 11,
     title: "Infinite Slider",
     category: "Scroll",
     video: "/videos/infinite-slider.mp4",

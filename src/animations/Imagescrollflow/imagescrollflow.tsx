@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useState } from "react";
-import article from '../../data/article.json'
+import article from '../../data/photo.json'
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -53,7 +53,7 @@ export default function ImageScrollFlow(){
         <section className="w-full h-[600dvh]" ref={containerRef}>
             <div className="sticky top-0 w-full h-dvh flex items-center justify-center overflow-hidden">
                 {items.map((item, index) => (
-                    <div className="image absolute w-25 h-20 md:w-50 md:h-50 right-0" key={item.title + index}>
+                    <div className="image absolute w-25 h-20 md:w-50 md:h-50 right-0" key={item.nom + index}>
                         <img src={item.img} alt="" className="w-full" style={{ background: item.color}}/>
                     </div>
                 ))}

@@ -1,8 +1,8 @@
 const rotatingGallery = {
     name: "rotating-gallery",
-    sectionBefore: true,
+    sectionBefore: false,
     sectionAfter: false,
-    id: 28,
+    id: 12,
     title: "Rotating Gallery",
     category: "Scroll",
     video: "/videos/rotating-gallery.mp4",

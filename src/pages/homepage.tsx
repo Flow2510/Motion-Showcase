@@ -1,8 +1,12 @@
 import { useEffect, useRef } from "react";
-import Slider from "../components/slider/slider";
 import { animations } from "../animations";
 import { NavLink } from "react-router-dom";
 import gsap from "gsap";
+import { Swiper, SwiperSlide } from "swiper/react";
+import 'swiper/css';
+import { useGSAP } from "@gsap/react";
+import { Mousewheel, FreeMode } from 'swiper/modules';
+import SliderCard from "../components/slidercard/slidercard";
 
 type Props = {
     readonly isDesktop: boolean;
@@ -10,43 +14,30 @@ type Props = {
 
 export default function HomePage({ isDesktop } : Props) {
     const mainRef = useRef<HTMLDivElement>(null)
-    const cursorRef = useRef<HTMLDivElement>(null)
 
-    // useEffect(() => {
-    //     const trails = gsap.utils.toArray<HTMLDivElement>(".cursor-trail");
+    useGSAP(() => {
+        if (!isDesktop) return
 
-    //     if (!trails.length || !isDesktop) return;
+        const cards = gsap.utils.toArray<HTMLDivElement>('.slider-card')
 
-    //     const animations = trails.map((trail, index) => ({
-    //         xTo: gsap.quickTo(trail, "x", {
-    //             duration: 0.2 + index * 0.015,
-    //             ease: "power3.out",
-    //             stagger: {
-    //                 from: "end"
-    //             }
-    //         }),
-    //         yTo: gsap.quickTo(trail, "y", {
-    //             duration: 0.2 + index * 0.015,
-    //             ease: "power3.out",
-    //             stagger: {
-    //                 from: "end"
-    //             }
-    //         })
-    //     }));
+        cards.slice(0, 4).forEach((card) => {
+            gsap.fromTo(card, {
+                scale: 0.8,
+                y: "100dvh",
+            },{
+                scale: 1,
+                y: 0,
+                duration: 0.5,
+                stagger: {
+                    each: 0.1
+                }
+            })
+        })
+    }, { scope: mainRef})
 
-    //     const handleMouseMove = (e : MouseEvent) => {
-    //         animations.forEach(({ xTo, yTo }) => {
-    //             xTo(e.clientX);
-    //             yTo(e.clientY);
-    //         });
-    //     };
+    useEffect(() => {
 
-    //     window.addEventListener("mousemove", handleMouseMove);
-
-    //     return () => {
-    //         window.removeEventListener("mousemove", handleMouseMove);
-    //     };
-    // }, []);
+    })
 
     return(
         <main
@@ -96,7 +87,43 @@ export default function HomePage({ isDesktop } : Props) {
             </section>
             <section className='p-5 lg:flex-1 relative lg:flex lg:justify-between lg:gap-10'>
                 {isDesktop? 
-                    <Slider mainRef={mainRef}/>
+                    <div
+                        className="fixed w-full top-0 left-0 h-screen overflow-hidden touch-none flex items-end"
+                    >
+                        <div 
+                            className="w-1/2 absolute h-full top-0 left-1/2"
+                        >
+                            <Swiper
+                                className="max-w-[70%] w-full h-full will-change-transform cursor-grab active:cursor-grabbing"
+                                direction={'vertical'}
+                                slidesPerView={2.5}
+                                modules={[Mousewheel, FreeMode]}
+                                spaceBetween={24}
+                                freeMode={{
+                                    enabled: true,
+                                    momentum: true,
+                                    
+                                }}
+                                mousewheel={{
+                                    enabled: true,
+                                    sensitivity: 1,
+                                }}
+                                loop
+                            >
+                                {animations.map((animation) => (
+                                    <SwiperSlide
+                                        key={animation.id}
+                                        className="w-full h-full aspect-video active:cursor-grabbing"
+                                    >
+                                        <SliderCard 
+                                            name={animation.name}
+                                            image={animation.image}
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    </div>
                 :
                     <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-1 lg:hidden'>
                         {animations.map((animation, index) => (                        
@@ -114,22 +141,6 @@ export default function HomePage({ isDesktop } : Props) {
                     </div>
                 }
             </section>
-            <div 
-                ref={cursorRef}
-                className="fixed rounded-full z-10 mix-blend-difference cursor hidden lg:flex pointer-events-none  items-center justify-center"
-            >
-                {Array.from({ length: 20 }).map((_, index) => (
-                    <div
-                        key={index}
-                        className="cursor-trail aspect-square rounded-full bg-neutral-50 absolute"
-                        style={{
-                            width: 2 * (10 - index)
-                        }}
-                    >
-
-                    </div>
-                ))}
-            </div>
         </main>
     )
 }

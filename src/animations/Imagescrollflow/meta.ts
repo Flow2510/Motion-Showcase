@@ -2,7 +2,7 @@ const imageScrollFlow = {
     name: "image-scroll-flow",
     sectionBefore: false,
     sectionAfter: false,
-    id: 8,
+    id: 3,
     title: "Image Scroll Flow",
     category: "Scroll",
     video: "/videos/image-scroll-flow.mp4",

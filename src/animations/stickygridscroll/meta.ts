@@ -1,8 +1,8 @@
 const stickyGridScroll = {
     name: "sticky-grid-scroll",
-    sectionBefore: true,
+    sectionBefore: false,
     sectionAfter: false,
-    id: 18,
+    id: 4,
     title: "Sticky Grid Scroll",
     category: "Scroll",
     video: "/videos/sticky-grid-scroll.mp4",

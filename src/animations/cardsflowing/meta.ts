@@ -2,7 +2,7 @@ const cardsFlowing = {
     name: "cards-flowing",
     sectionBefore: false,
     sectionAfter: false,
-    id: 6,
+    id: 2,
     title: "Cards Flowing",
     category: "Scroll",
     video: "/videos/cards-flowing.mp4",
