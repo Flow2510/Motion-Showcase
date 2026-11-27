@@ -1,11 +1,14 @@
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import { useEffect, useState } from 'react'
 import HomePage from './pages/homepage'
 import DemoPage from './pages/demopage'
+import ScrollToTop from './components/scrolltotop/scrolltotop'
+import Header from './components/header/header'
 
 function App() {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 1024)
+  const [displayMode, setDisplayMode] = useState<'grid' | 'slider'>("slider")
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,18 +30,10 @@ function App() {
     
   return (
     <>
-      <header className='fixed top-0 left-0 flex justify-between w-full px-5 py-2.5 items-center z-100 mix-blend-difference text-white'>
-        <NavLink to={'/'}>
-          <h1 className='text-sm font-semibold'>Sendra Florian</h1>
-        </NavLink>
-        <div>
-          <NavLink to={'/'} className='text-sm font-semibold cursor-pointer'>
-            menu
-          </NavLink>
-        </div>
-      </header>
+      <ScrollToTop />
+      <Header />
       <Routes>
-        <Route path='/' element={<HomePage isDesktop={isDesktop} />}/>
+        <Route path='/' element={<HomePage isDesktop={isDesktop} displayMode={displayMode} setDisplayMode={setDisplayMode}/>}/>
         <Route path='/animations/:slug' element={<DemoPage />}/>
       </Routes>
     </>

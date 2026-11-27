@@ -6,7 +6,7 @@ export default function PuzzleImage(){
     const containerRef = useRef<HTMLElement | null >(null)
     const gridRef = useRef<HTMLDivElement | null>(null)
 
-    const IMAGE_URL = "/images/sunset.jpg";
+    const IMAGE_URL = "/images/sunset.webp";
     const ROWS = 5;
     const COLS = 7;
 

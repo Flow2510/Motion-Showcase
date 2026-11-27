@@ -1,50 +1,21 @@
-import { useEffect, useRef } from "react";
 import { animations } from "../animations";
 import { NavLink } from "react-router-dom";
-import gsap from "gsap";
-import { Swiper, SwiperSlide } from "swiper/react";
-import 'swiper/css';
-import { useGSAP } from "@gsap/react";
-import { Mousewheel, FreeMode } from 'swiper/modules';
-import SliderCard from "../components/slidercard/slidercard";
+import Slider from "../components/slider/slider";
+import Gallery from "../components/gallery/gallery";
 
 type Props = {
     readonly isDesktop: boolean;
+    readonly displayMode: 'grid' | 'slider';
+    readonly setDisplayMode: React.Dispatch<React.SetStateAction<"grid" | "slider">>
 }
 
-export default function HomePage({ isDesktop } : Props) {
-    const mainRef = useRef<HTMLDivElement>(null)
-
-    useGSAP(() => {
-        if (!isDesktop) return
-
-        const cards = gsap.utils.toArray<HTMLDivElement>('.slider-card')
-
-        cards.slice(0, 4).forEach((card) => {
-            gsap.fromTo(card, {
-                scale: 0.8,
-                y: "100dvh",
-            },{
-                scale: 1,
-                y: 0,
-                duration: 0.5,
-                stagger: {
-                    each: 0.1
-                }
-            })
-        })
-    }, { scope: mainRef})
-
-    useEffect(() => {
-
-    })
+export default function HomePage({ isDesktop, displayMode, setDisplayMode } : Props) {
 
     return(
         <main
-            ref={mainRef}
             className='bg-neutral-200 flex flex-col gap-25 lg:flex-row lg:w-full lg:h-dvh lg overflow-hidden'
         >
-            <section className='w-full h-full p-5 flex flex-col gap-5 lg:flex-1 justify-center z-10'>
+            <section className='w-full h-full p-5 flex flex-col gap-5 justify-center lg:w-[40%]'>
                 <div className='w-full flex flex-col gap-5 pt-20 lg:pt-0'>
                     <p className="uppercase font-semibold">
                         Motion & Interactive
@@ -75,57 +46,68 @@ export default function HomePage({ isDesktop } : Props) {
                 </div>
                 <div className="absolute bottom-5 left-5 hidden gap-5 lg:flex">
                     <a href="/">
-                        site
+                        <img src="/icons/logo.jpg" className="w-6 h-6 rounded-[3px]" alt="" aria-label="Go to my website"/>
                     </a>
                     <a href="/">
-                        github
+                        <img src="/icons/square-github-brands-solid.png" className="w-6 h-6" alt="" aria-label="Go to my Github profil"/>
                     </a>
                     <a href="/">
-                        linkedin
+                        <img src="/icons/square-linkedin-brands-solid.png" className="w-6 h-6" alt="" aria-label="Go to my Linkedin profil"/>
                     </a>
                 </div>
             </section>
-            <section className='p-5 lg:flex-1 relative lg:flex lg:justify-between lg:gap-10'>
+            <section className='lg:flex-1 relative lg:flex lg:justify-between lg:gap-10 lg:w-[60%]'>
                 {isDesktop? 
-                    <div
-                        className="fixed w-full top-0 left-0 h-screen overflow-hidden touch-none flex items-end"
-                    >
-                        <div 
-                            className="w-1/2 absolute h-full top-0 left-1/2"
-                        >
-                            <Swiper
-                                className="max-w-[70%] w-full h-full will-change-transform cursor-grab active:cursor-grabbing"
-                                direction={'vertical'}
-                                slidesPerView={2.5}
-                                modules={[Mousewheel, FreeMode]}
-                                spaceBetween={24}
-                                freeMode={{
-                                    enabled: true,
-                                    momentum: true,
-                                    
+                    <div className="h-full w-full">
+                        {displayMode === 'grid' ?
+                            <Gallery />
+                        :
+                            <Slider />
+                        }
+                        <div className="absolute bottom-5 right-5 flex gap-5">
+                            <button 
+                                className="flex flex-col gap-0.5 h-5 w-5 cursor-pointer duration-300" 
+                                onClick={() => setDisplayMode("slider")} 
+                                aria-label="Switch to slider view"
+                                style={{
+                                    opacity: displayMode === "slider"? 1 : 0.5
                                 }}
-                                mousewheel={{
-                                    enabled: true,
-                                    sensitivity: 1,
-                                }}
-                                loop
                             >
-                                {animations.map((animation) => (
-                                    <SwiperSlide
-                                        key={animation.id}
-                                        className="w-full h-full aspect-video active:cursor-grabbing"
-                                    >
-                                        <SliderCard 
-                                            name={animation.name}
-                                            image={animation.image}
-                                        />
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
+                                <div className="h-full w-full bg-neutral-950">
+
+                                </div>
+                                <div className="h-full w-full bg-neutral-950">
+
+                                </div>
+                                <div className="h-full w-full bg-neutral-950">
+
+                                </div>
+                            </button>
+                            <button 
+                                className="h-5 w-5 relative grid-cols-3 grid grid-rows-3 gap-px cursor-pointer duration-300" 
+                                onClick={() => setDisplayMode("grid")} 
+                                aria-label="Switch to grid view"
+                                style={{
+                                    opacity: displayMode === "grid"? 1 : 0.5
+                                }}
+                            >
+                                <div className="h-full w-full bg-neutral-950 col-2 row-1">
+                                
+                                </div>
+                                <div className="h-full w-full bg-neutral-950 col-1 row-2">
+
+                                </div>
+                                <div className="h-full w-full bg-neutral-950 col-2 row-3">
+
+                                </div>
+                                <div className="h-full w-full bg-neutral-950 col-3 row-2">
+
+                                </div>
+                            </button>
                         </div>
                     </div>
                 :
-                    <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-1 lg:hidden'>
+                    <div className='grid gap-5 md:grid-cols-2 lg:grid-cols-1 lg:hidden p-5 pt-0'>
                         {animations.map((animation, index) => (                        
                             <NavLink to={`/animations/${animation.name}`} key={animation.id + `${index}`} className='w-full slider-item'>
                                 <div className='w-full aspect-1.5/1'>

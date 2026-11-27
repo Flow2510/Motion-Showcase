@@ -18,8 +18,6 @@ import rotatingSlider from "./rotatingslider/meta";
 import RotatingSlider from "./rotatingslider/rotatingslider";
 import rotatingSphere from "./rotatingsphere/meta";
 import RotatingSphere from "./rotatingsphere/rotatingsphere";
-import stickyGridScroll from "./stickygridscroll/meta";
-import StickyGridScroll from "./stickygridscroll/stickygridscroll";
 import svgHoverCards from "./svghovercards/meta";
 import SvgHoverCards from "./svghovercards/svghovercards";
 
@@ -35,10 +33,6 @@ export const animations = [
     {
         ...imageScrollFlow,
         component: ImageScrollFlow,
-    },
-    {
-        ...stickyGridScroll,
-        component: StickyGridScroll,
     },
     {
         ...svgHoverCards,
